@@ -112,6 +112,7 @@ class NvidiaGPUManager(AcceleratorManager):
         # Simulator env vars
         if len(visible_accelerators) > 0:
             env_vars["MUJOCO_EGL_DEVICE_ID"] = str(visible_accelerators[0])
+            env_vars["EGL_VISIBLE_DEVICES"] = str(visible_accelerators[0])
 
         # NCCL env vars
         env_vars["NCCL_CUMEM_ENABLE"] = "0"

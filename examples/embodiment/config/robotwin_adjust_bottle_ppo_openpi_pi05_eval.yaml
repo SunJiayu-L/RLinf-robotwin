@@ -158,7 +158,7 @@ actor:
 
   # Override the default values in model/openpi_pi05
   model:
-    model_path: "/path/to/RLinf/RLinf-Pi05-RoboTwin-SFT-adjust_bottle"
+    model_path: "/mnt/petrelfs/muyao/jiayusun/RoboTwin/policy/pi05/checkpoints/pi05_aloha_full_base/robotwin_47_pi05_full_pytorch/20000"
     num_action_chunks: 50 # interface for the env
     action_dim: 14
     add_value_head: True
