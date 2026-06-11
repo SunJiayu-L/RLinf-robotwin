@@ -106,6 +106,7 @@ def create_rlds_dataloader(
 def main(
     config_name: str,
     repo_id: str,
+    output_path: str | None = None,
 ):
     dataset_root = resolve_lerobot_dataset_root(repo_id)
     if not (dataset_root / "meta" / "info.json").is_file():
@@ -143,9 +144,13 @@ def main(
 
     norm_stats = {key: stats.get_statistics() for key, stats in stats.items()}
 
-    output_path = config.assets_dirs / data_config.repo_id
-    print(f"Writing stats to: {output_path}")
-    normalize.save(output_path, norm_stats)
+    if output_path is not None:
+        import pathlib
+        dest = pathlib.Path(output_path)
+    else:
+        dest = config.assets_dirs / data_config.repo_id
+    print(f"Writing stats to: {dest}")
+    normalize.save(dest, norm_stats)
 
 
 if __name__ == "__main__":

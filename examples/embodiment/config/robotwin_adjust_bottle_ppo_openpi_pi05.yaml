@@ -34,7 +34,7 @@ runner:
   save_interval: 10
 
   resume_dir: null # Optional: path to a saved checkpoint directory, such as 'checkpoints/global_step_10'. If not None, it will be used to resume training.
-  ckpt_path: null  # Optional: path to a .pt checkpoint. If not None, it will be loaded after the model is instantiated (for evaluation).
+  ckpt_path: "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/logs/20260609-10:17:50-robotwin_sft_pi05_8gpu/robotwin_sft_openpi_pi05/checkpoints/global_step_20000/actor/model_state_dict/full_weights.pt"  # SFT step-20000 init weights
 
 algorithm:
   normalize_advantages: True
@@ -89,7 +89,7 @@ env:
   enable_offload: True
   # Override the default values in env/robotwin_adjust_bottle
   train:
-    total_num_envs: 256
+    total_num_envs: 64
     reward_coef: ${algorithm.reward_coef}
     max_episode_steps: 200
     max_steps_per_rollout_epoch: 200
@@ -110,7 +110,7 @@ env:
         random_light: false
         crazy_random_light_rate: 0
   eval:
-    total_num_envs: 128
+    total_num_envs: 32
     auto_reset: True
     ignore_terminations: True
     max_episode_steps: 200
@@ -152,13 +152,13 @@ actor:
   group_name: "ActorGroup"
   training_backend: "fsdp"
   micro_batch_size: 32
-  global_batch_size: 2048 # 1024
+  global_batch_size: 1024
   seed: 1234
   enable_offload: True
 
   # Override the default values in model/openpi_pi05
   model:
-    model_path: "/mnt/petrelfs/muyao/jiayusun/RoboTwin/policy/pi05/checkpoints/pi05_aloha_full_base/robotwin_47_pi05_full_pytorch/20000"
+    model_path: "/mnt/petrelfs/muyao/jiayusun/pi05_base"
     num_action_chunks: 50 # interface for the env
     action_dim: 14
     add_value_head: True

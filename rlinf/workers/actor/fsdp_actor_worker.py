@@ -1017,8 +1017,20 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
             model = super().model_provider_func()
 
         if self.cfg.runner.get("ckpt_path", None):
-            model_dict = torch.load(self.cfg.runner.ckpt_path)
-            model.load_state_dict(model_dict)
+            model_dict = torch.load(self.cfg.runner.ckpt_path, weights_only=False)
+            incompatible = model.load_state_dict(model_dict, strict=False)
+            if incompatible.missing_keys:
+                import logging
+                logging.getLogger(__name__).info(
+                    "ckpt_path load: missing keys (will use random init): %s",
+                    incompatible.missing_keys,
+                )
+            if incompatible.unexpected_keys:
+                import logging
+                logging.getLogger(__name__).warning(
+                    "ckpt_path load: unexpected keys (ignored): %s",
+                    incompatible.unexpected_keys,
+                )
 
         return model
 

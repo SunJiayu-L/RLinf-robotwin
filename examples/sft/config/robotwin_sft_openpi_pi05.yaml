@@ -20,16 +20,16 @@ runner:
   logger:
     log_path: "../results"
     project_name: rlinf
-    experiment_name: "test_openpi"
+    experiment_name: "robotwin_sft_openpi_pi05"
     logger_backends: ["tensorboard"] # wandb, swanlab
 
   max_epochs: -1
-  max_steps: 20000
+  max_steps: 30000
   val_check_interval: -1
   save_interval: 5000
 
 data:
-  train_data_paths: "/path/to/robotwin-data"
+  train_data_paths: "/mnt/petrelfs/muyao/jiayusun/store/cache/huggingface/lerobot/robotwin_47_pi05"
 
 actor:
   group_name: "ActorGroup"
@@ -41,7 +41,7 @@ actor:
   # Override the default values in model/pi0_5
   model:
     precision: null
-    model_path: "/path/to/pi05-model"
+    model_path: "/mnt/petrelfs/muyao/jiayusun/pi05_base"
     num_action_chunks: 50 # interface for the env
     action_dim: 14
     add_value_head: False

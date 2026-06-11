@@ -1,0 +1,54 @@
+#!/bin/bash
+#SBATCH -p wam_data
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH --cpus-per-task=16
+#SBATCH --gres=gpu:0
+#SBATCH -J calc-norm-stats
+#SBATCH -o /mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/slurm_logs/calc_norm_stats-%j.out
+#SBATCH --time=24:00:00
+
+set -eo pipefail
+
+SIF_IMAGE=${SIF_IMAGE:-/mnt/petrelfs/muyao/shared_img/new_app.sif}
+APPTAINER_BIN=${APPTAINER_BIN:-apptainer}
+
+export REPO_PATH=/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin
+
+if [[ "${IN_RLINF_ROBOTWIN_CONTAINER:-0}" != "1" ]]; then
+    exec "${APPTAINER_BIN}" exec \
+        --cleanenv \
+        --nv \
+        --bind /mnt:/mnt \
+        --bind /nvme:/nvme \
+        --pwd "${REPO_PATH}" \
+        "${SIF_IMAGE}" \
+        env IN_RLINF_ROBOTWIN_CONTAINER=1 \
+            HOME="${HOME}" \
+            SLURM_JOB_ID="${SLURM_JOB_ID:-}" \
+            REPO_PATH="${REPO_PATH}" \
+        bash "${REPO_PATH}/examples/sft/slurm/calc_norm_stats_robotwin47.sbatch"
+fi
+
+# === inside container from here ===
+
+export GCC_HOME=/mnt/lustre/share/gcc/gcc-11.2.0
+export CUDA_HOME=/mnt/lustre/share/cuda-12.4
+export PATH=$CUDA_HOME/bin:$GCC_HOME/bin:$REPO_PATH/.venv/bin:$HOME/.local/bin:$PATH
+export LD_LIBRARY_PATH=$GCC_HOME/lib64:$CUDA_HOME/lib64:/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}
+
+export PYTHONPATH=${REPO_PATH}:${PYTHONPATH:-}
+
+DATASET_PATH="/mnt/petrelfs/muyao/jiayusun/store/cache/huggingface/lerobot/robotwin_47_pi05"
+CONFIG_NAME="pi05_aloha_robotwin"
+DEST_DIR="/mnt/petrelfs/muyao/jiayusun/pi05_base/physical-intelligence/robotwin"
+
+cd "${REPO_PATH}"
+mkdir -p "${DEST_DIR}"
+
+echo "=== start: $(date) ==="
+python toolkits/lerobot/calculate_norm_stats.py \
+    --config-name "${CONFIG_NAME}" \
+    --repo-id "${DATASET_PATH}" \
+    --output-path "${DEST_DIR}"
+echo "=== done: $(date) ==="

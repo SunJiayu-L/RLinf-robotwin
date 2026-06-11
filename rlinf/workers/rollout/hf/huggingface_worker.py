@@ -98,8 +98,20 @@ class MultiStepRolloutWorker(Worker):
         self.hf_model: BasePolicy = get_model(rollout_model_config)
 
         if self.cfg.runner.get("ckpt_path", None):
-            model_dict = torch.load(self.cfg.runner.ckpt_path)
-            self.hf_model.load_state_dict(model_dict)
+            model_dict = torch.load(self.cfg.runner.ckpt_path, weights_only=False)
+            incompatible = self.hf_model.load_state_dict(model_dict, strict=False)
+            if incompatible.missing_keys:
+                import logging
+                logging.getLogger(__name__).info(
+                    "ckpt_path load: missing keys (will use random init): %s",
+                    incompatible.missing_keys,
+                )
+            if incompatible.unexpected_keys:
+                import logging
+                logging.getLogger(__name__).warning(
+                    "ckpt_path load: unexpected keys (ignored): %s",
+                    incompatible.unexpected_keys,
+                )
 
         if self.cfg.rollout.get("expert_model", None):
             expert_model_config = copy.deepcopy(self.cfg.actor.model)
