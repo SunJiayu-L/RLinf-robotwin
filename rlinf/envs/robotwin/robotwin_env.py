@@ -14,6 +14,7 @@
 
 import json
 import os
+from pathlib import Path
 from typing import Optional, Union
 
 import gymnasium as gym
@@ -23,7 +24,10 @@ import torch.multiprocessing as mp
 from omegaconf import OmegaConf
 from PIL import Image
 
-from rlinf.envs.robotwin.seed_utils import partition_success_seeds
+from rlinf.envs.robotwin.seed_utils import (
+    partition_episode_manifest,
+    partition_success_seeds,
+)
 from rlinf.envs.utils import center_crop_image, list_of_dict_to_dict_of_list
 
 __all__ = ["RoboTwinEnv"]
@@ -64,7 +68,11 @@ class RoboTwinEnv(gym.Env):
         self.task_name = cfg.task_config.task_name
 
         self.center_crop = cfg.get("center_crop", False)
+        self.episode_manifest = None
+        self.current_instructions = None
+        self._episode_log_path = None
         self._init_reset_state_ids()
+        self._init_episode_log()
 
         self._init_env()
 
@@ -89,7 +97,23 @@ class RoboTwinEnv(gym.Env):
             task_config=OmegaConf.to_container(self.cfg.task_config, resolve=True),
             n_envs=self.num_envs,
             env_seeds=env_seeds,
+            instructions=self.current_instructions,
+            instruction_type=self.cfg.get("instruction_type", "seen"),
+            strict_episode_manifest=self.episode_manifest is not None,
         )
+
+    def _init_episode_log(self):
+        episode_log_path = self.cfg.get("episode_log_path", None)
+        if episode_log_path is None:
+            return
+
+        path = Path(episode_log_path)
+        suffix = path.suffix or ".jsonl"
+        self._episode_log_path = path.with_name(
+            f"{path.stem}.worker-{self.seed_offset}{suffix}"
+        )
+        self._episode_log_path.parent.mkdir(parents=True, exist_ok=True)
+        self._episode_log_path.write_text("")
 
     @property
     def device(self):
@@ -117,6 +141,9 @@ class RoboTwinEnv(gym.Env):
         self.returns = torch.zeros(
             self.num_envs, device=self.device, dtype=torch.float32
         )
+        self.first_success_steps = torch.full(
+            (self.num_envs,), -1, device=self.device, dtype=torch.long
+        )
 
     def _reset_metrics(self, env_idx=None):
         if env_idx is not None:
@@ -127,6 +154,7 @@ class RoboTwinEnv(gym.Env):
                 self.success_once[mask] = False
                 self.fail_once[mask] = False
                 self.returns[mask] = 0
+                self.first_success_steps[mask] = -1
                 self._elapsed_steps[env_idx] = 0
         else:
             self.prev_step_reward[:] = 0
@@ -134,6 +162,7 @@ class RoboTwinEnv(gym.Env):
                 self.success_once[:] = False
                 self.fail_once[:] = False
                 self.returns[:] = 0.0
+                self.first_success_steps[:] = -1
                 self._elapsed_steps[:] = 0
 
     def _record_metrics(self, step_reward, infos):
@@ -144,13 +173,46 @@ class RoboTwinEnv(gym.Env):
                 infos["success"] = torch.as_tensor(
                     np.array(infos["success"]).reshape(-1), device=self.device
                 )
+            newly_successful = infos["success"] & ~self.success_once
+            self.first_success_steps[newly_successful] = self.elapsed_steps[
+                newly_successful
+            ]
             self.success_once = self.success_once | infos["success"]
             episode_info["success_once"] = self.success_once.clone()
+            episode_info["success_step"] = self.first_success_steps.clone()
         episode_info["return"] = self.returns.clone()
         episode_info["episode_len"] = self.elapsed_steps.clone()
         episode_info["reward"] = episode_info["return"] / episode_info["episode_len"]
+        episode_info["seed"] = self.reset_state_ids.to(self.device).clone()
         infos["episode"] = episode_info
         return infos
+
+    def _write_episode_records(self, dones, infos):
+        if self._episode_log_path is None or not dones.any():
+            return
+
+        records = []
+        for env_idx in torch.nonzero(dones, as_tuple=False).flatten().tolist():
+            records.append(
+                {
+                    "task": self.task_name,
+                    "worker": self.seed_offset,
+                    "env_index": env_idx,
+                    "seed": int(self.reset_state_ids[env_idx]),
+                    "instruction": self.current_instructions[env_idx],
+                    "success": bool(self.success_once[env_idx].item()),
+                    "success_step": (
+                        int(self.first_success_steps[env_idx].item())
+                        if self.success_once[env_idx]
+                        else None
+                    ),
+                    "total_steps": int(self.elapsed_steps[env_idx].item()),
+                }
+            )
+
+        with self._episode_log_path.open("a", encoding="utf-8") as file:
+            for record in records:
+                file.write(json.dumps(record, ensure_ascii=True) + "\n")
 
     def center_and_crop(self, image, center_crop=False):
         image = np.array(image)
@@ -246,9 +308,26 @@ class RoboTwinEnv(gym.Env):
         if self._is_start:
             self._is_start = False
 
-        env_seeds = self.reset_state_ids.tolist() if env_seeds is None else env_seeds
+        if env_seeds is None:
+            if env_idx is None:
+                env_seeds = self.reset_state_ids.tolist()
+                instructions = self.current_instructions
+            else:
+                indices = [env_idx] if isinstance(env_idx, int) else env_idx
+                env_seeds = [int(self.reset_state_ids[idx]) for idx in indices]
+                instructions = (
+                    [self.current_instructions[idx] for idx in indices]
+                    if self.current_instructions is not None
+                    else None
+                )
+        else:
+            instructions = None
 
-        self.venv.reset(env_idx=env_idx, env_seeds=env_seeds)
+        self.venv.reset(
+            env_idx=env_idx,
+            env_seeds=env_seeds,
+            instructions=instructions,
+        )
         raw_obs = self.venv.get_obs()
         infos = {}
 
@@ -372,6 +451,7 @@ class RoboTwinEnv(gym.Env):
                     infos["episode"]["success_at_end"] = infos["success"].clone()
 
         past_dones = torch.logical_or(terminations, truncations)
+        self._write_episode_records(past_dones, infos)
         if past_dones.any() and self.auto_reset:
             obs_list[-1], infos_list[-1] = self._handle_auto_reset(
                 past_dones, obs_list[-1], infos_list[-1]
@@ -396,6 +476,16 @@ class RoboTwinEnv(gym.Env):
         env_idx = torch.arange(0, self.num_envs, device=self.device)[dones]
         final_info = infos.copy()
         if self.cfg.is_eval:
+            if self.episode_manifest is not None and (
+                self._current_episode_index + env_idx.numel()
+                > len(self.episode_manifest)
+            ):
+                infos["final_observation"] = final_obs
+                infos["final_info"] = final_info
+                infos["_final_info"] = dones
+                infos["_final_observation"] = dones
+                infos["_elapsed_steps"] = dones
+                return extracted_obs, infos
             self.update_reset_state_ids(env_idx=env_idx)
 
         extracted_obs, infos = self.reset(env_idx=env_idx.tolist())
@@ -420,7 +510,22 @@ class RoboTwinEnv(gym.Env):
         ):
             with open(self.cfg.seeds_path, "r") as f:
                 data = json.load(f)
-            success_seeds = data[self.task_name].get("success_seeds", None)
+            task_data = data[self.task_name]
+            episodes = task_data.get("episodes", None)
+            if episodes is not None:
+                self.episode_manifest = partition_episode_manifest(
+                    episodes,
+                    seed_offset=self.seed_offset,
+                    total_num_processes=self.total_num_processes,
+                    num_group=self.num_group,
+                )
+                self._current_episode_index = 0
+                self.success_seeds = None
+                self._current_seed_index = 0
+                self.update_reset_state_ids()
+                return
+
+            success_seeds = task_data.get("success_seeds", None)
             if success_seeds is not None:
                 success_seeds = torch.as_tensor(success_seeds, dtype=torch.long)
                 self.success_seeds = partition_success_seeds(
@@ -444,6 +549,10 @@ class RoboTwinEnv(gym.Env):
         self.update_reset_state_ids()
 
     def update_reset_state_ids(self, env_idx=None):
+        if self.episode_manifest is not None:
+            self._update_manifest_episodes(env_idx)
+            return
+
         if self.use_fixed_reset_state_ids and hasattr(self, "reset_state_ids"):
             return
 
@@ -498,6 +607,37 @@ class RoboTwinEnv(gym.Env):
                     repeats=self.group_size
                 )
             self.reset_state_ids = reset_state_ids
+
+    def _update_manifest_episodes(self, env_idx=None):
+        if env_idx is None:
+            indices = list(range(self.num_envs))
+        elif isinstance(env_idx, int):
+            indices = [env_idx]
+        else:
+            indices = [
+                int(idx)
+                for idx in (
+                    env_idx.tolist() if isinstance(env_idx, torch.Tensor) else env_idx
+                )
+            ]
+
+        end = self._current_episode_index + len(indices)
+        if end > len(self.episode_manifest):
+            raise RuntimeError(
+                "Episode manifest exhausted before evaluation completed: "
+                f"requested through {end}, only {len(self.episode_manifest)} available"
+            )
+
+        selected = self.episode_manifest[self._current_episode_index : end]
+        if not hasattr(self, "reset_state_ids"):
+            self.reset_state_ids = torch.empty(self.num_envs, dtype=torch.long)
+            self.current_instructions = [""] * self.num_envs
+
+        for idx, episode in zip(indices, selected, strict=True):
+            self.reset_state_ids[idx] = int(episode["seed"])
+            self.current_instructions[idx] = str(episode["instruction"])
+
+        self._current_episode_index = end
 
     def check_seeds(self, seeds):
         resutls = self.venv.check_seeds(seeds)
