@@ -15,7 +15,10 @@
 import pytest
 import torch
 
-from rlinf.envs.robotwin.seed_utils import partition_success_seeds
+from rlinf.envs.robotwin.seed_utils import (
+    partition_episode_manifest,
+    partition_success_seeds,
+)
 
 
 def _first_eval_seeds(
@@ -91,3 +94,35 @@ def test_robotwin_eval_success_seed_order_is_controlled_by_base_seed():
 
     assert selected_seed_0 == selected_seed_0_again
     assert selected_seed_0 != selected_seed_1
+
+
+def test_robotwin_episode_manifest_preserves_order_without_overlap():
+    episodes = [
+        {"seed": seed, "instruction": f"instruction-{seed}"} for seed in range(96)
+    ]
+
+    worker_episodes = [
+        partition_episode_manifest(
+            episodes,
+            seed_offset=rank,
+            total_num_processes=8,
+            num_group=3,
+        )
+        for rank in range(8)
+    ]
+
+    assert [episode for shard in worker_episodes for episode in shard] == episodes
+    assert all(len(shard) == 12 for shard in worker_episodes)
+
+
+@pytest.mark.parametrize("episode_count", [95, 100])
+def test_robotwin_episode_manifest_rejects_unbalanced_workers(episode_count: int):
+    episodes = [{"seed": seed, "instruction": "test"} for seed in range(episode_count)]
+
+    with pytest.raises(ValueError, match="divisible"):
+        partition_episode_manifest(
+            episodes,
+            seed_offset=0,
+            total_num_processes=8,
+            num_group=3,
+        )

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Any
+
 import torch
 
 
@@ -36,3 +38,42 @@ def partition_success_seeds(
 
     keep_count = (worker_seeds.numel() // num_group) * num_group
     return worker_seeds[:keep_count]
+
+
+def partition_episode_manifest(
+    episodes: list[dict[str, Any]],
+    *,
+    seed_offset: int,
+    total_num_processes: int,
+    num_group: int,
+) -> list[dict[str, Any]]:
+    """Return one worker's ordered, non-overlapping episode manifest slice.
+
+    Unlike training seed partitioning, paired evaluation must preserve the exact
+    order from the reference evaluation and must never shuffle or silently drop
+    different numbers of episodes on different workers.
+    """
+    if total_num_processes <= 0:
+        raise ValueError("total_num_processes must be positive")
+    if not 0 <= seed_offset < total_num_processes:
+        raise ValueError(
+            f"seed_offset must be in [0, {total_num_processes}), got {seed_offset}"
+        )
+    if num_group <= 0:
+        raise ValueError("num_group must be positive")
+    if len(episodes) % total_num_processes != 0:
+        raise ValueError(
+            "Episode manifest size must be divisible by total_num_processes: "
+            f"{len(episodes)} % {total_num_processes} != 0"
+        )
+
+    episodes_per_worker = len(episodes) // total_num_processes
+    if episodes_per_worker % num_group != 0:
+        raise ValueError(
+            "Each worker's episode count must be divisible by its number of "
+            f"environment groups: {episodes_per_worker} % {num_group} != 0"
+        )
+
+    start = seed_offset * episodes_per_worker
+    end = start + episodes_per_worker
+    return episodes[start:end]
