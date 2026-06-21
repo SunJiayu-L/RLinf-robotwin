@@ -10,12 +10,12 @@ SEEDS_PATH="${REPO_PATH}/rlinf/envs/robotwin/seeds/eval_seeds.json"
 # A800-aligned task horizons where available; the remaining tasks retain the
 # task-specific PJLab limits. Every task below has fixed seeds in eval_seeds.json.
 TASK_SPECS=(
-    "adjust_bottle:208"
-    "beat_block_hammer:400"
-    "blocks_ranking_rgb:208"
-    "click_bell:400"
-    "handover_block:400"
-    "handover_mic:608"
+    "adjust_bottle:800"
+    "beat_block_hammer:800"
+    "blocks_ranking_rgb:800"
+    "click_bell:800"
+    "handover_block:800"
+    "handover_mic:800"
 )
 
 CKPT_FILE="${REPO_PATH}/logs/20260620-23:01:03-random10_pi05_sft_h16_noadapt_8gpu/random10_pi05_sft_h16_noadapt/checkpoints/global_step_${CKPT_STEP}/actor/model_state_dict/full_weights.pt"
