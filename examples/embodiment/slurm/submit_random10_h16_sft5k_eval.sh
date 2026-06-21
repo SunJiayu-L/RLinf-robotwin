@@ -11,7 +11,7 @@ SEEDS_PATH="${REPO_PATH}/rlinf/envs/robotwin/seeds/eval_seeds.json"
 TASK_SPECS=(
     "adjust_bottle:208"
     "beat_block_hammer:400"
-    "blocks_ranking_rgb:200"
+    "blocks_ranking_rgb:208"
     "click_bell:400"
     "handover_block:400"
     "handover_mic:608"
