@@ -12,6 +12,7 @@ set -euo pipefail
 : "${TASK_NAME:?TASK_NAME is required}"
 : "${STEP_LIM:?STEP_LIM is required}"
 
+CKPT_STEP=${CKPT_STEP:-5000}
 SIF_IMAGE=${SIF_IMAGE:-/mnt/petrelfs/muyao/shared_img/new_app.sif}
 APPTAINER_BIN=${APPTAINER_BIN:-apptainer}
 export REPO_PATH=/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin
@@ -26,7 +27,7 @@ if [[ "${IN_RLINF_ROBOTWIN_CONTAINER:-0}" != "1" ]]; then
             SLURM_NODELIST="${SLURM_NODELIST:-}" \
             CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-}" \
             REPO_PATH="${REPO_PATH}" ROBOTWIN_PATH="${ROBOTWIN_PATH}" \
-            TASK_NAME="${TASK_NAME}" STEP_LIM="${STEP_LIM}" \
+            TASK_NAME="${TASK_NAME}" STEP_LIM="${STEP_LIM}" CKPT_STEP="${CKPT_STEP}" \
         bash "${REPO_PATH}/examples/embodiment/slurm/random10_h16_sft5k_eval_task.sbatch"
 fi
 
@@ -44,7 +45,7 @@ export EMBODIED_PATH="${REPO_PATH}/examples/embodiment"
 export HYDRA_FULL_ERROR=1
 export RAY_TMPDIR="/tmp/r10e_${SLURM_JOB_ID:-manual}"
 
-CKPT_DIR="${REPO_PATH}/logs/20260620-23:01:03-random10_pi05_sft_h16_noadapt_8gpu/random10_pi05_sft_h16_noadapt/checkpoints/global_step_5000/actor"
+CKPT_DIR="${REPO_PATH}/logs/20260620-23:01:03-random10_pi05_sft_h16_noadapt_8gpu/random10_pi05_sft_h16_noadapt/checkpoints/global_step_${CKPT_STEP}/actor"
 DATASET_DIR="/mnt/petrelfs/muyao/jiayusun/store/cache/huggingface/lerobot/robotwin_random_10_500_pi05_h16"
 NORM_STATS="${DATASET_DIR}/norm_stats.json"
 SEEDS_PATH="${REPO_PATH}/rlinf/envs/robotwin/seeds/eval_seeds.json"
@@ -52,7 +53,7 @@ SEEDS_PATH="${REPO_PATH}/rlinf/envs/robotwin/seeds/eval_seeds.json"
 cd "${REPO_PATH}"
 mkdir -p "${RAY_TMPDIR}" "${REPO_PATH}/eval_logs" "${REPO_PATH}/slurm_logs"
 
-[[ -s "${CKPT_DIR}/model_state_dict/full_weights.pt" ]] || { echo "missing 5k checkpoint"; exit 1; }
+[[ -s "${CKPT_DIR}/model_state_dict/full_weights.pt" ]] || { echo "missing checkpoint step ${CKPT_STEP}"; exit 1; }
 [[ -s "${NORM_STATS}" ]] || { echo "missing norm stats"; exit 1; }
 python3 - "${SEEDS_PATH}" "${TASK_NAME}" <<'PY'
 import json
@@ -72,7 +73,7 @@ mkdir -p "${CKPT_DIR}/physical-intelligence/robotwin_random10_h16"
 ln -sfn "${NORM_STATS}" "${CKPT_DIR}/physical-intelligence/robotwin_random10_h16/norm_stats.json"
 
 STAMP=$(date +'%Y%m%d-%H%M%S')
-LOG_DIR="${REPO_PATH}/eval_logs/${STAMP}-random10-h16-sft5k-${TASK_NAME}-n56"
+LOG_DIR="${REPO_PATH}/eval_logs/${STAMP}-random10-h16-sft${CKPT_STEP}-${TASK_NAME}-n56"
 mkdir -p "${LOG_DIR}"
 
 ray stop --force 2>/dev/null || true
@@ -82,7 +83,8 @@ python examples/embodiment/eval_embodied_agent.py \
     --config-path "${EMBODIED_PATH}/config/" \
     --config-name random10_h16_sft5k_eval \
     runner.logger.log_path="${LOG_DIR}" \
-    runner.logger.experiment_name="random10_h16_sft5k_${TASK_NAME}" \
+    runner.logger.experiment_name="random10_h16_sft${CKPT_STEP}_${TASK_NAME}" \
+    actor.model.model_path="${CKPT_DIR}" \
     env.train.task_config.task_name="${TASK_NAME}" \
     env.eval.task_config.task_name="${TASK_NAME}" \
     env.train.task_config.step_lim="${STEP_LIM}" \

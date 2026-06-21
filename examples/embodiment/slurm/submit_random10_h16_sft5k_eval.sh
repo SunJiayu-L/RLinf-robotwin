@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+CKPT_STEP=${1:-5000}
 REPO_PATH=/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin
 SBATCH_SCRIPT="${REPO_PATH}/examples/embodiment/slurm/random10_h16_sft5k_eval_task.sbatch"
 LOG_DIR="${REPO_PATH}/slurm_logs"
@@ -16,6 +17,10 @@ TASK_SPECS=(
     "handover_block:400"
     "handover_mic:608"
 )
+
+CKPT_FILE="${REPO_PATH}/logs/20260620-23:01:03-random10_pi05_sft_h16_noadapt_8gpu/random10_pi05_sft_h16_noadapt/checkpoints/global_step_${CKPT_STEP}/actor/model_state_dict/full_weights.pt"
+[[ -s "${CKPT_FILE}" ]] || { echo "missing checkpoint step ${CKPT_STEP}: ${CKPT_FILE}"; exit 1; }
+echo "checkpoint step ${CKPT_STEP}: ready"
 
 mkdir -p "${LOG_DIR}"
 
@@ -36,9 +41,9 @@ for SPEC in "${TASK_SPECS[@]}"; do
     STEP_LIM=${SPEC##*:}
     SHORT=${TASK:0:13}
     JOB_ID=$(sbatch \
-        --job-name="r10e5k-${SHORT}" \
-        --output="${LOG_DIR}/random10_h16_sft5k_eval_${TASK}-%j.out" \
-        --export=ALL,TASK_NAME="${TASK}",STEP_LIM="${STEP_LIM}" \
+        --job-name="r10e${CKPT_STEP}-${SHORT}" \
+        --output="${LOG_DIR}/random10_h16_sft${CKPT_STEP}_eval_${TASK}-%j.out" \
+        --export=ALL,TASK_NAME="${TASK}",STEP_LIM="${STEP_LIM}",CKPT_STEP="${CKPT_STEP}" \
         "${SBATCH_SCRIPT}" | awk '{print $NF}')
-    printf '%-24s step_lim=%-4s job=%s\n' "${TASK}" "${STEP_LIM}" "${JOB_ID}"
+    printf '%-24s step=%-5s step_lim=%-4s job=%s\n' "${TASK}" "${CKPT_STEP}" "${STEP_LIM}" "${JOB_ID}"
 done
