@@ -613,6 +613,20 @@ class RoboTwinEnv(gym.Env):
                 infos["_final_observation"] = dones
                 infos["_elapsed_steps"] = dones
                 return extracted_obs, infos
+            if self._uses_multitask_manifest:
+                for task_name, task_done in self._group_indices_by_task(
+                    env_idx.tolist()
+                ).items():
+                    start = self._task_current_episode_indices[task_name]
+                    if start + len(task_done) > len(
+                        self.task_episode_manifests[task_name]
+                    ):
+                        infos["final_observation"] = final_obs
+                        infos["final_info"] = final_info
+                        infos["_final_info"] = dones
+                        infos["_final_observation"] = dones
+                        infos["_elapsed_steps"] = dones
+                        return extracted_obs, infos
             self.update_reset_state_ids(env_idx=env_idx)
 
         extracted_obs, infos = self.reset(env_idx=env_idx.tolist())
@@ -786,9 +800,9 @@ class RoboTwinEnv(gym.Env):
                 for task_name, venv in self.venvs.items()
                 if hasattr(venv, "check_seeds")
             }
-        resutls = self.venv.check_seeds(seeds)
+        results = self.venv.check_seeds(seeds)
 
-        return resutls
+        return results
 
     def _init_multitask_reset_state_ids(self):
         seeds_data = {}
