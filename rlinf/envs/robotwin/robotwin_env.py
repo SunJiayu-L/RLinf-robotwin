@@ -14,6 +14,8 @@
 
 import json
 import os
+from collections import defaultdict
+from copy import deepcopy
 from pathlib import Path
 from typing import Optional, Union
 
@@ -66,9 +68,16 @@ class RoboTwinEnv(gym.Env):
         self._is_start = True
 
         self.task_name = cfg.task_config.task_name
+        self.task_names = self._resolve_task_names()
+        self.is_multitask = len(self.task_names) > 1
+        self._init_task_assignment()
 
         self.center_crop = cfg.get("center_crop", False)
         self.episode_manifest = None
+        self.task_episode_manifests = {}
+        self.task_success_seeds = {}
+        self._task_current_episode_indices = {}
+        self._task_current_seed_indices = {}
         self.current_instructions = None
         self._episode_log_path = None
         self._init_reset_state_ids()
@@ -91,6 +100,29 @@ class RoboTwinEnv(gym.Env):
 
         from robotwin.envs.vector_env import VectorEnv
 
+        if self.is_multitask:
+            self.venvs = {}
+            for task_name, global_indices in self.task_to_global_indices.items():
+                task_config = deepcopy(
+                    OmegaConf.to_container(self.cfg.task_config, resolve=True)
+                )
+                task_config["task_name"] = task_name
+                env_seeds = [int(self.reset_state_ids[idx]) for idx in global_indices]
+                instructions = (
+                    [self.current_instructions[idx] for idx in global_indices]
+                    if self.current_instructions is not None
+                    else None
+                )
+                self.venvs[task_name] = VectorEnv(
+                    task_config=task_config,
+                    n_envs=len(global_indices),
+                    env_seeds=env_seeds,
+                    instructions=instructions,
+                    instruction_type=self.cfg.get("instruction_type", "seen"),
+                    strict_episode_manifest=self._uses_multitask_manifest,
+                )
+            return
+
         env_seeds = self.reset_state_ids.tolist()
 
         self.venv = VectorEnv(
@@ -101,6 +133,50 @@ class RoboTwinEnv(gym.Env):
             instruction_type=self.cfg.get("instruction_type", "seen"),
             strict_episode_manifest=self.episode_manifest is not None,
         )
+
+    def _resolve_task_names(self) -> list[str]:
+        task_names = self.cfg.get("task_names", None)
+        if task_names is None:
+            return [str(self.task_name)]
+        task_names = [str(task_name) for task_name in task_names]
+        if len(task_names) == 0:
+            raise ValueError("RoboTwin task_names must not be empty")
+        return task_names
+
+    def _init_task_assignment(self):
+        self.env_task_names = [self.task_name] * self.num_envs
+        self.env_task_ids = torch.zeros(self.num_envs, dtype=torch.long)
+        self.env_local_indices = [0] * self.num_envs
+        self.task_to_global_indices = {self.task_name: list(range(self.num_envs))}
+        self.task_to_group_indices = {self.task_name: list(range(self.num_group))}
+        self._uses_multitask_manifest = False
+
+        if not self.is_multitask:
+            return
+        if len(self.task_names) > self.num_group:
+            raise ValueError(
+                "RoboTwin multi-task mode requires at least one env group per task: "
+                f"{len(self.task_names)} tasks > {self.num_group} groups"
+            )
+
+        self.env_task_names = [""] * self.num_envs
+        self.env_task_ids = torch.empty(self.num_envs, dtype=torch.long)
+        self.env_local_indices = [0] * self.num_envs
+        self.task_to_global_indices = {task_name: [] for task_name in self.task_names}
+        self.task_to_group_indices = {task_name: [] for task_name in self.task_names}
+
+        for group_idx in range(self.num_group):
+            task_id = group_idx % len(self.task_names)
+            task_name = self.task_names[task_id]
+            self.task_to_group_indices[task_name].append(group_idx)
+            for offset in range(self.group_size):
+                env_idx = group_idx * self.group_size + offset
+                self.env_task_names[env_idx] = task_name
+                self.env_task_ids[env_idx] = task_id
+                self.env_local_indices[env_idx] = len(
+                    self.task_to_global_indices[task_name]
+                )
+                self.task_to_global_indices[task_name].append(env_idx)
 
     def _init_episode_log(self):
         episode_log_path = self.cfg.get("episode_log_path", None)
@@ -184,6 +260,8 @@ class RoboTwinEnv(gym.Env):
         episode_info["episode_len"] = self.elapsed_steps.clone()
         episode_info["reward"] = episode_info["return"] / episode_info["episode_len"]
         episode_info["seed"] = self.reset_state_ids.to(self.device).clone()
+        if self.is_multitask:
+            episode_info["task_id"] = self.env_task_ids.to(self.device).clone()
         infos["episode"] = episode_info
         return infos
 
@@ -195,11 +273,15 @@ class RoboTwinEnv(gym.Env):
         for env_idx in torch.nonzero(dones, as_tuple=False).flatten().tolist():
             records.append(
                 {
-                    "task": self.task_name,
+                    "task": self.env_task_names[env_idx]
+                    if self.is_multitask
+                    else self.task_name,
                     "worker": self.seed_offset,
                     "env_index": env_idx,
                     "seed": int(self.reset_state_ids[env_idx]),
-                    "instruction": self.current_instructions[env_idx] if self.current_instructions is not None else "",
+                    "instruction": self.current_instructions[env_idx]
+                    if self.current_instructions is not None
+                    else "",
                     "success": bool(self.success_once[env_idx].item()),
                     "success_step": (
                         int(self.first_success_steps[env_idx].item())
@@ -308,6 +390,9 @@ class RoboTwinEnv(gym.Env):
         if self._is_start:
             self._is_start = False
 
+        if self.is_multitask:
+            return self._multitask_reset(env_idx=env_idx, env_seeds=env_seeds)
+
         if env_seeds is None:
             if env_idx is None:
                 env_seeds = self.reset_state_ids.tolist()
@@ -337,6 +422,38 @@ class RoboTwinEnv(gym.Env):
 
         return extracted_obs, infos
 
+    def _multitask_reset(self, env_idx=None, env_seeds=None):
+        indices = self._normalize_env_indices(env_idx)
+        env_seed_by_idx = None
+        if env_seeds is not None:
+            env_seed_by_idx = {
+                idx: int(seed) for idx, seed in zip(indices, env_seeds, strict=True)
+            }
+
+        for task_name, task_indices in self._group_indices_by_task(indices).items():
+            local_indices = [self.env_local_indices[idx] for idx in task_indices]
+            task_env_seeds = [
+                env_seed_by_idx[idx]
+                if env_seed_by_idx is not None
+                else int(self.reset_state_ids[idx])
+                for idx in task_indices
+            ]
+            instructions = (
+                [self.current_instructions[idx] for idx in task_indices]
+                if self.current_instructions is not None
+                else None
+            )
+            self.venvs[task_name].reset(
+                env_idx=local_indices,
+                env_seeds=task_env_seeds,
+                instructions=instructions,
+            )
+
+        raw_obs = self._get_multitask_raw_obs()
+        infos = {}
+        self._reset_metrics(env_idx)
+        return self._extract_obs_image(raw_obs), infos
+
     def step(
         self, actions: Union[torch.Tensor, np.ndarray, dict] = None, auto_reset=True
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, dict]:
@@ -353,9 +470,14 @@ class RoboTwinEnv(gym.Env):
             # [n_envs, action_dim] -> [n_envs, 1, action_dim]
             actions = actions[:, None, :]
 
-        raw_obs, step_reward, terminations, truncations, info_list = self.venv.step(
-            actions
-        )
+        if self.is_multitask:
+            raw_obs, step_reward, terminations, truncations, info_list = (
+                self._multitask_env_step(actions)
+            )
+        else:
+            raw_obs, step_reward, terminations, truncations, info_list = self.venv.step(
+                actions
+            )
         extracted_obs = self._extract_obs_image(raw_obs)
         infos = list_of_dict_to_dict_of_list(info_list)
 
@@ -408,9 +530,14 @@ class RoboTwinEnv(gym.Env):
         obs_list = []
         infos_list = []
 
-        raw_obs, step_reward, terminations, truncations, info_list = self.venv.step(
-            chunk_actions
-        )
+        if self.is_multitask:
+            raw_obs, step_reward, terminations, truncations, info_list = (
+                self._multitask_env_step(chunk_actions)
+            )
+        else:
+            raw_obs, step_reward, terminations, truncations, info_list = self.venv.step(
+                chunk_actions
+            )
         extracted_obs = self._extract_obs_image(raw_obs)
         infos = list_of_dict_to_dict_of_list(info_list)
         obs_list.append(extracted_obs)
@@ -489,7 +616,7 @@ class RoboTwinEnv(gym.Env):
             self.update_reset_state_ids(env_idx=env_idx)
 
         extracted_obs, infos = self.reset(env_idx=env_idx.tolist())
-        # gymnasium calls it final observation but it really is just o_{t+1} or the true next observation
+        # Gymnasium calls this final observation, but it is the true next obs.
         infos["final_observation"] = final_obs
         infos["final_info"] = final_info
         infos["_final_info"] = dones
@@ -498,6 +625,10 @@ class RoboTwinEnv(gym.Env):
         return extracted_obs, infos
 
     def close(self, clear_cache=True):
+        if self.is_multitask and hasattr(self, "venvs"):
+            for venv in self.venvs.values():
+                venv.close(clear_cache)
+            return
         if hasattr(self, "venv"):
             self.venv.close(clear_cache)
 
@@ -505,6 +636,14 @@ class RoboTwinEnv(gym.Env):
         return np.random.randn(self.num_envs, self.horizon, 14)
 
     def _init_reset_state_ids(self):
+        if not hasattr(self, "_generator"):
+            self._generator = torch.Generator()
+            self._generator.manual_seed(self.seed)
+
+        if self.is_multitask:
+            self._init_multitask_reset_state_ids()
+            return
+
         if self.cfg.get("seeds_path", None) is not None and os.path.exists(
             self.cfg.seeds_path
         ):
@@ -543,12 +682,13 @@ class RoboTwinEnv(gym.Env):
             self.success_seeds = None
             self._current_seed_index = 0
 
-        if not hasattr(self, "_generator"):
-            self._generator = torch.Generator()
-            self._generator.manual_seed(self.seed)
         self.update_reset_state_ids()
 
     def update_reset_state_ids(self, env_idx=None):
+        if self.is_multitask:
+            self._update_multitask_reset_state_ids(env_idx)
+            return
+
         if self.episode_manifest is not None:
             self._update_manifest_episodes(env_idx)
             return
@@ -640,6 +780,168 @@ class RoboTwinEnv(gym.Env):
         self._current_episode_index = end
 
     def check_seeds(self, seeds):
+        if self.is_multitask:
+            return {
+                task_name: venv.check_seeds(seeds)
+                for task_name, venv in self.venvs.items()
+                if hasattr(venv, "check_seeds")
+            }
         resutls = self.venv.check_seeds(seeds)
 
         return resutls
+
+    def _init_multitask_reset_state_ids(self):
+        seeds_data = {}
+        if self.cfg.get("seeds_path", None) is not None and os.path.exists(
+            self.cfg.seeds_path
+        ):
+            with open(self.cfg.seeds_path, "r") as f:
+                seeds_data = json.load(f)
+
+        manifest_tasks = set()
+        for task_name in self.task_names:
+            task_data = seeds_data.get(task_name, {})
+            episodes = task_data.get("episodes", None)
+            if episodes is not None:
+                manifest_tasks.add(task_name)
+                self.task_episode_manifests[task_name] = partition_episode_manifest(
+                    episodes,
+                    seed_offset=self.seed_offset,
+                    total_num_processes=self.total_num_processes,
+                    num_group=len(self.task_to_group_indices[task_name]),
+                )
+                self._task_current_episode_indices[task_name] = 0
+                continue
+
+            success_seeds = task_data.get("success_seeds", None)
+            if success_seeds is not None:
+                self.task_success_seeds[task_name] = partition_success_seeds(
+                    torch.as_tensor(success_seeds, dtype=torch.long),
+                    base_seed=self.base_seed,
+                    seed_offset=self.seed_offset,
+                    total_num_processes=self.total_num_processes,
+                    num_group=max(1, len(self.task_to_group_indices[task_name])),
+                )
+            self._task_current_seed_indices[task_name] = 0
+
+        if manifest_tasks and manifest_tasks != set(self.task_names):
+            raise ValueError(
+                "RoboTwin multi-task manifest evaluation requires every task to "
+                f"provide episodes. Missing: {sorted(set(self.task_names) - manifest_tasks)}"
+            )
+
+        self._uses_multitask_manifest = bool(manifest_tasks)
+        self.reset_state_ids = torch.empty(self.num_envs, dtype=torch.long)
+        self.current_instructions = [""] * self.num_envs if manifest_tasks else None
+        self._multitask_reset_state_ids_initialized = False
+        self.update_reset_state_ids()
+        self._multitask_reset_state_ids_initialized = True
+
+    def _update_multitask_reset_state_ids(self, env_idx=None):
+        if self.use_fixed_reset_state_ids and getattr(
+            self, "_multitask_reset_state_ids_initialized", False
+        ):
+            return
+
+        indices = self._normalize_env_indices(env_idx)
+        if self._uses_multitask_manifest:
+            self._update_multitask_manifest_episodes(indices)
+            return
+
+        if env_idx is None:
+            for task_name, group_indices in self.task_to_group_indices.items():
+                seeds = self._next_task_reset_seeds(task_name, len(group_indices))
+                for group_idx, seed in zip(group_indices, seeds, strict=True):
+                    start = group_idx * self.group_size
+                    end = start + self.group_size
+                    self.reset_state_ids[start:end] = seed
+            return
+
+        for task_name, task_indices in self._group_indices_by_task(indices).items():
+            seeds = self._next_task_reset_seeds(task_name, len(task_indices))
+            for idx, seed in zip(task_indices, seeds, strict=True):
+                self.reset_state_ids[idx] = seed
+
+    def _update_multitask_manifest_episodes(self, indices: list[int]):
+        for task_name, task_indices in self._group_indices_by_task(indices).items():
+            start = self._task_current_episode_indices[task_name]
+            end = start + len(task_indices)
+            manifest = self.task_episode_manifests[task_name]
+            if end > len(manifest):
+                raise RuntimeError(
+                    "Episode manifest exhausted before evaluation completed for "
+                    f"task {task_name}: requested through {end}, only {len(manifest)} "
+                    "available"
+                )
+
+            for idx, episode in zip(task_indices, manifest[start:end], strict=True):
+                self.reset_state_ids[idx] = int(episode["seed"])
+                self.current_instructions[idx] = str(episode["instruction"])
+            self._task_current_episode_indices[task_name] = end
+
+    def _next_task_reset_seeds(self, task_name: str, count: int) -> torch.Tensor:
+        success_seeds = self.task_success_seeds.get(task_name, None)
+        if success_seeds is None or success_seeds.numel() == 0:
+            return torch.randint(
+                low=10000,
+                high=200000,
+                size=(count,),
+                generator=self._generator,
+            )
+
+        current_index = self._task_current_seed_indices.get(task_name, 0)
+        indices = (
+            torch.arange(count, device=success_seeds.device) + current_index
+        ) % success_seeds.numel()
+        self._task_current_seed_indices[task_name] = (
+            current_index + count
+        ) % success_seeds.numel()
+        return success_seeds[indices]
+
+    def _normalize_env_indices(self, env_idx=None) -> list[int]:
+        if env_idx is None:
+            return list(range(self.num_envs))
+        if isinstance(env_idx, int):
+            return [env_idx]
+        if isinstance(env_idx, torch.Tensor):
+            return [int(idx) for idx in env_idx.flatten().tolist()]
+        return [int(idx) for idx in env_idx]
+
+    def _group_indices_by_task(self, indices: list[int]) -> dict[str, list[int]]:
+        grouped = defaultdict(list)
+        for idx in indices:
+            grouped[self.env_task_names[idx]].append(idx)
+        return dict(grouped)
+
+    def _get_multitask_raw_obs(self) -> list[dict]:
+        raw_obs = [None] * self.num_envs
+        for task_name, global_indices in self.task_to_global_indices.items():
+            task_raw_obs = self.venvs[task_name].get_obs()
+            for local_idx, global_idx in enumerate(global_indices):
+                raw_obs[global_idx] = task_raw_obs[local_idx]
+        return raw_obs
+
+    def _multitask_env_step(self, actions):
+        raw_obs = [None] * self.num_envs
+        rewards = [None] * self.num_envs
+        terminations = [None] * self.num_envs
+        truncations = [None] * self.num_envs
+        infos = [None] * self.num_envs
+
+        for task_name, global_indices in self.task_to_global_indices.items():
+            task_actions = actions[global_indices]
+            (
+                task_raw_obs,
+                task_rewards,
+                task_terminations,
+                task_truncations,
+                task_infos,
+            ) = self.venvs[task_name].step(task_actions)
+            for local_idx, global_idx in enumerate(global_indices):
+                raw_obs[global_idx] = task_raw_obs[local_idx]
+                rewards[global_idx] = task_rewards[local_idx]
+                terminations[global_idx] = task_terminations[local_idx]
+                truncations[global_idx] = task_truncations[local_idx]
+                infos[global_idx] = task_infos[local_idx]
+
+        return raw_obs, rewards, terminations, truncations, infos
