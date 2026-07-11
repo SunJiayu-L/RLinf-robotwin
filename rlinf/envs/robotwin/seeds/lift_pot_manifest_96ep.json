@@ -1,0 +1,390 @@
+{
+  "lift_pot": {
+    "episodes": [
+      {
+        "seed": 100100004,
+        "instruction": "Raise the pots for boiling and cooking with strong support"
+      },
+      {
+        "seed": 100100007,
+        "instruction": "Raise the metal kitchenpot together with arms"
+      },
+      {
+        "seed": 100100008,
+        "instruction": "Raise the smooth gray kitchenpot together with arms"
+      },
+      {
+        "seed": 100100013,
+        "instruction": "Hold the cylindrical kitchenpot with both arms"
+      },
+      {
+        "seed": 100100016,
+        "instruction": "Hold the round kitchenpot with handles firmly and lift it"
+      },
+      {
+        "seed": 100100017,
+        "instruction": "Carry the gray kitchenpot securely using arms"
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Bring the cooking kitchenpot with side grips up together"
+      },
+      {
+        "seed": 100100022,
+        "instruction": "Lift the medium-sized kitchenpot up using your arms"
+      },
+      {
+        "seed": 100100032,
+        "instruction": "Lift the blue-lid kitchenpot using both arms now."
+      },
+      {
+        "seed": 100100035,
+        "instruction": "Raise the cooking kitchenpot with side grips using both arms"
+      },
+      {
+        "seed": 100100036,
+        "instruction": "Grab the medium-sized kitchenpot using both arms"
+      },
+      {
+        "seed": 100100037,
+        "instruction": "Lift the cooking kitchenpot with side grips steadily using arms"
+      },
+      {
+        "seed": 100100038,
+        "instruction": "Use both arms to raise the dark gray stove kitchenpot"
+      },
+      {
+        "seed": 100100058,
+        "instruction": "Use both arms to raise the kitchenpot with plastic knob on lid."
+      },
+      {
+        "seed": 100100059,
+        "instruction": "Support the dark gray stove kitchenpot and raise it upward"
+      },
+      {
+        "seed": 100100062,
+        "instruction": "Grip the gray cylindrical metal kitchenpot firmly and lift"
+      },
+      {
+        "seed": 100100068,
+        "instruction": "Use both arms to raise the blue kitchenpot lid with black knob."
+      },
+      {
+        "seed": 100100078,
+        "instruction": "Lift the metal kitchenpot steadily with support"
+      },
+      {
+        "seed": 100100090,
+        "instruction": "Pick up the medium kitchenpot made of metal with careful lifting"
+      },
+      {
+        "seed": 100100101,
+        "instruction": "Hold the dark gray stove kitchenpot firmly, then lift."
+      },
+      {
+        "seed": 100100102,
+        "instruction": "Pick up the gray kitchenpot with careful lifting"
+      },
+      {
+        "seed": 100100111,
+        "instruction": "Raise the blue-lid kitchenpot using both arms"
+      },
+      {
+        "seed": 100100114,
+        "instruction": "Grab the metal kitchenpot and lift it up"
+      },
+      {
+        "seed": 100100115,
+        "instruction": "Bring the dark gray stove kitchenpot upwards together"
+      },
+      {
+        "seed": 100100128,
+        "instruction": "Carry the kitchenpot with plastic knob on lid securely using arms"
+      },
+      {
+        "seed": 100100129,
+        "instruction": "Raise the gray cylindrical metal kitchenpot securely with arms"
+      },
+      {
+        "seed": 100100140,
+        "instruction": "Lift the kitchenpot for boiling and cooking carefully using arms"
+      },
+      {
+        "seed": 100100160,
+        "instruction": "With arms, raise the medium-sized kitchenpot upward slowly."
+      },
+      {
+        "seed": 100100162,
+        "instruction": "Grip the smooth gray kitchenpot firmly and lift"
+      },
+      {
+        "seed": 100100187,
+        "instruction": "Use arms to lift the gray cylindrical pot upward"
+      },
+      {
+        "seed": 100100188,
+        "instruction": "Take hold of the metal kitchenpot and lift up"
+      },
+      {
+        "seed": 100100207,
+        "instruction": "Hold the dark gray stove kitchenpot firmly and lift it"
+      },
+      {
+        "seed": 100100208,
+        "instruction": "Secure the metal pot with dark handles and lift it up"
+      },
+      {
+        "seed": 100100209,
+        "instruction": "With arms, raise the medium kitchenpot made of metal upward slowly."
+      },
+      {
+        "seed": 100100211,
+        "instruction": "Lift the metal kitchenpot up using your arms"
+      },
+      {
+        "seed": 100100214,
+        "instruction": "Hold the cooking kitchenpot with side grips firmly with arms"
+      },
+      {
+        "seed": 100100216,
+        "instruction": "Engage arms to grip and lift the gray kitchenpot."
+      },
+      {
+        "seed": 100100218,
+        "instruction": "Raise and hold the gray cylindrical pot together"
+      },
+      {
+        "seed": 100100220,
+        "instruction": "Raise the metal kitchenpot together with arms"
+      },
+      {
+        "seed": 100100224,
+        "instruction": "Raise the cylindrical kitchenpot securely with arms"
+      },
+      {
+        "seed": 100100227,
+        "instruction": "Hold the pots for boiling and cooking firmly, then lift."
+      },
+      {
+        "seed": 100100228,
+        "instruction": "Raise the cylindrical kitchenpot upward with both hands"
+      },
+      {
+        "seed": 100100238,
+        "instruction": "With arms, raise the metal kitchenpot upward slowly."
+      },
+      {
+        "seed": 100100247,
+        "instruction": "Support the medium kitchenpot made of metal and raise it upward"
+      },
+      {
+        "seed": 100100263,
+        "instruction": "Hold the kitchenpot with smooth exterior firmly with arms"
+      },
+      {
+        "seed": 100100264,
+        "instruction": "Lift the gray cylindrical pot carefully using arms"
+      },
+      {
+        "seed": 100100269,
+        "instruction": "Lift the metal kitchenpot upward with both arms"
+      },
+      {
+        "seed": 100100281,
+        "instruction": "Bring the gray kitchenpot up together"
+      },
+      {
+        "seed": 100100285,
+        "instruction": "Lift the blue-lid kitchenpot carefully using both arms."
+      },
+      {
+        "seed": 100100292,
+        "instruction": "Hold the kitchenpot for boiling and cooking and lift upward"
+      },
+      {
+        "seed": 100105002,
+        "instruction": "Hold and raise the dark gray stove kitchenpot together"
+      },
+      {
+        "seed": 100105010,
+        "instruction": "Both arms lift the kitchenpot with smooth exterior upright"
+      },
+      {
+        "seed": 100105019,
+        "instruction": "Bring the round kitchenpot with handles upwards together"
+      },
+      {
+        "seed": 100105028,
+        "instruction": "Hold the metal pot with dark handles firmly with arms"
+      },
+      {
+        "seed": 100105029,
+        "instruction": "Grab the dark gray stove kitchenpot and lift it upwards"
+      },
+      {
+        "seed": 100105049,
+        "instruction": "Raise the round kitchenpot with handles using both arms"
+      },
+      {
+        "seed": 100105050,
+        "instruction": "Lift the blue-lid kitchenpot up using your arms"
+      },
+      {
+        "seed": 100105067,
+        "instruction": "Lift the medium kitchenpot made of metal up together"
+      },
+      {
+        "seed": 100105071,
+        "instruction": "Lift the medium kitchenpot made of metal upwards with care"
+      },
+      {
+        "seed": 100105084,
+        "instruction": "Hold the gray kitchenpot with both arms"
+      },
+      {
+        "seed": 100105093,
+        "instruction": "Lift the kitchenpot for boiling and cooking upward with both arms"
+      },
+      {
+        "seed": 100105097,
+        "instruction": "Bring the pots for boiling and cooking upwards together"
+      },
+      {
+        "seed": 100105098,
+        "instruction": "Lift the kitchenpot with smooth exterior upwards with care"
+      },
+      {
+        "seed": 100105108,
+        "instruction": "Lift the gray cylindrical metal kitchenpot steadily with support"
+      },
+      {
+        "seed": 100105109,
+        "instruction": "Lift the blue-lid kitchenpot steadily with support"
+      },
+      {
+        "seed": 100105110,
+        "instruction": "Lift the kitchenpot with smooth exterior steadily with support"
+      },
+      {
+        "seed": 100105115,
+        "instruction": "Securely lift the metal kitchenpot together"
+      },
+      {
+        "seed": 100105117,
+        "instruction": "Hold the round kitchenpot with handles firmly, then lift."
+      },
+      {
+        "seed": 100105119,
+        "instruction": "Lift the medium kitchenpot made of metal upwards with care"
+      },
+      {
+        "seed": 100105127,
+        "instruction": "Secure the matte gray pot with durable lid and lift upward."
+      },
+      {
+        "seed": 100105130,
+        "instruction": "Hold the cylindrical kitchenpot firmly and lift it"
+      },
+      {
+        "seed": 100105140,
+        "instruction": "Use arms to lift the kitchenpot for boiling and cooking upward"
+      },
+      {
+        "seed": 100105145,
+        "instruction": "Hold the gray kitchenpot firmly and move upward."
+      },
+      {
+        "seed": 100105147,
+        "instruction": "Raise the medium kitchenpot made of metal with strong support"
+      },
+      {
+        "seed": 100105152,
+        "instruction": "Grab the gray cylindrical metal kitchenpot and lift it upwards"
+      },
+      {
+        "seed": 100105168,
+        "instruction": "Lift the medium-sized kitchenpot up together"
+      },
+      {
+        "seed": 100105170,
+        "instruction": "Raise the kitchenpot for boiling and cooking with strong support"
+      },
+      {
+        "seed": 100105186,
+        "instruction": "Hold and raise the blue kitchenpot lid with black knob together"
+      },
+      {
+        "seed": 100105194,
+        "instruction": "Securely lift the cooking kitchenpot with side grips together"
+      },
+      {
+        "seed": 100105201,
+        "instruction": "Lift the dark gray stove kitchenpot carefully using both arms."
+      },
+      {
+        "seed": 100105204,
+        "instruction": "Lift the pots for boiling and cooking upwards with care"
+      },
+      {
+        "seed": 100105211,
+        "instruction": "Use both arms to raise the kitchenpot with smooth exterior."
+      },
+      {
+        "seed": 100105212,
+        "instruction": "Raise and hold the cylindrical kitchenpot together"
+      },
+      {
+        "seed": 100105214,
+        "instruction": "Use both arms to raise the medium-sized kitchenpot"
+      },
+      {
+        "seed": 100105218,
+        "instruction": "Use both arms to raise the gray kitchenpot"
+      },
+      {
+        "seed": 100105221,
+        "instruction": "Lift the blue-lid kitchenpot upwards with care"
+      },
+      {
+        "seed": 100105223,
+        "instruction": "Lift the medium kitchenpot made of metal upwards with care"
+      },
+      {
+        "seed": 100105232,
+        "instruction": "Use arms to lift the gray cylindrical metal kitchenpot upward"
+      },
+      {
+        "seed": 100105235,
+        "instruction": "Lift the gray pot with blue circular lid steadily using arms"
+      },
+      {
+        "seed": 100105237,
+        "instruction": "Hold the metal kitchenpot firmly and move upward."
+      },
+      {
+        "seed": 100105244,
+        "instruction": "Pick up the medium kitchenpot made of metal with careful lifting"
+      },
+      {
+        "seed": 100105246,
+        "instruction": "Hold the cylindrical kitchenpot with both arms"
+      },
+      {
+        "seed": 100105249,
+        "instruction": "Hold the smooth gray kitchenpot firmly and move upward."
+      },
+      {
+        "seed": 100105264,
+        "instruction": "Grab the gray cylindrical pot and lift it up"
+      },
+      {
+        "seed": 100105268,
+        "instruction": "Secure the medium-sized kitchenpot and lift it up"
+      },
+      {
+        "seed": 100105279,
+        "instruction": "Take hold of the metal kitchenpot and lift up"
+      }
+    ]
+  }
+}

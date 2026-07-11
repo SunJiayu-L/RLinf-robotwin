@@ -1,0 +1,390 @@
+{
+  "pick_diverse_bottles": {
+    "episodes": [
+      {
+        "seed": 100000,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100002,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100007,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100009,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100012,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100013,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100014,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100015,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100016,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100022,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100023,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100026,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100027,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100029,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100036,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100042,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100045,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100049,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100050,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100054,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100058,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100059,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100062,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100065,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100067,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100068,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100069,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100077,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100078,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100080,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100083,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100085,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100086,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100087,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100090,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100091,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100102,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100104,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100106,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100107,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100111,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100117,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100123,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100124,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100131,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100135,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100140,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100141,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100147,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100148,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100149,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100153,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100155,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100160,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100165,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100166,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100169,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100173,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100174,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100176,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100177,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100179,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100180,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100184,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100187,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100188,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100191,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100196,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100200,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100205,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100206,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100207,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100209,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100210,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100216,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100217,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100219,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100225,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100226,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100228,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100233,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100239,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100240,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100242,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100244,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100248,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100254,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100256,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100258,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100259,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100260,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100270,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100271,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100272,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100274,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      },
+      {
+        "seed": 100275,
+        "instruction": "Use one arm for the smooth plastic bottle with white cap, the other for the yellow text bottle."
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+# @package _global_
+env:
+  train:
+    env_type: robotwin
+    task_config:
+      task_name: place_object_scale
+      embodiment: [aloha-agilex]
+      camera:
+        collect_wrist_camera: true
+  eval:
+    env_type: robotwin
+    task_config:
+      task_name: place_object_scale
+      embodiment: [aloha-agilex]
+      camera:
+        collect_wrist_camera: true

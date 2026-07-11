@@ -1,0 +1,390 @@
+{
+  "handover_block": {
+    "episodes": [
+      {
+        "seed": 100100000,
+        "instruction": "Use your arms to shift the red block."
+      },
+      {
+        "seed": 100100005,
+        "instruction": "The left arm should grab the red block, hand it to the right, and put it on the blue pad."
+      },
+      {
+        "seed": 100100006,
+        "instruction": "Pick the red block with the left arm and transfer to the right."
+      },
+      {
+        "seed": 100100009,
+        "instruction": "Take the red block, pass it to the right arm, and drop it."
+      },
+      {
+        "seed": 100100015,
+        "instruction": "Place the red block onto the blue pad using the right arm."
+      },
+      {
+        "seed": 100100023,
+        "instruction": "Lift the red block from the table with the left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100027,
+        "instruction": "Lift the red block, hand it over, and place it properly."
+      },
+      {
+        "seed": 100100028,
+        "instruction": "Pass the red block from the left to the right."
+      },
+      {
+        "seed": 100100036,
+        "instruction": "Lift the red block from the table with the left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100039,
+        "instruction": "Place the red block onto the blue pad using the right arm."
+      },
+      {
+        "seed": 100100041,
+        "instruction": "Pick the red block from the table, switch it from the left arm to the right, and place it down on the blue pad."
+      },
+      {
+        "seed": 100100043,
+        "instruction": "Lift the red block with the left arm, shift it to the right arm, and set it on the blue pad."
+      },
+      {
+        "seed": 100100049,
+        "instruction": "Use the left arm to grasp the red block, transfer it to the right arm, and set it down on the blue pad."
+      },
+      {
+        "seed": 100100051,
+        "instruction": "Hold the red block, transfer to the right arm, then set it down."
+      },
+      {
+        "seed": 100100057,
+        "instruction": "Lift the block with the left arm, pass it to the right arm."
+      },
+      {
+        "seed": 100100059,
+        "instruction": "Take the red block, pass it to the right arm, then place it."
+      },
+      {
+        "seed": 100100065,
+        "instruction": "Hand over the red block to the right arm."
+      },
+      {
+        "seed": 100100066,
+        "instruction": "Grab the red block, hand it to the right arm, then set it down."
+      },
+      {
+        "seed": 100100068,
+        "instruction": "Place the red block onto the blue pad using the right arm."
+      },
+      {
+        "seed": 100100070,
+        "instruction": "The left arm should grab the red block, hand it to the right, and put it on the blue pad."
+      },
+      {
+        "seed": 100100074,
+        "instruction": "Lift the red block from the table with the left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100078,
+        "instruction": "Use your arms to shift the red block."
+      },
+      {
+        "seed": 100100079,
+        "instruction": "Lift the red block, hand it over, and place it properly."
+      },
+      {
+        "seed": 100100085,
+        "instruction": "Grab red block, pass to the right arm, then drop on blue pad."
+      },
+      {
+        "seed": 100100088,
+        "instruction": "Grasp the block in your left arm, pass it into the right, and place it onto the blue pad."
+      },
+      {
+        "seed": 100100089,
+        "instruction": "Lift the red block, hand it over, and place it properly."
+      },
+      {
+        "seed": 100100095,
+        "instruction": "Use the left arm to grab the red block, hand it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100098,
+        "instruction": "Pick up and handover the red block."
+      },
+      {
+        "seed": 100100099,
+        "instruction": "Grab the red block and transfer to the right."
+      },
+      {
+        "seed": 100100102,
+        "instruction": "Pick the red block with the left arm and transfer to the right."
+      },
+      {
+        "seed": 100100109,
+        "instruction": "Move the red block using the left arm."
+      },
+      {
+        "seed": 100100111,
+        "instruction": "Pick up the red block using your left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100112,
+        "instruction": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad."
+      },
+      {
+        "seed": 100100114,
+        "instruction": "Lift the red block with the left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100117,
+        "instruction": "Hold the red block, transfer to the right arm, then set it down."
+      },
+      {
+        "seed": 100100127,
+        "instruction": "Take the red block, pass it to the right arm, then place it."
+      },
+      {
+        "seed": 100100129,
+        "instruction": "Lift, switch arms, and place the red block."
+      },
+      {
+        "seed": 100100130,
+        "instruction": "Pick up and handover the red block."
+      },
+      {
+        "seed": 100100131,
+        "instruction": "Use the left arm to grab the red block, hand it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100135,
+        "instruction": "Pass the red block from the left to the right."
+      },
+      {
+        "seed": 100100140,
+        "instruction": "Pick up and handover the red block."
+      },
+      {
+        "seed": 100100145,
+        "instruction": "Lift the red block with the left arm, shift it to the right arm, and set it on the blue pad."
+      },
+      {
+        "seed": 100100147,
+        "instruction": "Take the red block and move it to the pad."
+      },
+      {
+        "seed": 100100148,
+        "instruction": "Lift the red block, hand it over, and place it properly."
+      },
+      {
+        "seed": 100100152,
+        "instruction": "The left arm should grab the red block, hand it to the right, and put it on the blue pad."
+      },
+      {
+        "seed": 100100164,
+        "instruction": "Hold the red block with the left arm and place it on the pad."
+      },
+      {
+        "seed": 100100165,
+        "instruction": "Hold the red block with the left arm and place it on the pad."
+      },
+      {
+        "seed": 100100166,
+        "instruction": "Take the red block and move it to the pad."
+      },
+      {
+        "seed": 100100170,
+        "instruction": "Pick up and handover the red block."
+      },
+      {
+        "seed": 100100171,
+        "instruction": "The left arm should grab the red block, hand it to the right, and put it on the blue pad."
+      },
+      {
+        "seed": 100100175,
+        "instruction": "Take the red block, pass it to the right arm, then place it."
+      },
+      {
+        "seed": 100100177,
+        "instruction": "Pick up the red block using the left arm, give it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100179,
+        "instruction": "Grab red block, pass to the right arm, then drop on blue pad."
+      },
+      {
+        "seed": 100100191,
+        "instruction": "Pick the red block from the table, switch it from the left arm to the right, and place it down on the blue pad."
+      },
+      {
+        "seed": 100100192,
+        "instruction": "Lift the block with the left arm, pass it to the right arm."
+      },
+      {
+        "seed": 100100198,
+        "instruction": "Lift the red block with your left arm."
+      },
+      {
+        "seed": 100100210,
+        "instruction": "Grab red block, pass to the right arm, then drop on blue pad."
+      },
+      {
+        "seed": 100100212,
+        "instruction": "Grip the red block with the left arm and transfer it."
+      },
+      {
+        "seed": 100100224,
+        "instruction": "Lift, switch arms, and place the red block."
+      },
+      {
+        "seed": 100100229,
+        "instruction": "Move the red block from the left hand to the pad."
+      },
+      {
+        "seed": 100100232,
+        "instruction": "Use the left arm to grab the red block, hand it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100239,
+        "instruction": "Place the red block onto the blue pad using the right arm."
+      },
+      {
+        "seed": 100100244,
+        "instruction": "Use left arm to grab the red block and place it on the pad."
+      },
+      {
+        "seed": 100100246,
+        "instruction": "Pick up and handover the red block."
+      },
+      {
+        "seed": 100100248,
+        "instruction": "Hold the red block, transfer to the right arm, then set it down."
+      },
+      {
+        "seed": 100100249,
+        "instruction": "Grasp the red block with your left arm, transfer it into the right, and place it on the blue pad."
+      },
+      {
+        "seed": 100100252,
+        "instruction": "Lift the red block, hand it over, and place it properly."
+      },
+      {
+        "seed": 100100254,
+        "instruction": "Grasp the block in your left arm, pass it into the right, and place it onto the blue pad."
+      },
+      {
+        "seed": 100100256,
+        "instruction": "Lift the red block with the left arm, move it to the right, and place it onto the blue pad."
+      },
+      {
+        "seed": 100100260,
+        "instruction": "Use left arm to grab the block and hand it to the right."
+      },
+      {
+        "seed": 100100267,
+        "instruction": "Take the red block using the left arm and hand it over."
+      },
+      {
+        "seed": 100100279,
+        "instruction": "Grab the red block with the left arm, pass it to the right hand, and drop it on the blue pad."
+      },
+      {
+        "seed": 100100280,
+        "instruction": "Lift the red block with the left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100281,
+        "instruction": "With the left arm grab the red block, hand it to the right arm, then position it onto the blue pad."
+      },
+      {
+        "seed": 100100304,
+        "instruction": "Lift, switch arms, and place the red block."
+      },
+      {
+        "seed": 100100307,
+        "instruction": "Grasp the red block with your left arm, transfer it into the right, and place it on the blue pad."
+      },
+      {
+        "seed": 100100310,
+        "instruction": "Grab the red block, transfer it, and set it on blue."
+      },
+      {
+        "seed": 100100314,
+        "instruction": "Lift the red block with your left arm."
+      },
+      {
+        "seed": 100100324,
+        "instruction": "Use the left arm to pick up the red block and transfer it to the right arm before placing it on the blue pad."
+      },
+      {
+        "seed": 100100329,
+        "instruction": "Take the red block and move it to the pad."
+      },
+      {
+        "seed": 100100339,
+        "instruction": "Use left arm to grab the block and hand it to the right."
+      },
+      {
+        "seed": 100100341,
+        "instruction": "Pick the red block with the left hand and pass it."
+      },
+      {
+        "seed": 100100347,
+        "instruction": "Pick the red block with the left hand and pass it."
+      },
+      {
+        "seed": 100100353,
+        "instruction": "Pick the red block with the left arm and transfer to the right."
+      },
+      {
+        "seed": 100100356,
+        "instruction": "Grab the red block, transfer it, and set it on blue."
+      },
+      {
+        "seed": 100100364,
+        "instruction": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad."
+      },
+      {
+        "seed": 100100365,
+        "instruction": "Pick up the red block using your left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100370,
+        "instruction": "Hold the red block with the left arm and place it on the pad."
+      },
+      {
+        "seed": 100100378,
+        "instruction": "Grab the red block, transfer it, and set it on blue."
+      },
+      {
+        "seed": 100100389,
+        "instruction": "Use the left arm to grasp the red block, transfer it to the right arm, and set it down on the blue pad."
+      },
+      {
+        "seed": 100100399,
+        "instruction": "With the left arm grab the red block, hand it to the right arm, then position it onto the blue pad."
+      },
+      {
+        "seed": 100100401,
+        "instruction": "Lift the red block with the left arm, move it to the right, and place it onto the blue pad."
+      },
+      {
+        "seed": 100100406,
+        "instruction": "Lift the red block off the table using the left arm, give it to the right hand, and put it on the blue pad."
+      },
+      {
+        "seed": 100100408,
+        "instruction": "Pick up the red block using your left arm, pass it to the right arm, and place it on the blue pad."
+      },
+      {
+        "seed": 100100411,
+        "instruction": "Lift the red block with the left arm, move it to the right, and place it onto the blue pad."
+      },
+      {
+        "seed": 100100413,
+        "instruction": "Grip the red block with the left arm and transfer it."
+      }
+    ]
+  }
+}

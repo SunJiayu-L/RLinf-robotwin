@@ -1,0 +1,390 @@
+{
+  "stack_bowls_three": {
+    "episodes": [
+      {
+        "seed": 100000,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100001,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100002,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100004,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100006,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100008,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100009,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100011,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100015,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100016,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100017,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100020,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100022,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100023,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100024,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100025,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100026,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100027,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100028,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100029,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100031,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100032,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100035,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100037,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100038,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100039,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100042,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100044,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100047,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100048,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100049,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100051,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100054,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100056,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100057,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100060,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100062,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100063,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100065,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100066,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100067,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100068,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100070,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100071,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100075,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100077,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100078,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100081,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100082,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100084,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100086,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100089,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100091,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100092,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100093,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100094,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100095,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100096,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100097,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100098,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100099,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100100,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100101,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100103,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100105,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100107,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100108,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100110,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100112,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100116,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100117,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100118,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100120,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100121,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100124,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100126,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100127,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100128,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100129,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100138,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100139,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100140,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100141,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100143,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100145,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100146,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100147,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100150,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100154,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100157,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100159,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100161,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100164,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100166,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100167,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      },
+      {
+        "seed": 100180,
+        "instruction": "Position the glazed bowl with curved sides one on top of the other largest to smallest."
+      }
+    ]
+  }
+}

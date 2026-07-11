@@ -1,0 +1,390 @@
+{
+  "place_mouse_pad": {
+    "episodes": [
+      {
+        "seed": 100150003,
+        "instruction": "Grab the the rounded computer mouse using the left arm and place it on the Yellow mat."
+      },
+      {
+        "seed": 100150004,
+        "instruction": "Pick up the compact oval-shaped mouse and set it on the Gray colored mat."
+      },
+      {
+        "seed": 100150005,
+        "instruction": "Grip the the dark gray mouse with smooth texture and move it onto the Black mat."
+      },
+      {
+        "seed": 100150009,
+        "instruction": "Use the left arm to pick the compact oval-shaped mouse and place it on the Red mat."
+      },
+      {
+        "seed": 100150010,
+        "instruction": "Using the right arm, grab the the compact matte gray computer mouse and set it on the Blue mat."
+      },
+      {
+        "seed": 100150016,
+        "instruction": "Lift the plastic mouse and place it onto Magenta mat."
+      },
+      {
+        "seed": 100150018,
+        "instruction": "Pick up the the mouse with curved ergonomic shape with the right arm and move it to the Black mat."
+      },
+      {
+        "seed": 100150019,
+        "instruction": "Lift the the mouse with two buttons and wheel using the right arm and stick it on the Red mat."
+      },
+      {
+        "seed": 100150021,
+        "instruction": "Grab the mouse with ergonomic design and drop it on Yellow mat."
+      },
+      {
+        "seed": 100150025,
+        "instruction": "Take the gray mouse with smooth surface and put it onto Gray mat."
+      },
+      {
+        "seed": 100150029,
+        "instruction": "Take hold of the the oval-shaped mouse and place it on the Black mat."
+      },
+      {
+        "seed": 100150030,
+        "instruction": "Grab the gray mouse with smooth surface and place it firmly on the Red mat."
+      },
+      {
+        "seed": 100150031,
+        "instruction": "With the right arm, grab the dark ergonomic mouse for computer navigation and position it on Blue mat."
+      },
+      {
+        "seed": 100150033,
+        "instruction": "Lift the rounded computer mouse and stick it on Magenta mat."
+      },
+      {
+        "seed": 100150038,
+        "instruction": "Grip the the dark ergonomic mouse for computer navigation and move it onto the Black mat."
+      },
+      {
+        "seed": 100150041,
+        "instruction": "Pick up the the mouse with sleek design with the right arm and place it on the Red mat."
+      },
+      {
+        "seed": 100150042,
+        "instruction": "Grip the plastic mouse using the left arm and move it to the Yellow mat."
+      },
+      {
+        "seed": 100150043,
+        "instruction": "Grab the the dark mouse with logo on top using the right arm and place it on the Gray mat."
+      },
+      {
+        "seed": 100150044,
+        "instruction": "Grab the the oval-shaped mouse and position it onto the Black mat."
+      },
+      {
+        "seed": 100150045,
+        "instruction": "Pick up the rounded gray mouse and move it to Red mat."
+      },
+      {
+        "seed": 100150046,
+        "instruction": "Lift the the plastic mouse with smooth finish using the right arm and stick it on the Blue mat."
+      },
+      {
+        "seed": 100150048,
+        "instruction": "Lift the wireless dark gray computer mouse with the right arm and place it on the Magenta mat."
+      },
+      {
+        "seed": 100150052,
+        "instruction": "Grip the the oval-shaped mouse for computer use and move it onto the Black mat."
+      },
+      {
+        "seed": 100150053,
+        "instruction": "Lift the mouse with two buttons and wheel and place it onto Red mat."
+      },
+      {
+        "seed": 100150054,
+        "instruction": "Pick up the the dark gray mouse with the left arm and move it to the Yellow mat."
+      },
+      {
+        "seed": 100150055,
+        "instruction": "With the right arm, grab the mouse with two buttons and wheel and position it on the Gray mat."
+      },
+      {
+        "seed": 100150056,
+        "instruction": "With the right arm, grab the wireless dark gray computer mouse and position it on the Black mat."
+      },
+      {
+        "seed": 100150057,
+        "instruction": "Using the left arm, pick the compact oval-shaped mouse and position it on Red colored mat."
+      },
+      {
+        "seed": 100150060,
+        "instruction": "Grab the compact matte gray computer mouse with the right arm and lay it onto the Blue colored mat."
+      },
+      {
+        "seed": 100150061,
+        "instruction": "Take the plastic mouse and place it on the Magenta colored mat."
+      },
+      {
+        "seed": 100150062,
+        "instruction": "With the right arm, pick up the mouse with curved ergonomic shape and lay it on Black mat."
+      },
+      {
+        "seed": 100150064,
+        "instruction": "Hold the compact oval-shaped mouse and carefully place it on the Red mat."
+      },
+      {
+        "seed": 100150065,
+        "instruction": "Lift the the wireless dark gray computer mouse and position it on the Yellow mat."
+      },
+      {
+        "seed": 100150066,
+        "instruction": "Take the mouse with sleek design and put it on the Gray mat."
+      },
+      {
+        "seed": 100150067,
+        "instruction": "Grab the dark gray palm-sized mouse and place it firmly on the Black mat."
+      },
+      {
+        "seed": 100150071,
+        "instruction": "Lift the smooth plastic mouse and stick it on Red mat."
+      },
+      {
+        "seed": 100150073,
+        "instruction": "Pick up the plastic mouse with smooth finish and move it to Blue mat."
+      },
+      {
+        "seed": 100150075,
+        "instruction": "With the right arm, take the mouse with ergonomic design and set it on Magenta mat."
+      },
+      {
+        "seed": 100150078,
+        "instruction": "Lift the the compact matte gray computer mouse and position it on the Black mat."
+      },
+      {
+        "seed": 100150079,
+        "instruction": "Hold the mouse for cursor control and carefully place it on the Red mat."
+      },
+      {
+        "seed": 100162501,
+        "instruction": "Use the left arm to lift the the plastic mouse and set it on the Yellow mat."
+      },
+      {
+        "seed": 100162503,
+        "instruction": "Grab the ergonomic mouse and drop it on Gray mat."
+      },
+      {
+        "seed": 100162508,
+        "instruction": "Take the dark gray palm-sized mouse and put it onto Black mat."
+      },
+      {
+        "seed": 100162511,
+        "instruction": "Take the the mouse for cursor control and place it on the Red mat."
+      },
+      {
+        "seed": 100162512,
+        "instruction": "Take the the compact matte gray computer mouse and place it on the Blue mat."
+      },
+      {
+        "seed": 100162513,
+        "instruction": "With the right arm, grab the mouse with curved top and position it on Magenta mat."
+      },
+      {
+        "seed": 100162514,
+        "instruction": "Grip the dark mouse with slight textured sides using the right arm and move it to the Black mat."
+      },
+      {
+        "seed": 100162517,
+        "instruction": "Hold the the mouse with sleek design and transfer it to the Red mat."
+      },
+      {
+        "seed": 100162519,
+        "instruction": "Lift the dark gray mouse with smooth texture using the left arm and drop it on the Yellow colored mat."
+      },
+      {
+        "seed": 100162520,
+        "instruction": "Lift the smooth plastic mouse with the right arm and place it on the Gray mat."
+      },
+      {
+        "seed": 100162524,
+        "instruction": "Grip the the dark gray mouse with smooth texture and move it onto the Black mat."
+      },
+      {
+        "seed": 100162525,
+        "instruction": "Pick up the ergonomic mouse and set it on the Red colored mat."
+      },
+      {
+        "seed": 100162527,
+        "instruction": "Take the small mouse with smooth surface and place it onto the Blue mat."
+      },
+      {
+        "seed": 100162530,
+        "instruction": "Pick the wireless dark gray computer mouse with the right arm and move it to the Magenta mat."
+      },
+      {
+        "seed": 100162533,
+        "instruction": "Lift the the gray mouse and put it down onto the Black mat."
+      },
+      {
+        "seed": 100162537,
+        "instruction": "Lift the the dark gray mouse using the right arm and stick it on the Red mat."
+      },
+      {
+        "seed": 100162538,
+        "instruction": "Using the left arm, grab the oval-shaped mouse and place it on Yellow colored mat."
+      },
+      {
+        "seed": 100162539,
+        "instruction": "Use the right arm to pick the ergonomic mouse and place it on the Gray mat."
+      },
+      {
+        "seed": 100162540,
+        "instruction": "Take the dark gray mouse and put it on the Black mat."
+      },
+      {
+        "seed": 100162541,
+        "instruction": "Position the the mouse with two buttons and wheel on the Red mat by picking it up."
+      },
+      {
+        "seed": 100162545,
+        "instruction": "Pick up the the plastic mouse with smooth finish with the right arm and move it to the Blue mat."
+      },
+      {
+        "seed": 100162547,
+        "instruction": "Lift the mouse with curved top with the right arm and place it on the Magenta mat."
+      },
+      {
+        "seed": 100162550,
+        "instruction": "Using the right arm, grab the plastic mouse with smooth finish and place it on Black colored mat."
+      },
+      {
+        "seed": 100162552,
+        "instruction": "Grab the mouse with sleek design and place it firmly on the Red mat."
+      },
+      {
+        "seed": 100162553,
+        "instruction": "Pick up the dark gray palm-sized mouse and move it to Yellow mat."
+      },
+      {
+        "seed": 100162554,
+        "instruction": "Using the right arm, grab the gray mouse with smooth surface and place it on Gray colored mat."
+      },
+      {
+        "seed": 100162555,
+        "instruction": "Position the the mouse with ergonomic design on the Black mat by picking it up."
+      },
+      {
+        "seed": 100162558,
+        "instruction": "With the left arm, pick up the gray mouse with smooth surface and lay it on Red mat."
+      },
+      {
+        "seed": 100162561,
+        "instruction": "Pick up the the oval-shaped mouse for computer use with the right arm and place it on the Blue mat."
+      },
+      {
+        "seed": 100162562,
+        "instruction": "Take the mouse with buttons and wheel and place it on the Magenta colored mat."
+      },
+      {
+        "seed": 100162565,
+        "instruction": "Take the dark mouse with slight textured sides and adjust it to rest on the Black mat."
+      },
+      {
+        "seed": 100162566,
+        "instruction": "Use the right arm to grab the the dark mouse with logo on top and set it on the Red mat."
+      },
+      {
+        "seed": 100162568,
+        "instruction": "Take hold of the the dark gray palm-sized mouse and place it on the Yellow mat."
+      },
+      {
+        "seed": 100162575,
+        "instruction": "Lift the the mouse with two buttons and wheel using the right arm and stick it on the Gray mat."
+      },
+      {
+        "seed": 100162576,
+        "instruction": "Use the right arm to grab the the mouse with ergonomic design and place it on the Black colored mat."
+      },
+      {
+        "seed": 100162578,
+        "instruction": "Grab the the mouse for cursor control using the left arm and place it on the Red mat."
+      },
+      {
+        "seed": 100162579,
+        "instruction": "Lift the gray mouse using the right arm and drop it on the Blue colored mat."
+      },
+      {
+        "seed": 100162581,
+        "instruction": "Hold the oval-shaped mouse and carefully place it on the Magenta mat."
+      },
+      {
+        "seed": 100162582,
+        "instruction": "Take the the rounded top mouse with glossy logo and place it on the Black mat."
+      },
+      {
+        "seed": 100162583,
+        "instruction": "Slide the the ergonomic mouse onto the Red mat gently."
+      },
+      {
+        "seed": 100100000,
+        "instruction": "Position the the dark gray mouse with smooth texture on the Yellow mat by picking it up."
+      },
+      {
+        "seed": 100100001,
+        "instruction": "Grab the rounded gray mouse with the right arm and lay it onto the Gray colored mat."
+      },
+      {
+        "seed": 100100002,
+        "instruction": "Grip the mouse with buttons and wheel using the right arm and move it to the Black mat."
+      },
+      {
+        "seed": 100100003,
+        "instruction": "Pick up the compact oval-shaped mouse and move it to Red mat."
+      },
+      {
+        "seed": 100100004,
+        "instruction": "Grab the the compact matte gray computer mouse and position it onto the Blue mat."
+      },
+      {
+        "seed": 100100008,
+        "instruction": "With the right arm, take the mouse with curved top and set it on Magenta mat."
+      },
+      {
+        "seed": 100100011,
+        "instruction": "Take the plastic mouse with smooth finish and put it onto Black mat."
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Use the right arm to grab the gray mouse with smooth surface and position it onto the Red mat."
+      },
+      {
+        "seed": 100100020,
+        "instruction": "Take the oval-shaped mouse and put it on the Yellow mat."
+      },
+      {
+        "seed": 100100022,
+        "instruction": "Take the small computer mouse and place it onto the Gray mat."
+      },
+      {
+        "seed": 100100025,
+        "instruction": "Grab the mouse with scroll wheel with the right arm and lay it onto the Black colored mat."
+      },
+      {
+        "seed": 100100026,
+        "instruction": "Take the gray mouse with smooth surface and adjust it to rest on the Red mat."
+      },
+      {
+        "seed": 100100030,
+        "instruction": "Use the right arm to grab the small mouse with smooth surface and position it onto the Blue mat."
+      },
+      {
+        "seed": 100100034,
+        "instruction": "Lift the the mouse with ergonomic design and position it on the Magenta mat."
+      },
+      {
+        "seed": 100100035,
+        "instruction": "Take the mouse with two buttons and a scroll wheel and place it on the Black colored mat."
+      },
+      {
+        "seed": 100100036,
+        "instruction": "Pick up the small computer mouse and move it to Red mat."
+      }
+    ]
+  }
+}

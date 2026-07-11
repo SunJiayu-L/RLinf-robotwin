@@ -1,0 +1,390 @@
+{
+  "pick_dual_bottles": {
+    "episodes": [
+      {
+        "seed": 100100001,
+        "instruction": "Pick the red-capped bottle first, then pick the bottle with ridges near base without mentioning arms."
+      },
+      {
+        "seed": 100100002,
+        "instruction": "Hold the dark drink bottle with logo in one hand, then hold the smooth green plastic bottle in the other."
+      },
+      {
+        "seed": 100100003,
+        "instruction": "Lift the dark drink bottle with logo and the handheld green bottle together with both hands."
+      },
+      {
+        "seed": 100100004,
+        "instruction": "Pick up the hand-sized soda bottle and the bottle with white printed label together."
+      },
+      {
+        "seed": 100100005,
+        "instruction": "Catch the dark drink bottle with logo with one hand, catch the green bottle with indented base with the other."
+      },
+      {
+        "seed": 100100006,
+        "instruction": "Catch the Coca-Cola bottle, then catch the bottle with rounded neck after."
+      },
+      {
+        "seed": 100100007,
+        "instruction": "Use separate arms to pick the Coca-Cola bottle and the handheld green bottle."
+      },
+      {
+        "seed": 100100008,
+        "instruction": "Use separate arms to pick the plastic drink bottle and the smooth green bottle."
+      },
+      {
+        "seed": 100100009,
+        "instruction": "Grab the hand-sized soda bottle first, then grab the medium-sized green bottle second."
+      },
+      {
+        "seed": 100100010,
+        "instruction": "Grab the bottle with white neck and red top with one hand, then reach for the medium green bottle with capped neck."
+      },
+      {
+        "seed": 100100011,
+        "instruction": "Secure the plastic drink bottle and the bottle with narrow top using separate hands."
+      },
+      {
+        "seed": 100100012,
+        "instruction": "Use one arm for the long thin bottle and the other for the medium green bottle."
+      },
+      {
+        "seed": 100100014,
+        "instruction": "Pick the medium dark brown bottle first and then the medium green bottle with capped neck."
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Catch the bottle with ridges on bottom, then catch the bottle with ridges near base without mentioning arms."
+      },
+      {
+        "seed": 100100019,
+        "instruction": "Grab the medium dark brown bottle with one arm, the bottle with narrow top with the other."
+      },
+      {
+        "seed": 100100020,
+        "instruction": "Reach for the red-capped bottle, then grab the smooth green bottle."
+      },
+      {
+        "seed": 100100021,
+        "instruction": "Hold the hand-sized soda bottle in one hand and the bottle with narrow top in another."
+      },
+      {
+        "seed": 100100022,
+        "instruction": "Pick the narrow-necked bottle with one hand, the medium green bottle with another."
+      },
+      {
+        "seed": 100100024,
+        "instruction": "Use each arm to hold the bottle with ridges on bottom and the medium green bottle."
+      },
+      {
+        "seed": 100100025,
+        "instruction": "Pick the hand-sized soda bottle first, then pick the bottle with white printed label without mentioning arms."
+      },
+      {
+        "seed": 100100027,
+        "instruction": "Hold the smooth bottle with red lid and the medium green bottle with capped neck using both arms separately."
+      },
+      {
+        "seed": 100100028,
+        "instruction": "Take the smooth bottle with red lid with one arm, hold the medium green bottle too."
+      },
+      {
+        "seed": 100100029,
+        "instruction": "Use each arm to hold the hand-sized soda bottle and the smooth green plastic bottle."
+      },
+      {
+        "seed": 100100030,
+        "instruction": "Catch the red-capped bottle, then catch the medium-sized green bottle without mentioning arms."
+      },
+      {
+        "seed": 100100031,
+        "instruction": "Hold onto the long thin bottle and the plastic bottle using both hands."
+      },
+      {
+        "seed": 100100032,
+        "instruction": "Take the Coca-Cola bottle, then use the other arm for the smooth green plastic bottle."
+      },
+      {
+        "seed": 100100033,
+        "instruction": "Lift both the dark drink bottle with logo and the medium green bottle bottles."
+      },
+      {
+        "seed": 100100034,
+        "instruction": "Grab the smooth bottle with red lid with one hand, then reach for the bottle with white printed label."
+      },
+      {
+        "seed": 100100037,
+        "instruction": "Lift the bottle with ridges on bottom in one arm and the smooth green plastic bottle in the other."
+      },
+      {
+        "seed": 100100038,
+        "instruction": "Hold the hand-sized soda bottle and the plastic bottle using both arms."
+      },
+      {
+        "seed": 100100039,
+        "instruction": "Use each arm to grab the smooth bottle with red lid and the medium green bottle with capped neck."
+      },
+      {
+        "seed": 100100040,
+        "instruction": "Catch the bottle with ridges on bottom in one hand and the bottle with narrow top too."
+      },
+      {
+        "seed": 100100041,
+        "instruction": "Grab and lift the Coca-Cola bottle, then lift the bottle with ridges near base next."
+      },
+      {
+        "seed": 100100042,
+        "instruction": "Catch the smooth bottle with red lid with one hand, catch the smooth green bottle with the other."
+      },
+      {
+        "seed": 100100043,
+        "instruction": "Use separate arms to pick the red-capped bottle and the bottle with white printed label."
+      },
+      {
+        "seed": 100100045,
+        "instruction": "Use each arm to grab the bottle with white neck and red top and the smooth green plastic bottle."
+      },
+      {
+        "seed": 100100046,
+        "instruction": "Lift bottle the smooth bottle with red lid, then bottle the smooth green bottle."
+      },
+      {
+        "seed": 100100047,
+        "instruction": "Pick up the medium dark brown bottle and the bottle with white printed label using separate hands."
+      },
+      {
+        "seed": 100100048,
+        "instruction": "Hold the long thin bottle in one hand and the bottle with rounded neck in another."
+      },
+      {
+        "seed": 100100049,
+        "instruction": "Use one arm for the medium dark brown bottle and the other for the smooth green plastic bottle."
+      },
+      {
+        "seed": 100100051,
+        "instruction": "Grab the smooth bottle with red lid with an arm, grab the medium green bottle with capped neck next."
+      },
+      {
+        "seed": 100100052,
+        "instruction": "Use each arm to grab the bottle with white neck and red top and the handheld green bottle."
+      },
+      {
+        "seed": 100100053,
+        "instruction": "Hold the Coca-Cola bottle in one hand and the smooth green plastic bottle in another."
+      },
+      {
+        "seed": 100100054,
+        "instruction": "Use separate arms to pick the smooth bottle with red lid and the bottle with rounded neck."
+      },
+      {
+        "seed": 100100056,
+        "instruction": "Grab the bottle with ridges on bottom with one hand, then reach for the bottle with narrow top."
+      },
+      {
+        "seed": 100100057,
+        "instruction": "Grasp the brown bottle with red label and the smooth green plastic bottle with both arms."
+      },
+      {
+        "seed": 100100058,
+        "instruction": "Use each arm to grab the bottle with ridges on bottom and the bottle with white printed label."
+      },
+      {
+        "seed": 100100059,
+        "instruction": "Catch the hand-sized soda bottle first, then catch the medium-sized green bottle."
+      },
+      {
+        "seed": 100100060,
+        "instruction": "Catch the smooth bottle with red lid, then catch the bottle with rounded neck without mentioning arms."
+      },
+      {
+        "seed": 100100062,
+        "instruction": "Catch the brown bottle with red label with one hand, catch the bottle with white printed label with the other."
+      },
+      {
+        "seed": 100100063,
+        "instruction": "Hold the smooth bottle with red lid in one hand, the bottle with rounded neck in another."
+      },
+      {
+        "seed": 100100064,
+        "instruction": "Hold the smooth bottle with red lid in one hand and the handheld green bottle in another."
+      },
+      {
+        "seed": 100100066,
+        "instruction": "Reach for the long thin bottle, then grab the smooth green plastic bottle."
+      },
+      {
+        "seed": 100100067,
+        "instruction": "Secure the dark drink bottle with logo and the bottle with white printed label using separate hands."
+      },
+      {
+        "seed": 100100068,
+        "instruction": "Use each arm to grab the dark drink bottle with logo and the bottle with rounded neck."
+      },
+      {
+        "seed": 100100069,
+        "instruction": "Lift the hand-sized soda bottle in one hand and the bottle with rounded neck in the other."
+      },
+      {
+        "seed": 100100070,
+        "instruction": "Catch the Coca-Cola bottle with one hand, catch the smooth green plastic bottle with the other."
+      },
+      {
+        "seed": 100100072,
+        "instruction": "Hold the bottle with white neck and red top and the medium-sized green bottle separately."
+      },
+      {
+        "seed": 100100073,
+        "instruction": "Pick the dark drink bottle with logo first, then pick the handheld green bottle without mentioning arms."
+      },
+      {
+        "seed": 100100074,
+        "instruction": "Lift the bottle with ridges on bottom and the bottle with ridges near base together with both hands."
+      },
+      {
+        "seed": 100100075,
+        "instruction": "Catch the long thin bottle with one arm, then grab the green bottle with indented base."
+      },
+      {
+        "seed": 100100076,
+        "instruction": "Pick the plastic drink bottle first and then the green bottle with indented base."
+      },
+      {
+        "seed": 100100077,
+        "instruction": "Lift bottle the plastic drink bottle, then bottle the handheld green bottle."
+      },
+      {
+        "seed": 100100078,
+        "instruction": "Lift bottle the Coca-Cola bottle, then bottle the bottle with white printed label."
+      },
+      {
+        "seed": 100100080,
+        "instruction": "Catch the narrow-necked bottle with one arm, then grab the medium green bottle with capped neck."
+      },
+      {
+        "seed": 100100081,
+        "instruction": "Catch the hand-sized soda bottle, then catch the smooth green bottle without mentioning arms."
+      },
+      {
+        "seed": 100100083,
+        "instruction": "Secure the dark drink bottle with logo and the bottle with white printed label using separate hands."
+      },
+      {
+        "seed": 100100085,
+        "instruction": "Pick the plastic drink bottle with one hand, the smooth green bottle with another."
+      },
+      {
+        "seed": 100100086,
+        "instruction": "Secure the Coca-Cola bottle in one hand, the smooth green bottle in other."
+      },
+      {
+        "seed": 100100087,
+        "instruction": "Lift the plastic drink bottle in one hand and the medium green bottle in the other."
+      },
+      {
+        "seed": 100100088,
+        "instruction": "Hold the hand-sized soda bottle in one hand, then hold the medium-sized green bottle in the other."
+      },
+      {
+        "seed": 100100089,
+        "instruction": "Hold the bottle with ridges on bottom and the smooth green bottle using both arms separately."
+      },
+      {
+        "seed": 100100091,
+        "instruction": "Grab and lift the Coca-Cola bottle, then lift the smooth green bottle next."
+      },
+      {
+        "seed": 100100092,
+        "instruction": "Catch the Coca-Cola bottle in one arm, the smooth green bottle in the other."
+      },
+      {
+        "seed": 100100094,
+        "instruction": "Secure the long thin bottle in one hand, the medium green bottle with capped neck in other."
+      },
+      {
+        "seed": 100100095,
+        "instruction": "Hold the brown bottle with red label in one hand, the bottle with white printed label in another."
+      },
+      {
+        "seed": 100100097,
+        "instruction": "Hold onto the long thin bottle and the handheld green bottle using both hands."
+      },
+      {
+        "seed": 100100098,
+        "instruction": "Pick the Coca-Cola bottle first and then the plastic bottle."
+      },
+      {
+        "seed": 100100099,
+        "instruction": "Grab the red-capped bottle and the plastic bottle one by one."
+      },
+      {
+        "seed": 100100102,
+        "instruction": "Catch the long thin bottle, then catch the smooth green plastic bottle after."
+      },
+      {
+        "seed": 100100104,
+        "instruction": "Pick the Coca-Cola bottle first and then the smooth green bottle."
+      },
+      {
+        "seed": 100100105,
+        "instruction": "Take the brown bottle with red label, then use the other arm for the bottle with ridges near base."
+      },
+      {
+        "seed": 100100106,
+        "instruction": "Catch the brown bottle with red label, then catch the plastic bottle after."
+      },
+      {
+        "seed": 100100107,
+        "instruction": "Pick the plastic drink bottle with one hand, the medium green bottle with capped neck with another."
+      },
+      {
+        "seed": 100100108,
+        "instruction": "Lift the dark drink bottle with logo and the bottle with rounded neck simultaneously with both arms."
+      },
+      {
+        "seed": 100100111,
+        "instruction": "Lift the Coca-Cola bottle and the handheld green bottle simultaneously with both arms."
+      },
+      {
+        "seed": 100100112,
+        "instruction": "Pick the narrow-necked bottle first, then pick the bottle with ridges near base without mentioning arms."
+      },
+      {
+        "seed": 100100113,
+        "instruction": "Catch the bottle with white neck and red top, then catch the medium green bottle after."
+      },
+      {
+        "seed": 100100114,
+        "instruction": "Grab the Coca-Cola bottle with one arm, the bottle with ridges near base with the other."
+      },
+      {
+        "seed": 100100115,
+        "instruction": "Pick the hand-sized soda bottle first, then pick the green bottle with indented base without mentioning arms."
+      },
+      {
+        "seed": 100100116,
+        "instruction": "Take the red-capped bottle with one arm, hold the bottle with ridges near base too."
+      },
+      {
+        "seed": 100100117,
+        "instruction": "Grab the Coca-Cola bottle with an arm, grab the medium-sized green bottle next."
+      },
+      {
+        "seed": 100100118,
+        "instruction": "Secure the long thin bottle in one hand, the plastic bottle in other."
+      },
+      {
+        "seed": 100100119,
+        "instruction": "Raise the bottle with ridges on bottom first, then grab the medium green bottle next."
+      },
+      {
+        "seed": 100100120,
+        "instruction": "Grasp the long thin bottle and the bottle with rounded neck with both arms."
+      },
+      {
+        "seed": 100100121,
+        "instruction": "Grab the long thin bottle and the smooth green plastic bottle one by one."
+      }
+    ]
+  }
+}

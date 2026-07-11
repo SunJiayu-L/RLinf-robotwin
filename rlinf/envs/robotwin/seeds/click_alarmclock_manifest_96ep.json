@@ -1,0 +1,390 @@
+{
+  "click_alarmclock": {
+    "episodes": [
+      {
+        "seed": 100385,
+        "instruction": "Click the button centered on the black matte alarm-clock."
+      },
+      {
+        "seed": 100386,
+        "instruction": "Push the central button on the small clock with rounded edges's top side."
+      },
+      {
+        "seed": 100387,
+        "instruction": "the left arm presses the center top button on the black matte alarm-clock"
+      },
+      {
+        "seed": 100388,
+        "instruction": "Use the right arm to press the alarm-clock with buttons on side button"
+      },
+      {
+        "seed": 100389,
+        "instruction": "Press the center top button on the rectangular alarm-clock with the left arm"
+      },
+      {
+        "seed": 100390,
+        "instruction": "Touch the alarm-clock with buttons on side's button on the top side."
+      },
+      {
+        "seed": 100391,
+        "instruction": "Locate and press the alarm-clock with digital display's top center button"
+      },
+      {
+        "seed": 100392,
+        "instruction": "Press the clock with black hands's top button using the left arm"
+      },
+      {
+        "seed": 100393,
+        "instruction": "Press the center top button of the alarm-clock with buttons on side"
+      },
+      {
+        "seed": 100394,
+        "instruction": "Use the left arm to press the white-faced alarm clock's top center button."
+      },
+      {
+        "seed": 100395,
+        "instruction": "Tap the center button on the digital screen alarm-clock."
+      },
+      {
+        "seed": 100396,
+        "instruction": "Activate the digital screen alarm-clock by clicking its top button"
+      },
+      {
+        "seed": 100397,
+        "instruction": "the left arm presses the center top button on the alarm-clock with buttons on side"
+      },
+      {
+        "seed": 100398,
+        "instruction": "Activate the digital screen alarm-clock by pressing its top"
+      },
+      {
+        "seed": 100399,
+        "instruction": "Click the top center button of the compact alarm-clock"
+      },
+      {
+        "seed": 100400,
+        "instruction": "Ensure the left arm clicks the top center button of the clock with white dial"
+      },
+      {
+        "seed": 100401,
+        "instruction": "Click the button centered on the black alarm-clock's top."
+      },
+      {
+        "seed": 100402,
+        "instruction": "Press the palm-sized dark blue clock's top button using the left arm"
+      },
+      {
+        "seed": 100403,
+        "instruction": "Touch the compact alarm-clock's button on the top side."
+      },
+      {
+        "seed": 100404,
+        "instruction": "Use the right arm to click the center button on the alarm-clock with digital display"
+      },
+      {
+        "seed": 100405,
+        "instruction": "Click the button centered on the small alarm-clock's top."
+      },
+      {
+        "seed": 100406,
+        "instruction": "Press the center top button of the black alarm-clock"
+      },
+      {
+        "seed": 100407,
+        "instruction": "Click the alarm-clock with digital display's top center button using the left arm."
+      },
+      {
+        "seed": 100408,
+        "instruction": "Push the central button on the alarm clock with green stripe's top side."
+      },
+      {
+        "seed": 100409,
+        "instruction": "Use the right arm to tap the lightweight plastic alarm-clock's top button center"
+      },
+      {
+        "seed": 100410,
+        "instruction": "Push the center area of the small plastic alarm clock's top"
+      },
+      {
+        "seed": 100411,
+        "instruction": "Direct the left arm to click the button found on the alarm-clock with digital display."
+      },
+      {
+        "seed": 100412,
+        "instruction": "Press the top button at the rectangular alarm-clock's center."
+      },
+      {
+        "seed": 100413,
+        "instruction": "Click the center button on the black matte alarm-clock's top side."
+      },
+      {
+        "seed": 100414,
+        "instruction": "the right arm clicks the center top button on the black matte alarm-clock"
+      },
+      {
+        "seed": 100415,
+        "instruction": "Click the button centered on the black matte alarm-clock."
+      },
+      {
+        "seed": 100416,
+        "instruction": "Activate the blue clock with green stripe by pressing its top"
+      },
+      {
+        "seed": 100417,
+        "instruction": "Ensure the right arm clicks the top center button of the black matte alarm-clock"
+      },
+      {
+        "seed": 100418,
+        "instruction": "Click the center button on the rounded square-shaped alarm clock's top side."
+      },
+      {
+        "seed": 100419,
+        "instruction": "Push the center area of the alarm-clock with rounded edges's top"
+      },
+      {
+        "seed": 100420,
+        "instruction": "Press the center top button on the digital screen alarm-clock with the right arm"
+      },
+      {
+        "seed": 100421,
+        "instruction": "Click the alarm-clock with buttons on side's top center button using the left arm."
+      },
+      {
+        "seed": 100422,
+        "instruction": "Click the button centered on the compact alarm-clock."
+      },
+      {
+        "seed": 100423,
+        "instruction": "Point the left arm to press the button of the lightweight plastic alarm-clock."
+      },
+      {
+        "seed": 100424,
+        "instruction": "Press the button on the clock with white dial's top side"
+      },
+      {
+        "seed": 100425,
+        "instruction": "Hit the center of the alarm-clock with digital display's top button"
+      },
+      {
+        "seed": 100426,
+        "instruction": "Press the top middle button of the blue clock with green stripe"
+      },
+      {
+        "seed": 100427,
+        "instruction": "Click the top center button of the small alarm-clock"
+      },
+      {
+        "seed": 100428,
+        "instruction": "Hit the center of the black matte alarm-clock's top button"
+      },
+      {
+        "seed": 100429,
+        "instruction": "Push the top button on the alarm-clock with digital display"
+      },
+      {
+        "seed": 100430,
+        "instruction": "Press the center button on the alarm-clock with digital display's top."
+      },
+      {
+        "seed": 100431,
+        "instruction": "Use the left arm to press the central button on the black matte alarm-clock."
+      },
+      {
+        "seed": 100432,
+        "instruction": "Locate and press the square alarm clock's top center button"
+      },
+      {
+        "seed": 100433,
+        "instruction": "Use the right arm to click the top center button on the rectangular alarm-clock."
+      },
+      {
+        "seed": 100434,
+        "instruction": "Activate the white-faced alarm clock by clicking its top button"
+      },
+      {
+        "seed": 100435,
+        "instruction": "Press the top button at the black alarm-clock's center."
+      },
+      {
+        "seed": 100436,
+        "instruction": "Click the rectangular alarm-clock's top center button using the right arm."
+      },
+      {
+        "seed": 100437,
+        "instruction": "the left arm activates the alarm-clock with digital display by clicking the top button"
+      },
+      {
+        "seed": 100438,
+        "instruction": "Click the center button on the alarm-clock with digital display's top side."
+      },
+      {
+        "seed": 100439,
+        "instruction": "Click the alarm-clock with rounded edges's top center button using the left arm."
+      },
+      {
+        "seed": 100440,
+        "instruction": "Activate the small clock with rounded edges by pressing its top"
+      },
+      {
+        "seed": 100441,
+        "instruction": "the right arm clicks the center top button on the palm-sized alarm-clock"
+      },
+      {
+        "seed": 100442,
+        "instruction": "Click the middle button on the palm-sized dark blue clock's top side"
+      },
+      {
+        "seed": 100443,
+        "instruction": "Push the center area of the alarm-clock with digital display's top"
+      },
+      {
+        "seed": 100444,
+        "instruction": "the right arm clicks the center top button on the lightweight plastic alarm-clock"
+      },
+      {
+        "seed": 100445,
+        "instruction": "Use the left arm to activate the small alarm-clock's button"
+      },
+      {
+        "seed": 100446,
+        "instruction": "Activate the lightweight plastic alarm-clock by pressing its top"
+      },
+      {
+        "seed": 100447,
+        "instruction": "Use the left arm to click the top center button on the rectangular alarm-clock."
+      },
+      {
+        "seed": 100448,
+        "instruction": "Tap the center button on the square alarm clock."
+      },
+      {
+        "seed": 100449,
+        "instruction": "Use the right arm to press the small alarm-clock button"
+      },
+      {
+        "seed": 100450,
+        "instruction": "Press the top button in the small clock with rounded edges's center."
+      },
+      {
+        "seed": 100451,
+        "instruction": "Click the center button on the rectangular alarm-clock's top side."
+      },
+      {
+        "seed": 100452,
+        "instruction": "Click the middle button on the rectangular alarm-clock's top side"
+      },
+      {
+        "seed": 100453,
+        "instruction": "Ensure the left arm clicks the top center button of the black matte alarm-clock"
+      },
+      {
+        "seed": 100454,
+        "instruction": "Touch the digital screen alarm-clock's center top button with the right arm"
+      },
+      {
+        "seed": 100455,
+        "instruction": "Use the left arm to click the top center button on the digital screen alarm-clock."
+      },
+      {
+        "seed": 100456,
+        "instruction": "Use the left arm to click the top center button on the small plastic alarm clock."
+      },
+      {
+        "seed": 100457,
+        "instruction": "Use the right arm to press the black alarm-clock's top button"
+      },
+      {
+        "seed": 100458,
+        "instruction": "Point the left arm to press the button of the white-faced alarm clock."
+      },
+      {
+        "seed": 100459,
+        "instruction": "Press the button on the smooth black alarm-clock's top side"
+      },
+      {
+        "seed": 100460,
+        "instruction": "Use the right arm to press the central button on the compact alarm-clock."
+      },
+      {
+        "seed": 100461,
+        "instruction": "Click the top center button of the black alarm-clock"
+      },
+      {
+        "seed": 100462,
+        "instruction": "Tap the alarm-clock with rounded edges's top button with the right arm"
+      },
+      {
+        "seed": 100463,
+        "instruction": "Click the button centered on the alarm-clock with rounded edges's top."
+      },
+      {
+        "seed": 100464,
+        "instruction": "Click the top center button of the white-faced alarm clock"
+      },
+      {
+        "seed": 100465,
+        "instruction": "Click the center button on the black matte alarm-clock's top side."
+      },
+      {
+        "seed": 100466,
+        "instruction": "Press the center button on the palm-sized dark blue clock's top."
+      },
+      {
+        "seed": 100467,
+        "instruction": "Push the top button of the digital screen alarm-clock using the left arm"
+      },
+      {
+        "seed": 100468,
+        "instruction": "Touch the lightweight plastic alarm-clock's button on the top side."
+      },
+      {
+        "seed": 100469,
+        "instruction": "Touch the black alarm-clock's button on the top side."
+      },
+      {
+        "seed": 100470,
+        "instruction": "Press the top middle button of the alarm-clock with buttons on side"
+      },
+      {
+        "seed": 100471,
+        "instruction": "Click the button centered on the rectangular alarm-clock's top."
+      },
+      {
+        "seed": 100472,
+        "instruction": "Use the left arm to click the top center button on the white-faced alarm clock."
+      },
+      {
+        "seed": 100473,
+        "instruction": "Push the center area of the palm-sized alarm-clock's top"
+      },
+      {
+        "seed": 100474,
+        "instruction": "Tap the center button on the palm-sized dark blue clock."
+      },
+      {
+        "seed": 100475,
+        "instruction": "Click the center of the compact alarm-clock's top"
+      },
+      {
+        "seed": 100476,
+        "instruction": "Guide the right arm to press the centered button on the palm-sized alarm-clock."
+      },
+      {
+        "seed": 100477,
+        "instruction": "Locate and press the top button on the lightweight plastic alarm-clock"
+      },
+      {
+        "seed": 100478,
+        "instruction": "Use the right arm to activate the rectangular alarm-clock's button"
+      },
+      {
+        "seed": 100479,
+        "instruction": "Tap the black matte alarm-clock's top button with the left arm"
+      },
+      {
+        "seed": 100480,
+        "instruction": "Push the center area of the clock with black hands's top"
+      }
+    ]
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "place_object_stand": {
+    "episodes": [
+      {
+        "seed": 100000,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100001,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100002,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100003,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100004,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100005,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100006,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100007,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100008,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100009,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100010,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100011,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100012,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100014,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100015,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100016,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100017,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100018,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100019,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100020,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100021,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100022,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100023,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100024,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100025,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100026,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100029,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100030,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100031,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100032,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100033,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100034,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100035,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100036,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100037,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100038,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100039,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100040,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100041,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100042,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100043,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100044,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100045,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100046,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100047,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100048,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100049,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100050,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100051,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100052,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100053,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100054,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100055,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100056,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100057,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100058,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100059,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100060,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100061,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100062,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100063,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100064,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100065,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100066,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100067,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100068,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100069,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100070,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100071,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100072,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100073,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100074,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100075,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100076,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100077,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100079,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100080,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100081,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100082,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100084,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100086,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100087,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100088,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100089,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100090,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100091,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100093,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100094,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100095,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100096,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100097,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100098,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100099,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100101,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100102,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      },
+      {
+        "seed": 100103,
+        "instruction": "Grab and put the dark gray palm-sized mouse on the angled black displaystand"
+      }
+    ]
+  }
+}

@@ -199,7 +199,7 @@ class RoboTwinEnv(gym.Env):
                     "worker": self.seed_offset,
                     "env_index": env_idx,
                     "seed": int(self.reset_state_ids[env_idx]),
-                    "instruction": self.current_instructions[env_idx],
+                    "instruction": self.current_instructions[env_idx] if self.current_instructions is not None else "",
                     "success": bool(self.success_once[env_idx].item()),
                     "success_step": (
                         int(self.first_success_steps[env_idx].item())

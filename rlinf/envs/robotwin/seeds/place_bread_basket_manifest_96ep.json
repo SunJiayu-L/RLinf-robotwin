@@ -1,0 +1,390 @@
+{
+  "place_bread_basket": {
+    "episodes": [
+      {
+        "seed": 100961,
+        "instruction": "Take the small loaf with curved top and the rounded square loaf, place them inside the smooth-textured breadbasket."
+      },
+      {
+        "seed": 100962,
+        "instruction": "Pick the golden brown bread and the soft bread, place them in the smooth beige breadbasket."
+      },
+      {
+        "seed": 100963,
+        "instruction": "Pick the bread with rough texture and the golden brown bread and set them in the brown breadbasket with rounded corners."
+      },
+      {
+        "seed": 100964,
+        "instruction": "Shift the smooth crusty small bread and the bread with rough texture into the medium oval breadbasket"
+      },
+      {
+        "seed": 100965,
+        "instruction": "Shift the square-shaped bread and the bread loaf with square shape together to the medium plastic breadbasket oval shape."
+      },
+      {
+        "seed": 100966,
+        "instruction": "Place the bread with golden-brown crust and the square-shaped bread in the light brown wicker breadbasket using the dual arm"
+      },
+      {
+        "seed": 100967,
+        "instruction": "Pick the soft golden baked bread and the soft golden baked bread and set them in the smooth-textured breadbasket."
+      },
+      {
+        "seed": 100968,
+        "instruction": "Put the bread block with light patches into the medium plastic breadbasket oval shape using an arm."
+      },
+      {
+        "seed": 100969,
+        "instruction": "Shift the hand-sized oval loaf and the fluffy baked bread together to the smooth-textured breadbasket."
+      },
+      {
+        "seed": 100970,
+        "instruction": "Take the sponge-textured golden bread and the bread with rough texture to the wooden breadbasket"
+      },
+      {
+        "seed": 100971,
+        "instruction": "Shift the hand-sized bread block and the medium-sized bread piece together to the light brown basket for bread."
+      },
+      {
+        "seed": 100972,
+        "instruction": "Pick the small bread and the doughy and soft bread for the the oval basket for bread"
+      },
+      {
+        "seed": 100973,
+        "instruction": "Pick the bread with rough texture and the square loaf of bread, place them in the white oval breadbasket."
+      },
+      {
+        "seed": 100974,
+        "instruction": "Grab both the golden bread loaf and the cuboid bread with the dual arm and place in the breadbasket for holding bread."
+      },
+      {
+        "seed": 100975,
+        "instruction": "Grab the golden bread and the soft golden baked bread quickly and drop them into the beige basket for holding bread."
+      },
+      {
+        "seed": 100976,
+        "instruction": "Use the left arm to grab the square-shaped bread for the basket for bread beige plastic"
+      },
+      {
+        "seed": 100977,
+        "instruction": "Take the light brown loaf with smooth sides and the medium-sized bread piece, place them inside the light brown breadbasket."
+      },
+      {
+        "seed": 100978,
+        "instruction": "Grab both the light brown porous bread and the bread loaf with uneven edges, drop into the spiral ridged breadbasket."
+      },
+      {
+        "seed": 100979,
+        "instruction": "Simultaneously use the left arm to drop the golden bread loaf and the light brown porous bread in the brown breadbasket."
+      },
+      {
+        "seed": 100980,
+        "instruction": "Take the golden brown bread with braided design and the square-shaped bread then place in the beige basket for holding bread."
+      },
+      {
+        "seed": 100981,
+        "instruction": "Simultaneously use the dual arm to drop the golden bread loaf and the soft golden baked bread in the medium breadbasket with perforated sides."
+      },
+      {
+        "seed": 100982,
+        "instruction": "Grab two breads the hand-sized oval loaf and the golden bread loaf and place in the brown breadbasket with rounded corners."
+      },
+      {
+        "seed": 100983,
+        "instruction": "Pick the golden bread and the golden bread, place them in the two-hand-sized breadbasket."
+      },
+      {
+        "seed": 100984,
+        "instruction": "Grab the bread with rough texture with one hand and set it in the medium plastic breadbasket oval shape."
+      },
+      {
+        "seed": 100985,
+        "instruction": "Lift the smooth loaf with rounded edges and the golden brown bread with two arms, put in the oval basket for bread."
+      },
+      {
+        "seed": 100986,
+        "instruction": "Use the dual arm to place the medium bread with rounded sides and the soft bread into the palm-sized breadbasket."
+      },
+      {
+        "seed": 100987,
+        "instruction": "Shift the light golden brown bread and the bread with soft texture into the breadbasket with smooth woven texture"
+      },
+      {
+        "seed": 100988,
+        "instruction": "Take the small bread and the bread block with light patches then place in the woven plastic breadbasket."
+      },
+      {
+        "seed": 100989,
+        "instruction": "Use both arms to move the doughy and soft bread, the soft golden baked bread to the beige basket with white grid design."
+      },
+      {
+        "seed": 100990,
+        "instruction": "Use two arms and set the brown loaf, the golden bread in the light brown wicker breadbasket."
+      },
+      {
+        "seed": 100991,
+        "instruction": "Pick the bread with golden surface color and the bread with golden surface color, place them in the two-hand-sized breadbasket."
+      },
+      {
+        "seed": 100992,
+        "instruction": "Pick the bread loaf with bumpy surface and move it to the beige basket with white grid design."
+      },
+      {
+        "seed": 100993,
+        "instruction": "Move the small loaf with curved top and the rounded square loaf at once into the breadbasket with curved base."
+      },
+      {
+        "seed": 100994,
+        "instruction": "Take the golden baked bread and the square-shaped bread, place them inside the breadbasket for baking."
+      },
+      {
+        "seed": 100995,
+        "instruction": "Use both arms to move the golden bread loaf, the golden brown bread to the breadbasket with rounded edges."
+      },
+      {
+        "seed": 100996,
+        "instruction": "Lift the braided bread loaf and the bread with rough texture with two arms, put in the light brown breadbasket."
+      },
+      {
+        "seed": 100997,
+        "instruction": "Move the square-shaped bread and the soft golden baked bread to the smooth textured breadbasket"
+      },
+      {
+        "seed": 100998,
+        "instruction": "Pick the smooth loaf with rounded edges and the light golden brown bread, place them in the light brown basket for bread."
+      },
+      {
+        "seed": 100999,
+        "instruction": "Lift the bread with golden surface color and the bread with firm crust edges with two arms, put in the smooth-textured breadbasket."
+      },
+      {
+        "seed": 101000,
+        "instruction": "Use the left arm to grab the golden bread and drop it inside the oval perforated breadbasket white edges."
+      },
+      {
+        "seed": 101001,
+        "instruction": "Simultaneously grab the small golden brown bread and the fluffy baked bread, drop in the oval basket for bread."
+      },
+      {
+        "seed": 101002,
+        "instruction": "Grab two breads the sponge-textured golden bread and the bread with rough texture and place in the breadbasket with spiral lines."
+      },
+      {
+        "seed": 101003,
+        "instruction": "Lift the golden bread loaf and the sponge-textured golden bread with two arms, put in the medium-sized rectangular breadbasket."
+      },
+      {
+        "seed": 101004,
+        "instruction": "Move the soft doughy bread and the bread block with light patches at once into the oval breadbasket."
+      },
+      {
+        "seed": 101005,
+        "instruction": "Simultaneously grab the light golden brown bread and the bread with golden surface color using the dual arm, then drop them in the medium breadbasket with perforated sides."
+      },
+      {
+        "seed": 101006,
+        "instruction": "Take the brown loaf and the cuboid bread together and place them into the woven rectangular breadbasket."
+      },
+      {
+        "seed": 101007,
+        "instruction": "Simultaneously use the left arm to drop the slice-shaped bread and the slice-shaped bread in the light brown breadbasket."
+      },
+      {
+        "seed": 101008,
+        "instruction": "Pick the doughy and soft bread and move it to the basket for carrying bread beige."
+      },
+      {
+        "seed": 101009,
+        "instruction": "Simultaneously grab the bread with golden-brown crust and the bread with soft texture, drop in the synthetic material breadbasket."
+      },
+      {
+        "seed": 101010,
+        "instruction": "Lift the fluffy baked bread and the soft bread with two arms, put in the medium breadbasket."
+      },
+      {
+        "seed": 101011,
+        "instruction": "Use two arms and set the cuboid bread, the sponge-textured golden bread in the light brown basket for bread."
+      },
+      {
+        "seed": 101012,
+        "instruction": "Pick the small bread and the bread with rough texture, place them in the two-hand-sized breadbasket."
+      },
+      {
+        "seed": 101013,
+        "instruction": "Take the golden bread and the slice-shaped bread to the beige basket with white grid design"
+      },
+      {
+        "seed": 101014,
+        "instruction": "Move the small loaf with curved top and the golden bread to the breadbasket with wicker weave pattern"
+      },
+      {
+        "seed": 101015,
+        "instruction": "Use the left arm to place the soft golden baked bread and the bread with golden surface color into the two-hand-sized breadbasket."
+      },
+      {
+        "seed": 101016,
+        "instruction": "Grab the bread block with light patches, drop it into the medium oval basket for bread."
+      },
+      {
+        "seed": 101017,
+        "instruction": "Move the small loaf with curved top and the bread with soft texture to the breadbasket for small food items"
+      },
+      {
+        "seed": 101018,
+        "instruction": "Take the medium-sized bread piece and the square-shaped bread together and place them into the breadbasket for baking."
+      },
+      {
+        "seed": 101019,
+        "instruction": "Simultaneously grab the hand-sized bread block and the medium bread with rounded sides, drop in the breadbasket for holding bread."
+      },
+      {
+        "seed": 101020,
+        "instruction": "Shift the soft doughy bread and the bread block with light patches into the synthetic material breadbasket"
+      },
+      {
+        "seed": 101021,
+        "instruction": "Pick the hand-sized bread block and the golden bread, place them in the basket for carrying bread beige."
+      },
+      {
+        "seed": 101022,
+        "instruction": "Place the light brown loaf with smooth sides and the golden bread loaf in the brown breadbasket using the dual arm"
+      },
+      {
+        "seed": 101023,
+        "instruction": "Simultaneously use the left arm to drop the rectangular bread soft inside and the rectangular bread soft inside in the basket with light brown weaving."
+      },
+      {
+        "seed": 101024,
+        "instruction": "Put the bread block with light patches into the medium breadbasket with perforated sides after grabbing it."
+      },
+      {
+        "seed": 101025,
+        "instruction": "Grab two breads the bread with golden-brown crust and the fluffy baked bread and place in the beige basket for holding bread."
+      },
+      {
+        "seed": 101026,
+        "instruction": "Use the dual arm to place the fluffy baked bread and the hand-sized bread block into the spiral ridged breadbasket."
+      },
+      {
+        "seed": 101027,
+        "instruction": "Take the bread loaf with bumpy surface and the square-shaped bread piece then place in the breadbasket with wicker weave pattern."
+      },
+      {
+        "seed": 101028,
+        "instruction": "Move the smooth crusty small bread and the hand-sized bread block to the oval breadbasket"
+      },
+      {
+        "seed": 101029,
+        "instruction": "Take the doughy and soft bread and the soft golden baked bread then place in the smooth textured breadbasket."
+      },
+      {
+        "seed": 101030,
+        "instruction": "Put the bread with split top and the bread loaf with bumpy surface into the medium woven breadbasket using two arms."
+      },
+      {
+        "seed": 101031,
+        "instruction": "Simultaneously use the left arm to drop the golden bread and the brown bread loaf in the basket with light brown weaving."
+      },
+      {
+        "seed": 101032,
+        "instruction": "Lift the square-shaped bread and transfer to the beige basket with white grid design."
+      },
+      {
+        "seed": 101033,
+        "instruction": "Move the brown loaf and the rounded square loaf to the beige basket for holding bread"
+      },
+      {
+        "seed": 101034,
+        "instruction": "Take the bread with rounded edges and the cuboid bread together and place them into the palm-sized breadbasket."
+      },
+      {
+        "seed": 101035,
+        "instruction": "Place the bread loaf with uneven edges and the fluffy baked bread in the brown breadbasket using the left arm"
+      },
+      {
+        "seed": 101036,
+        "instruction": "Take the soft doughy bread and the hand-sized bread block, place them inside the breadbasket for small food items."
+      },
+      {
+        "seed": 101037,
+        "instruction": "Use the dual arm to place the golden bread loaf and the rectangular bread soft inside into the oval perforated breadbasket white edges."
+      },
+      {
+        "seed": 101038,
+        "instruction": "Lift the light brown loaf with smooth sides and the bread loaf with bumpy surface at once with the dual arm, then set them in the woven rectangular breadbasket."
+      },
+      {
+        "seed": 101039,
+        "instruction": "Shift the golden bread and the bread with firm crust edges into the synthetic material breadbasket"
+      },
+      {
+        "seed": 101040,
+        "instruction": "Pick the light golden brown bread and put it into the oval perforated breadbasket white edges."
+      },
+      {
+        "seed": 101041,
+        "instruction": "Simultaneously grab the smooth loaf with rounded edges and the bread with rounded edges using the dual arm, then drop them in the smooth-textured breadbasket."
+      },
+      {
+        "seed": 101042,
+        "instruction": "Grab both the medium-sized bread piece and the bread loaf with uneven edges, drop into the breadbasket for baking."
+      },
+      {
+        "seed": 101043,
+        "instruction": "Use both arms to move the bread block with light patches, the bread with rounded edges to the breadbasket with wicker weave pattern."
+      },
+      {
+        "seed": 101044,
+        "instruction": "Take the golden brown bread and the bread block with light patches then place in the oval basket for bread."
+      },
+      {
+        "seed": 101045,
+        "instruction": "Pick the soft bread and the rectangular bread soft inside and set them in the medium plastic breadbasket oval shape."
+      },
+      {
+        "seed": 101046,
+        "instruction": "Shift the bread with warm golden color and the bread with rough texture into the medium-sized rectangular breadbasket"
+      },
+      {
+        "seed": 101047,
+        "instruction": "Grab both the square loaf of bread and the slice-shaped bread, drop into the basket with light brown weaving."
+      },
+      {
+        "seed": 101048,
+        "instruction": "Use the left arm to grab the golden bread for the basket for bread beige plastic"
+      },
+      {
+        "seed": 101049,
+        "instruction": "Take the brown loaf and the golden baked bread together and place them into the synthetic material breadbasket."
+      },
+      {
+        "seed": 101050,
+        "instruction": "Lift the sponge-textured golden bread and the golden bread loaf with two arms, put in the spiral ridged breadbasket."
+      },
+      {
+        "seed": 101051,
+        "instruction": "Use two arms and set the bread block with light patches, the fluffy baked bread in the breadbasket for holding bread."
+      },
+      {
+        "seed": 101052,
+        "instruction": "Move the bread with golden crust and the doughy and soft bread at once into the light brown breadbasket."
+      },
+      {
+        "seed": 101053,
+        "instruction": "Simultaneously grab the square-shaped bread and the brown bread loaf, drop in the basket for bread beige plastic."
+      },
+      {
+        "seed": 101054,
+        "instruction": "Simultaneously use the dual arm to drop the bread with golden-brown crust and the doughy and soft bread in the light brown wicker breadbasket."
+      },
+      {
+        "seed": 101055,
+        "instruction": "Take the bread with golden surface color and the golden bread then place in the breadbasket with curved base."
+      },
+      {
+        "seed": 101056,
+        "instruction": "Pick the bread loaf with uneven edges and move it to the medium breadbasket with perforated sides."
+      }
+    ]
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "scan_object": {
+    "episodes": [
+      {
+        "seed": 100769,
+        "instruction": "Grab the yellow box for tea, pick the barcode scanner with flat top, and use the barcode scanner with flat top to scan the yellow box for tea."
+      },
+      {
+        "seed": 100770,
+        "instruction": "Take the scanner with curved handle using the right arm, pick the light beige box with embossed gold leaf using the left arm, and scan the light beige box with embossed gold leaf with the scanner with curved handle."
+      },
+      {
+        "seed": 100771,
+        "instruction": "Grab the printed tea box with lid, pick the black scanner with smooth texture, and use the black scanner with smooth texture to scan the printed tea box with lid."
+      },
+      {
+        "seed": 100772,
+        "instruction": "Use the left arm to pick the handheld scanner, use the right arm to grab the tea-box with bold white writing, and scan the tea-box with bold white writing with the handheld scanner."
+      },
+      {
+        "seed": 100773,
+        "instruction": "Pick the barcode scanner with yellow body, then pick the square-shaped tea box, and use the barcode scanner with yellow body to scan the square-shaped tea box"
+      },
+      {
+        "seed": 100774,
+        "instruction": "Pick the cardboard tea-box, grab the gray scanner with ergonomic handle, and use the gray scanner with ergonomic handle to scan the object."
+      },
+      {
+        "seed": 100775,
+        "instruction": "Hold the scanner for barcodes in one arm and the tea-box with top lid in the other, then scan the tea-box with top lid with the scanner for barcodes."
+      },
+      {
+        "seed": 100776,
+        "instruction": "the left arm picks the golden tea box, the right arm grabs the barcode scanner, and scans the golden tea box with the barcode scanner."
+      },
+      {
+        "seed": 100777,
+        "instruction": "Take the scanner with curved grip using the left arm, pick the small cuboid tea box using the right arm, and scan the small cuboid tea box with the scanner with curved grip."
+      },
+      {
+        "seed": 100778,
+        "instruction": "Take the barcode scanner with gray accents, hold the box for tea storage, and use the barcode scanner with gray accents to scan it"
+      },
+      {
+        "seed": 100779,
+        "instruction": "the left arm picks the tea box with leafy design, the right arm grabs the matte black scanner, and scans the tea box with leafy design with the matte black scanner."
+      },
+      {
+        "seed": 100780,
+        "instruction": "Pick the medium handheld scanner, then pick the rectangular tea-box, and use the medium handheld scanner to scan the rectangular tea-box"
+      },
+      {
+        "seed": 100781,
+        "instruction": "Take the yellow and black code scanner, grab the tea box with floral designs, and scan the tea box with floral designs using the yellow and black code scanner"
+      },
+      {
+        "seed": 100782,
+        "instruction": "the left arm holds the gray scanner with ergonomic handle, the right arm grabs the black tea-box, and scans the black tea-box with the gray scanner with ergonomic handle."
+      },
+      {
+        "seed": 100783,
+        "instruction": "Pick up the yellow and black code scanner in one arm and the light beige tea-box in the other, then scan the light beige tea-box."
+      },
+      {
+        "seed": 100784,
+        "instruction": "Take the scanner for reading barcodes, hold the yellow tea box, and use the scanner for reading barcodes to scan it"
+      },
+      {
+        "seed": 100785,
+        "instruction": "First pick the barcode scanner with flat top, then the yellow tea box, and use the barcode scanner with flat top to scan the yellow tea box."
+      },
+      {
+        "seed": 100786,
+        "instruction": "Hold the scanner with broad top flat area, pick the beige cube with golden leaf patterns, and scan the beige cube with golden leaf patterns using the scanner with broad top flat area"
+      },
+      {
+        "seed": 100787,
+        "instruction": "Hold the barcode scanner with gray accents and the beige-edged green tea box with different arms, then scan the beige-edged green tea box using the barcode scanner with gray accents."
+      },
+      {
+        "seed": 100788,
+        "instruction": "First, grab the yellow scanner with buttons, then pick the smooth glossy tea-box, and scan the smooth glossy tea-box using the yellow scanner with buttons."
+      },
+      {
+        "seed": 100789,
+        "instruction": "Handle the barcode scanner with yellow body and the yellow box for tea separately, ensuring the barcode scanner with yellow body scans the yellow box for tea."
+      },
+      {
+        "seed": 100790,
+        "instruction": "Take hold of the scanner with rectangular black end using the left arm, grab the tea-box using the right arm, and scan it."
+      },
+      {
+        "seed": 100791,
+        "instruction": "the medium handheld scanner is picked with the left arm, the tea-box with curved edges grabbed with the right arm, scan the tea-box with curved edges using the medium handheld scanner."
+      },
+      {
+        "seed": 100792,
+        "instruction": "Grab the compact black scanner for easy grip using one arm, pick the light yellow tea box using the other arm, then scan the light yellow tea box with the compact black scanner for easy grip"
+      },
+      {
+        "seed": 100793,
+        "instruction": "Grab the yellow tea box with smooth surface, pick the scanner with ergonomic grip design, and use the scanner with ergonomic grip design to scan the yellow tea box with smooth surface."
+      },
+      {
+        "seed": 100794,
+        "instruction": "Grab the black scanner with smooth texture with one arm, the light beige box with embossed gold leaf with the other, and use the black scanner with smooth texture to scan."
+      },
+      {
+        "seed": 100795,
+        "instruction": "Pick the black scanner with gray textured tip, grab the printed tea box with lid, and scan it with the black scanner with gray textured tip"
+      },
+      {
+        "seed": 100796,
+        "instruction": "Grab the yellow and black code scanner, pick the smooth glossy tea-box, and perform a scan on the smooth glossy tea-box with the yellow and black code scanner."
+      },
+      {
+        "seed": 100797,
+        "instruction": "Hold the cuboid tea box with one hand, grab the gun-shaped scanner with the other, and scan the cuboid tea box."
+      },
+      {
+        "seed": 100798,
+        "instruction": "the left arm holds the small scanner system, the right arm grabs the compact rectangular tea-box, and scans the compact rectangular tea-box with the small scanner system."
+      },
+      {
+        "seed": 100799,
+        "instruction": "Pick the medium handheld scanner, grab the light beige box for tea, and scan the light beige box for tea with the medium handheld scanner."
+      },
+      {
+        "seed": 100800,
+        "instruction": "Pick the smooth black scanner with blue stripe, grab the tea box with floral designs, and scan it with the smooth black scanner with blue stripe"
+      },
+      {
+        "seed": 100801,
+        "instruction": "Take hold of the barcode scanner with flat top using the left arm, grab the light yellow tea box using the right arm, and scan it."
+      },
+      {
+        "seed": 100802,
+        "instruction": "the right arm grabs the small black handheld scanner, the left arm picks the smooth cube with golden leaf designs, and the small black handheld scanner scans the smooth cube with golden leaf designs."
+      },
+      {
+        "seed": 100803,
+        "instruction": "Use the right arm to pick the scanner with pointed bottom tip, the left arm to grab the printed tea box with lid, and scan the printed tea box with lid using the scanner with pointed bottom tip."
+      },
+      {
+        "seed": 100804,
+        "instruction": "Pick up the yellow and black code scanner, hold the smooth glossy tea-box, and use the yellow and black code scanner to scan the smooth glossy tea-box."
+      },
+      {
+        "seed": 100805,
+        "instruction": "Use the left arm to pick the yellow and black code scanner, the right arm to grab the light yellow tea box, and scan the light yellow tea box using the yellow and black code scanner."
+      },
+      {
+        "seed": 100806,
+        "instruction": "Take the barcode scanner, grab the black tea-box with turquoise sides, and scan the black tea-box with turquoise sides using the barcode scanner"
+      },
+      {
+        "seed": 100807,
+        "instruction": "Take the barcode scanner with yellow body using the left arm, pick the square-shaped tea-box using the right arm, and scan the square-shaped tea-box with the barcode scanner with yellow body."
+      },
+      {
+        "seed": 100808,
+        "instruction": "Take the handheld scanner in one hand, the compact golden tea box in the other, and perform the scan."
+      },
+      {
+        "seed": 100809,
+        "instruction": "Using one arm, grab the black scanner with gray handle, then grab the tea box with printed leaves with the other arm, and scan."
+      },
+      {
+        "seed": 100810,
+        "instruction": "Use the right arm to pick the matte black scanner, use the left arm to grab the box for tea storage, and scan the box for tea storage with the matte black scanner."
+      },
+      {
+        "seed": 100811,
+        "instruction": "Take the matte black scanner, then grab the green box with tea label, and scan the green box with tea label with the matte black scanner."
+      },
+      {
+        "seed": 100812,
+        "instruction": "Grab the scanner for barcodes with one arm, the red cuboid-shaped tea-box with the other, and use the scanner for barcodes to scan."
+      },
+      {
+        "seed": 100813,
+        "instruction": "the gun-shaped scanner is picked with the left arm, the tea box with floral designs grabbed with the right arm, scan the tea box with floral designs using the gun-shaped scanner."
+      },
+      {
+        "seed": 100814,
+        "instruction": "Pick the scanner body with blue trigger button, grab the black tea-box with turquoise sides, and scan it with the scanner body with blue trigger button"
+      },
+      {
+        "seed": 100815,
+        "instruction": "Using one hand for the barcode scanner and the other for the tea-box with top lid, complete the scan."
+      },
+      {
+        "seed": 100816,
+        "instruction": "First grab the smooth black scanner with blue stripe, then the golden tea box, and use the smooth black scanner with blue stripe to scan the golden tea box."
+      },
+      {
+        "seed": 100817,
+        "instruction": "the left arm holds the scanner with trigger on handle, the right arm grabs the yellow box for tea, and scans the yellow box for tea with the scanner with trigger on handle."
+      },
+      {
+        "seed": 100818,
+        "instruction": "Pick the tea box, grab the curved black scanner with trigger, and use the scanner to scan the object."
+      },
+      {
+        "seed": 100819,
+        "instruction": "Pick the matte black scanner, then pick the light green cardboard tea box, and use the matte black scanner to scan the light green cardboard tea box"
+      },
+      {
+        "seed": 100820,
+        "instruction": "Grab the yellow and black code scanner in one hand, pick the box for holding tea in the other hand, then scan the box for holding tea with the yellow and black code scanner"
+      },
+      {
+        "seed": 100821,
+        "instruction": "Hold the handheld scanner, pick the golden tea box, and scan the golden tea box using the handheld scanner"
+      },
+      {
+        "seed": 100822,
+        "instruction": "Hold the barcode scanner in one arm and the cardboard tea-box in the other, then scan the cardboard tea-box with the barcode scanner."
+      },
+      {
+        "seed": 100823,
+        "instruction": "Pick the tea-box with curved edges, grab the barcode scanner with yellow body, and use the scanner to scan the object."
+      },
+      {
+        "seed": 100824,
+        "instruction": "Take hold of the scanner with curved top and flat bottom using the right arm, grab the rectangular yellow tea box using the left arm, and scan it."
+      },
+      {
+        "seed": 100825,
+        "instruction": "Use the left arm to pick the scanner with ergonomic grip design, use the right arm to grab the golden tea box, and scan the golden tea box with the scanner with ergonomic grip design."
+      },
+      {
+        "seed": 100826,
+        "instruction": "Pick the scanner with gray and black design, grab the small tea box with gold patterns, and scan the small tea box with gold patterns with the scanner with gray and black design."
+      },
+      {
+        "seed": 100827,
+        "instruction": "Pick the scanner with curved handle, grab the beige-edged green tea box, and scan it with the scanner with curved handle."
+      },
+      {
+        "seed": 100828,
+        "instruction": "Pick the scanner with black rubber grip, then pick the bright red tea-box with logo, and use the scanner with black rubber grip to scan the bright red tea-box with logo"
+      },
+      {
+        "seed": 100829,
+        "instruction": "Pick the barcode scanner with yellow body, grab the cuboid tea box, and scan the cuboid tea box with the barcode scanner with yellow body."
+      },
+      {
+        "seed": 100830,
+        "instruction": "Grab the scanner body with blue trigger button, pick the black tea-box with gold logo, and perform a scan on the black tea-box with gold logo with the scanner body with blue trigger button."
+      },
+      {
+        "seed": 100831,
+        "instruction": "Pick the rubber-grip yellow barcode scanner, then pick the compact tea-box, and use the rubber-grip yellow barcode scanner to scan the compact tea-box"
+      },
+      {
+        "seed": 100832,
+        "instruction": "Take hold of the scanner with curved top and flat bottom using the right arm, grab the rectangular yellow tea box using the left arm, and scan it."
+      },
+      {
+        "seed": 100833,
+        "instruction": "Take the smooth plastic barcode scanner using the left arm, pick the rectangular yellow tea box using the right arm, and scan the rectangular yellow tea box with the smooth plastic barcode scanner."
+      },
+      {
+        "seed": 100834,
+        "instruction": "Grab the curved black scanner with trigger, pick the box for tea storage, and perform a scan on the box for tea storage with the curved black scanner with trigger."
+      },
+      {
+        "seed": 100835,
+        "instruction": "Grab the black scanner with gray textured tip, pick the green tea box, and perform a scan on the green tea box with the black scanner with gray textured tip."
+      },
+      {
+        "seed": 100836,
+        "instruction": "Pick the barcode scanner with yellow body, grab the red cardboard tea-box, and scan it with the barcode scanner with yellow body"
+      },
+      {
+        "seed": 100837,
+        "instruction": "the left arm holds the barcode scanner, the right arm grabs the light yellow tea box, and scans the light yellow tea box with the barcode scanner."
+      },
+      {
+        "seed": 100838,
+        "instruction": "Grab the barcode scanner in one hand, pick the rectangle tea-box in the other hand, then scan the rectangle tea-box with the barcode scanner"
+      },
+      {
+        "seed": 100839,
+        "instruction": "Take the scanner with scanning head in one hand, the tea-box with top lid in the other, and perform the scan."
+      },
+      {
+        "seed": 100840,
+        "instruction": "Hold the barcode scanner in one arm, pick up the small cuboid tea box with the other, then use the barcode scanner to scan the small cuboid tea box"
+      },
+      {
+        "seed": 100841,
+        "instruction": "Hold the scanner with gray accents and the golden tea box with different arms, then scan the golden tea box using the scanner with gray accents."
+      },
+      {
+        "seed": 100842,
+        "instruction": "Pick the handheld scanner, grab the small box with golden patterns, and scan the small box with golden patterns with the handheld scanner."
+      },
+      {
+        "seed": 100843,
+        "instruction": "Hold the scanner with gray and black design with the right arm and the cardboard tea box with logo with the left arm, then scan the cardboard tea box with logo using the scanner with gray and black design."
+      },
+      {
+        "seed": 100844,
+        "instruction": "the left arm holds the rubber-grip yellow barcode scanner, the right arm grabs the box for holding tea, and scans the box for holding tea with the rubber-grip yellow barcode scanner."
+      },
+      {
+        "seed": 100845,
+        "instruction": "Use one arm to grab the scanner with textured grip, the other to hold the light yellow tea box, and scan it."
+      },
+      {
+        "seed": 100846,
+        "instruction": "Hold the barcode scanner with curved handle, grab the tea-box with floral design, then scan the tea-box with floral design using the barcode scanner with curved handle."
+      },
+      {
+        "seed": 100847,
+        "instruction": "Use the left arm to pick the scanner with textured grip, the right arm to grab the light beige tea-box, and scan the light beige tea-box using the scanner with textured grip."
+      },
+      {
+        "seed": 100848,
+        "instruction": "Hold the scanner with smooth black body, pick the yellow tea box with smooth surface, and scan the yellow tea box with smooth surface using the scanner with smooth black body"
+      },
+      {
+        "seed": 100849,
+        "instruction": "Grab the scanner with trigger on handle, pick the tea box with printed leaves, and perform a scan on the tea box with printed leaves with the scanner with trigger on handle."
+      },
+      {
+        "seed": 100850,
+        "instruction": "First, grab the scanner with pointed bottom tip, then pick the small tea box with gold patterns, and scan the small tea box with gold patterns using the scanner with pointed bottom tip."
+      },
+      {
+        "seed": 100851,
+        "instruction": "Take the black scanner in one hand, the small rectangular tea box in the other, and perform the scan."
+      },
+      {
+        "seed": 100852,
+        "instruction": "Grab the barcode scanner, pick the bright red tea-box with logo, and perform a scan on the bright red tea-box with logo with the barcode scanner."
+      },
+      {
+        "seed": 100853,
+        "instruction": "the left arm grabs the barcode scanner with yellow body, the right arm picks the golden tea box, and the barcode scanner with yellow body scans the golden tea box."
+      },
+      {
+        "seed": 100854,
+        "instruction": "Pick up the small handheld scanner in one arm and the tea-box in the other, then scan the tea-box."
+      },
+      {
+        "seed": 100855,
+        "instruction": "Take the barcode scanner with yellow body, then grab the tea-box with top lid, and scan the tea-box with top lid with the barcode scanner with yellow body."
+      },
+      {
+        "seed": 100856,
+        "instruction": "Hold the scanner for reading barcodes with the right arm and the golden tea box with the left arm, then scan the golden tea box using the scanner for reading barcodes."
+      },
+      {
+        "seed": 100857,
+        "instruction": "Use one arm for the lightweight handheld barcode scanner and the other for the tea box with printed leaves, then scan the tea box with printed leaves with the lightweight handheld barcode scanner"
+      },
+      {
+        "seed": 100858,
+        "instruction": "Grab the handheld scanner using one arm, pick the tea box using the other arm, then scan the tea box with the handheld scanner"
+      },
+      {
+        "seed": 100859,
+        "instruction": "Using the right arm, pick the scanner with gray and black design, then use the left arm to grab the cardboard tea box with logo and scan it."
+      },
+      {
+        "seed": 100860,
+        "instruction": "Use one arm for the rubber-grip yellow barcode scanner and the other for the bright red tea-box with logo, then scan the bright red tea-box with logo with the rubber-grip yellow barcode scanner"
+      },
+      {
+        "seed": 100861,
+        "instruction": "Pick up the handheld scanner, hold the tea box with floral designs, and use the handheld scanner to scan the tea box with floral designs."
+      },
+      {
+        "seed": 100862,
+        "instruction": "Hold the barcode scanner and the rectangle tea-box with different arms, then scan the rectangle tea-box using the barcode scanner."
+      },
+      {
+        "seed": 100863,
+        "instruction": "Hold the gun-shaped scanner, pick the small rectangular tea-box, and scan the small rectangular tea-box using the gun-shaped scanner"
+      },
+      {
+        "seed": 100864,
+        "instruction": "Grab the L-shaped scanner for barcode reading, pick the compact golden tea box, and perform a scan on the compact golden tea box with the L-shaped scanner for barcode reading."
+      }
+    ]
+  }
+}

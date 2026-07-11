@@ -1,0 +1,390 @@
+{
+  "move_playingcard_away": {
+    "episodes": [
+      {
+        "seed": 101249,
+        "instruction": "Move the compact red playingcards pack away from its position on the table."
+      },
+      {
+        "seed": 101250,
+        "instruction": "Shift the playing cards box with gold text outward after grabbing it."
+      },
+      {
+        "seed": 101251,
+        "instruction": "Move the rectangular playingcards case outward from the table."
+      },
+      {
+        "seed": 101252,
+        "instruction": "Lift the rectangle-shaped cards box and relocate it off the table."
+      },
+      {
+        "seed": 101253,
+        "instruction": "Slide the black box with rectangular shape off the table outward."
+      },
+      {
+        "seed": 101254,
+        "instruction": "Pick up the box for playingcards and move it away."
+      },
+      {
+        "seed": 101255,
+        "instruction": "Grab the glossy rectangular playingcards box from the table and shift it outward."
+      },
+      {
+        "seed": 101256,
+        "instruction": "Use the right arm to pick up the blue carton for playingcards and move it."
+      },
+      {
+        "seed": 101257,
+        "instruction": "Take the red and yellow playingcards case and push it further away."
+      },
+      {
+        "seed": 101258,
+        "instruction": "Grab the compact box for playing cards with the right arm and move it outward."
+      },
+      {
+        "seed": 101259,
+        "instruction": "Pick up the small playingcards pack and shift it further outward."
+      },
+      {
+        "seed": 101260,
+        "instruction": "Take the black playing cards box and move it away from the table."
+      },
+      {
+        "seed": 101261,
+        "instruction": "Take the palm-sized box for playing cards and place it beyond the table."
+      },
+      {
+        "seed": 101262,
+        "instruction": "Use the left arm to pick the compact red playingcards pack and move it outward."
+      },
+      {
+        "seed": 101263,
+        "instruction": "Lift the red and yellow playingcards case with the left arm and move it outward."
+      },
+      {
+        "seed": 101264,
+        "instruction": "Pick the playingcards pack with blue top and move it outward from the table."
+      },
+      {
+        "seed": 101265,
+        "instruction": "Use the left arm to pick the smooth playingcards pack and move it outward."
+      },
+      {
+        "seed": 101266,
+        "instruction": "Grab the box with cards inside from the table and shift it outward."
+      },
+      {
+        "seed": 101267,
+        "instruction": "Grab the compact red playingcards pack from the table and shift it outward."
+      },
+      {
+        "seed": 101268,
+        "instruction": "Grab the smooth black cards container using the right arm and push it outward."
+      },
+      {
+        "seed": 101269,
+        "instruction": "Lift the rectangular box for card storage and push it off the table."
+      },
+      {
+        "seed": 101270,
+        "instruction": "Use the left arm to pick up the compact red playingcards pack and move it."
+      },
+      {
+        "seed": 101271,
+        "instruction": "Pick up the rectangular playingcards case and place it further away."
+      },
+      {
+        "seed": 101272,
+        "instruction": "Pick up the card box with golden designs and move it away."
+      },
+      {
+        "seed": 101273,
+        "instruction": "Shift the compact red playingcards pack outward by grabbing it with the left arm."
+      },
+      {
+        "seed": 101274,
+        "instruction": "Lift the palm-sized box for playing cards from the table and move it outward."
+      },
+      {
+        "seed": 101275,
+        "instruction": "Move the red and yellow playingcards case away from its position on the table."
+      },
+      {
+        "seed": 101276,
+        "instruction": "Lift the box with cards inside using the right arm and transfer it outward."
+      },
+      {
+        "seed": 101277,
+        "instruction": "Relocate the small black box with cards farther outward using the right arm."
+      },
+      {
+        "seed": 101278,
+        "instruction": "Shift the small playingcards pack outward after grabbing it."
+      },
+      {
+        "seed": 101279,
+        "instruction": "With the left arm, pick up the compact red playingcards pack and slide it outward."
+      },
+      {
+        "seed": 101280,
+        "instruction": "Grab the box of playingcards and shift it farther away from the table."
+      },
+      {
+        "seed": 101281,
+        "instruction": "Use the left arm to pick the box for playingcards and move it outward."
+      },
+      {
+        "seed": 101282,
+        "instruction": "Use the right arm to pick the box holding playing cards and shift it outward."
+      },
+      {
+        "seed": 101283,
+        "instruction": "Lift the hand-sized playingcards container and push it off the table."
+      },
+      {
+        "seed": 101284,
+        "instruction": "Move the box holding playing cards farther from the table using the right arm."
+      },
+      {
+        "seed": 101285,
+        "instruction": "Take the rectangle-shaped cards box and push it further away."
+      },
+      {
+        "seed": 101286,
+        "instruction": "Lift the glossy rectangular playingcards box and set it away from the table."
+      },
+      {
+        "seed": 101287,
+        "instruction": "Move the red playingcards box further outward after picking it up."
+      },
+      {
+        "seed": 101288,
+        "instruction": "Lift the smooth playingcards holder and relocate it off the table."
+      },
+      {
+        "seed": 101289,
+        "instruction": "Shift the box for playingcards outward by grabbing it with the left arm."
+      },
+      {
+        "seed": 101290,
+        "instruction": "Grab the rectangular box for card storage with the right arm and move it outward."
+      },
+      {
+        "seed": 101291,
+        "instruction": "Shift the playingcards storage box outward after grabbing it."
+      },
+      {
+        "seed": 101292,
+        "instruction": "Move the box holding playing cards further outward after picking it up."
+      },
+      {
+        "seed": 101293,
+        "instruction": "Pick the compact box for playing cards and slide it further outward."
+      },
+      {
+        "seed": 101294,
+        "instruction": "Lift the compact red playingcards pack and relocate it off the table."
+      },
+      {
+        "seed": 101295,
+        "instruction": "Move the small playingcards pack off the table outward."
+      },
+      {
+        "seed": 101296,
+        "instruction": "Use the right arm to pick up the playingcards box with white symbols and move it."
+      },
+      {
+        "seed": 101297,
+        "instruction": "Shift the compact red playingcards pack off the table to the side."
+      },
+      {
+        "seed": 101298,
+        "instruction": "Lift the black playing cards box with the right arm and move it outward."
+      },
+      {
+        "seed": 101299,
+        "instruction": "Shift the glossy rectangular playingcards box outward after grabbing it."
+      },
+      {
+        "seed": 101300,
+        "instruction": "Pick up the compact box for playing cards and place it further away."
+      },
+      {
+        "seed": 101301,
+        "instruction": "With the right arm, pick up the small black box with cards and slide it outward."
+      },
+      {
+        "seed": 101302,
+        "instruction": "Take the hand-sized playingcards container and place it further outward."
+      },
+      {
+        "seed": 101303,
+        "instruction": "Shift the box for playingcards outward after grabbing it."
+      },
+      {
+        "seed": 101304,
+        "instruction": "Using the right arm, lift the blue pack holding playingcards and move it outward."
+      },
+      {
+        "seed": 101305,
+        "instruction": "Take the rectangular playingcards case and place it further outward."
+      },
+      {
+        "seed": 101306,
+        "instruction": "Pick the black box with rectangular shape and move it outward from the table."
+      },
+      {
+        "seed": 101307,
+        "instruction": "Lift the playingcards box with white accents using the right arm and transfer it outward."
+      },
+      {
+        "seed": 101308,
+        "instruction": "Use the right arm to grab the smooth black cards container and move it aside."
+      },
+      {
+        "seed": 101309,
+        "instruction": "Grab the palm-sized box for playing cards and move it further outward."
+      },
+      {
+        "seed": 101310,
+        "instruction": "Pick up the compact red playingcards pack and place it further away."
+      },
+      {
+        "seed": 101311,
+        "instruction": "With the left arm, pick up the box for playingcards and slide it outward."
+      },
+      {
+        "seed": 101312,
+        "instruction": "Shift the playingcards box with white symbols off the table to the side."
+      },
+      {
+        "seed": 101313,
+        "instruction": "Shift the compact red playingcards pack outward after grabbing it."
+      },
+      {
+        "seed": 101314,
+        "instruction": "Take the box with cards inside and move it away from the table."
+      },
+      {
+        "seed": 101315,
+        "instruction": "Lift the playingcards box with white accents and place it farther away with the right arm."
+      },
+      {
+        "seed": 101316,
+        "instruction": "Take the small black box with cards and move it away from the table."
+      },
+      {
+        "seed": 101317,
+        "instruction": "Grab the playing cards box with gold text and set it beyond the table."
+      },
+      {
+        "seed": 101318,
+        "instruction": "Place the playingcards storage box away from the table outward."
+      },
+      {
+        "seed": 101319,
+        "instruction": "Shift the red and yellow playingcards case outward after grabbing it."
+      },
+      {
+        "seed": 101320,
+        "instruction": "Grab the blue and white playingcards packaging from the table and shift it outward."
+      },
+      {
+        "seed": 101321,
+        "instruction": "Lift the playingcards box with white accents and set it away from the table."
+      },
+      {
+        "seed": 101322,
+        "instruction": "Pick the palm-sized box for playing cards from the table and shift it outward."
+      },
+      {
+        "seed": 101323,
+        "instruction": "Grab the red and yellow playingcards case using the right arm and push it outward."
+      },
+      {
+        "seed": 101324,
+        "instruction": "Grab the playing cards box with gold text and set it beyond the table."
+      },
+      {
+        "seed": 101325,
+        "instruction": "Pick up the black box with rectangular shape and move it farther outward."
+      },
+      {
+        "seed": 101326,
+        "instruction": "Pick up the smooth playingcards pack and move it farther outward."
+      },
+      {
+        "seed": 101327,
+        "instruction": "Take the hand-sized playingcards container and push it further away."
+      },
+      {
+        "seed": 101328,
+        "instruction": "Use the right arm to pick up the palm-sized playingcards carton and push it outward."
+      },
+      {
+        "seed": 101329,
+        "instruction": "Pick up the hand-sized playingcards container and place it further away."
+      },
+      {
+        "seed": 101330,
+        "instruction": "Use the right arm to pick up the black playing cards box and push it outward."
+      },
+      {
+        "seed": 101331,
+        "instruction": "Grab the smooth playingcards pack and take it away from the table."
+      },
+      {
+        "seed": 101332,
+        "instruction": "Use the right arm to grab the black box with rectangular shape and move it aside."
+      },
+      {
+        "seed": 101333,
+        "instruction": "Grab the compact box for playing cards using the right arm and push it outward."
+      },
+      {
+        "seed": 101334,
+        "instruction": "Grab the compact red playingcards pack and move it further outward."
+      },
+      {
+        "seed": 101335,
+        "instruction": "Grab the rectangular playingcards case using the left arm and push it outward."
+      },
+      {
+        "seed": 101336,
+        "instruction": "Relocate the playingcards box with white symbols farther outward using the right arm."
+      },
+      {
+        "seed": 101337,
+        "instruction": "Use the left arm to pick the red and yellow playingcards case and move it outward."
+      },
+      {
+        "seed": 101338,
+        "instruction": "Grab the black box with rectangular shape and move it further outward."
+      },
+      {
+        "seed": 101339,
+        "instruction": "Using the right arm, lift the playingcards box with white accents and move it outward."
+      },
+      {
+        "seed": 101340,
+        "instruction": "Grab the rectangle-shaped cards box from the table and shift it outward."
+      },
+      {
+        "seed": 101341,
+        "instruction": "Shift the playing cards box with gold text off the table to the side."
+      },
+      {
+        "seed": 101342,
+        "instruction": "Lift the playingcards storage box and slide it off the table."
+      },
+      {
+        "seed": 101343,
+        "instruction": "Grab the small playingcards pack and set it beyond the table."
+      },
+      {
+        "seed": 101344,
+        "instruction": "Pick up the blue pack holding playingcards and place it further away."
+      }
+    ]
+  }
+}

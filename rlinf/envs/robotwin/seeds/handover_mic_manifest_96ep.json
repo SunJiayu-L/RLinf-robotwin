@@ -1,0 +1,390 @@
+{
+  "handover_mic": {
+    "episodes": [
+      {
+        "seed": 100100000,
+        "instruction": "Pick up the white bottom microphone with textured tip and move it to the opposite side"
+      },
+      {
+        "seed": 100100002,
+        "instruction": "Pick the microphone with dark blue padding from the surface and switch hands."
+      },
+      {
+        "seed": 100100003,
+        "instruction": "Grab the microphone with cylindrical handle and smoothly give it to the other arm."
+      },
+      {
+        "seed": 100100004,
+        "instruction": "Grip the microphone for voice recording and pass it to the other side"
+      },
+      {
+        "seed": 100100006,
+        "instruction": "Grasp the metal head microphone and pass it across."
+      },
+      {
+        "seed": 100100008,
+        "instruction": "Take the gray and dark blue microphone, pass it, and release it to complete the task."
+      },
+      {
+        "seed": 100100009,
+        "instruction": "Lift the microphone with round foam head and hand it over to the other arm."
+      },
+      {
+        "seed": 100100011,
+        "instruction": "Hold the microphone with slider switch and shift it to the other arm."
+      },
+      {
+        "seed": 100100014,
+        "instruction": "Take the sound microphone with teal body and pass it to another hand"
+      },
+      {
+        "seed": 100100017,
+        "instruction": "Grasp the dark blue microphone and switch it to another hand."
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Hold the white microphone handle black accents securely and shift it to another arm."
+      },
+      {
+        "seed": 100100019,
+        "instruction": "Pick up the smooth plastic microphone handle and transfer it to the opposite side."
+      },
+      {
+        "seed": 100100021,
+        "instruction": "Grab the microphone for voice recording and give it to the opposite arm."
+      },
+      {
+        "seed": 100100022,
+        "instruction": "Secure the microphone for recording sound from the table and transfer it."
+      },
+      {
+        "seed": 100100024,
+        "instruction": "Use one hand to grab the audio microphone with soft covering and pass it."
+      },
+      {
+        "seed": 100100026,
+        "instruction": "Take the long microphone with smooth teal grip using the left arm and transfer it to the right arm."
+      },
+      {
+        "seed": 100100027,
+        "instruction": "Lift the compact teal and white microphone and deliver it to the other side."
+      },
+      {
+        "seed": 100100028,
+        "instruction": "Pick the microphone covered with foam tip and transfer it to the other arm."
+      },
+      {
+        "seed": 100100029,
+        "instruction": "Use one hand to grab the microphone for voice recording and pass it."
+      },
+      {
+        "seed": 100100031,
+        "instruction": "Grasp the handheld microphone, transfer it, then let go of it smoothly."
+      },
+      {
+        "seed": 100100034,
+        "instruction": "Take the microphone with rounded mesh head and move it to the other hand."
+      },
+      {
+        "seed": 100100035,
+        "instruction": "Use the right arm to hold the audio microphone with soft covering, then give it to the left arm."
+      },
+      {
+        "seed": 100100038,
+        "instruction": "Use the left arm to grab the microphone with round foam head and transfer it to the right arm."
+      },
+      {
+        "seed": 100100039,
+        "instruction": "Hold the compact teal and white microphone and pass it to the other hand."
+      },
+      {
+        "seed": 100100043,
+        "instruction": "Take the rounded white tip microphone, pass it, and release it to complete the task."
+      },
+      {
+        "seed": 100100044,
+        "instruction": "Grasp the small audio microphone and shift it to the opposite hand."
+      },
+      {
+        "seed": 100100045,
+        "instruction": "Hold the microphone with black tip and white body and pass it to the other hand."
+      },
+      {
+        "seed": 100100046,
+        "instruction": "Pick up the microphone with rounded mesh head and move it to the opposite side"
+      },
+      {
+        "seed": 100100047,
+        "instruction": "Lift the smooth plastic microphone handle and pass it across."
+      },
+      {
+        "seed": 100100048,
+        "instruction": "Grab the dark blue microphone and give it to the opposite arm."
+      },
+      {
+        "seed": 100100200,
+        "instruction": "Use the left arm to hold the dark blue microphone, then give it to the right arm."
+      },
+      {
+        "seed": 100100201,
+        "instruction": "Grasp the white bottom microphone with textured tip, then give it to the other arm."
+      },
+      {
+        "seed": 100100202,
+        "instruction": "Hold the rounded white tip microphone and pass it to the other hand."
+      },
+      {
+        "seed": 100100203,
+        "instruction": "Lift the microphone with dark blue padding and hand it to the other side easily."
+      },
+      {
+        "seed": 100100208,
+        "instruction": "Take the black and white microphone and move it to another hand."
+      },
+      {
+        "seed": 100100210,
+        "instruction": "Secure the microphone with rounded mesh head from the table and transfer it."
+      },
+      {
+        "seed": 100100211,
+        "instruction": "Secure the metal head microphone from the table and transfer it."
+      },
+      {
+        "seed": 100100213,
+        "instruction": "Grab the medium microphone with two-tone color and transfer it to another hand"
+      },
+      {
+        "seed": 100100214,
+        "instruction": "Hold the audio microphone with soft covering with one hand and transfer it"
+      },
+      {
+        "seed": 100100215,
+        "instruction": "Grasp the white bottom microphone with textured tip and switch it to another hand."
+      },
+      {
+        "seed": 100100216,
+        "instruction": "Grab the teal microphone and give it to the opposite arm."
+      },
+      {
+        "seed": 100100219,
+        "instruction": "Use the left arm to grab the gray stem microphone with foam top and transfer it to the right arm."
+      },
+      {
+        "seed": 100100221,
+        "instruction": "Lift the mesh-patterned microphone head and hand it over to the other arm."
+      },
+      {
+        "seed": 100100222,
+        "instruction": "Use one arm to pick up the microphone for voice recording and give it to the other."
+      },
+      {
+        "seed": 100100223,
+        "instruction": "Grab the metal head microphone and smoothly give it to the other arm."
+      },
+      {
+        "seed": 100100225,
+        "instruction": "Lift the microphone with round foam head and pass it across."
+      },
+      {
+        "seed": 100100227,
+        "instruction": "Pick the microphone with round foam head and transfer it to the other arm."
+      },
+      {
+        "seed": 100100229,
+        "instruction": "Take the handheld teal microphone and move it to the other hand."
+      },
+      {
+        "seed": 100100232,
+        "instruction": "Use one arm to pick up the long microphone with smooth teal grip and give it to the other."
+      },
+      {
+        "seed": 100100233,
+        "instruction": "Grasp the medium microphone with two-tone color, then give it to the other arm."
+      },
+      {
+        "seed": 100100234,
+        "instruction": "Seize the microphone with textured metal head and offer it to the other arm"
+      },
+      {
+        "seed": 100100235,
+        "instruction": "Secure the microphone with black tip and white body from the table and transfer it."
+      },
+      {
+        "seed": 100100236,
+        "instruction": "Grab the handheld microphone and transfer it to another hand"
+      },
+      {
+        "seed": 100100238,
+        "instruction": "Take the round head microphone and move it to the other hand."
+      },
+      {
+        "seed": 100100240,
+        "instruction": "Hold the microphone with smooth gray stem securely and shift it to another arm."
+      },
+      {
+        "seed": 100100243,
+        "instruction": "Seize the rounded white tip microphone and offer it to the other arm"
+      },
+      {
+        "seed": 100100246,
+        "instruction": "Take the compact teal and white microphone and pass it to another hand"
+      },
+      {
+        "seed": 100100249,
+        "instruction": "Hold the microphone with dark blue padding with the left arm and give it to the right arm."
+      },
+      {
+        "seed": 100100251,
+        "instruction": "Pick up the microphone for voice recording and transfer it to the opposite side."
+      },
+      {
+        "seed": 100100254,
+        "instruction": "Pick the microphone with black tip and white body from the surface and switch hands."
+      },
+      {
+        "seed": 100100400,
+        "instruction": "Lift the microphone with rounded mesh head and hand it over to the other side."
+      },
+      {
+        "seed": 100100403,
+        "instruction": "Hold the microphone with smooth gray stem with one hand and transfer it"
+      },
+      {
+        "seed": 100100404,
+        "instruction": "Secure the gray stem microphone with foam top using one arm and transfer it."
+      },
+      {
+        "seed": 100100406,
+        "instruction": "Lift the handheld teal microphone using the left arm and pass it to the right arm."
+      },
+      {
+        "seed": 100100407,
+        "instruction": "Lift the microphone with slider switch and hand it over to the other side."
+      },
+      {
+        "seed": 100100408,
+        "instruction": "Use the left arm to hold the small audio microphone, then give it to the right arm."
+      },
+      {
+        "seed": 100100409,
+        "instruction": "Grasp the handheld microphone and pass it across."
+      },
+      {
+        "seed": 100100411,
+        "instruction": "Grab the white microphone handle black accents using the left arm and pass it over to the right arm."
+      },
+      {
+        "seed": 100100413,
+        "instruction": "Grab the microphone with cylindrical handle and give it to the opposite arm."
+      },
+      {
+        "seed": 100100420,
+        "instruction": "Grasp the gray and dark blue microphone, transfer it, then let go of it smoothly."
+      },
+      {
+        "seed": 100100421,
+        "instruction": "Hold the audio microphone with soft covering securely and shift it to another arm."
+      },
+      {
+        "seed": 100100423,
+        "instruction": "Pick the textured white microphone head and transfer it to the other arm."
+      },
+      {
+        "seed": 100100424,
+        "instruction": "Use one hand to grab the handheld teal microphone and pass it."
+      },
+      {
+        "seed": 100100427,
+        "instruction": "Use one hand to grab the medium microphone with two-tone color and pass it."
+      },
+      {
+        "seed": 100100429,
+        "instruction": "Take the handheld microphone and pass it to another hand"
+      },
+      {
+        "seed": 100100430,
+        "instruction": "Secure the microphone with textured metal head from the table and transfer it."
+      },
+      {
+        "seed": 100100432,
+        "instruction": "Pick up the microphone with textured metal head and hand it to the other side."
+      },
+      {
+        "seed": 100100434,
+        "instruction": "Lift the round head microphone using the right arm and pass it to the left arm."
+      },
+      {
+        "seed": 100100435,
+        "instruction": "Secure the microphone covered with foam tip using one arm and transfer it."
+      },
+      {
+        "seed": 100100436,
+        "instruction": "Use one arm to pick up the white and teal sound microphone and give it to the other."
+      },
+      {
+        "seed": 100100437,
+        "instruction": "Grab the compact teal and white microphone and give it to the opposite arm."
+      },
+      {
+        "seed": 100100438,
+        "instruction": "Hold the microphone with smooth gray stem with the left arm and give it to the right arm."
+      },
+      {
+        "seed": 100100439,
+        "instruction": "Lift the mesh-patterned microphone head and pass it across."
+      },
+      {
+        "seed": 100100441,
+        "instruction": "Lift the smooth plastic microphone handle and hand it to the other side easily."
+      },
+      {
+        "seed": 100100442,
+        "instruction": "Hold the mesh-patterned microphone head with the left arm and give it to the right arm."
+      },
+      {
+        "seed": 100100443,
+        "instruction": "Grab the gray stem microphone with foam top and transfer it to another hand"
+      },
+      {
+        "seed": 100100445,
+        "instruction": "Grasp the gray and dark blue microphone and switch it to another hand."
+      },
+      {
+        "seed": 100100448,
+        "instruction": "Use one hand to grab the long microphone with smooth teal grip and pass it."
+      },
+      {
+        "seed": 100100449,
+        "instruction": "Secure the microphone with white rounded head using one arm and transfer it."
+      },
+      {
+        "seed": 100100453,
+        "instruction": "Grasp the dark blue microphone and pass it across."
+      },
+      {
+        "seed": 100100600,
+        "instruction": "Lift the microphone for voice recording and deliver it to the other side."
+      },
+      {
+        "seed": 100100601,
+        "instruction": "Grasp the microphone with cylindrical handle, transfer it, then let go of it smoothly."
+      },
+      {
+        "seed": 100100602,
+        "instruction": "Pick the white microphone handle black accents and transfer it to the other arm."
+      },
+      {
+        "seed": 100100608,
+        "instruction": "Hold the medium microphone with two-tone color firmly and pass it to the other arm."
+      },
+      {
+        "seed": 100100609,
+        "instruction": "Hold the microphone covered with foam tip and shift it to the other arm."
+      },
+      {
+        "seed": 100100611,
+        "instruction": "Lift the microphone with white rounded head and deliver it to the other side."
+      }
+    ]
+  }
+}

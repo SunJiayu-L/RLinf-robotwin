@@ -1,0 +1,390 @@
+{
+  "put_bottles_dustbin": {
+    "episodes": [
+      {
+        "seed": 100000,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100002,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100004,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100005,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100006,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100007,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100008,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100009,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100010,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100011,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100013,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100016,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100017,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100020,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100027,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100028,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100029,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100031,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100032,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100033,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100034,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100035,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100036,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100038,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100039,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100040,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100042,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100044,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100046,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100049,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100050,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100051,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100052,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100054,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100055,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100056,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100057,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100058,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100060,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100061,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100062,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100063,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100067,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100068,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100069,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100070,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100071,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100072,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100074,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100075,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100079,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100080,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100081,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100082,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100083,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100085,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100087,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100090,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100092,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100093,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100094,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100095,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100096,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100098,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100099,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100101,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100104,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100105,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100107,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100108,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100110,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100111,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100112,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100113,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100115,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100116,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100117,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100118,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100120,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100121,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100124,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100127,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100128,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100129,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100130,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100132,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100133,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100134,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100137,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100143,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100145,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100146,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100147,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100149,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100150,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      },
+      {
+        "seed": 100151,
+        "instruction": "Drop the bottle with small ridged green cap, the cylindrical bottle, and the red and black beverage bottle into the medium black garbage container, handling them one at a time."
+      }
+    ]
+  }
+}

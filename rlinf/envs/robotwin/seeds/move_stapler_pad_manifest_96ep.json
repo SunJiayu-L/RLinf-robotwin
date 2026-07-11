@@ -1,0 +1,390 @@
+{
+  "move_stapler_pad": {
+    "episodes": [
+      {
+        "seed": 100100001,
+        "instruction": "Set the stapler with curved blue top down on the Yellow mat"
+      },
+      {
+        "seed": 100100005,
+        "instruction": "With the left arm, position the manual stapler with black base on the Blue mat"
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Using the left arm, set the plastic blue stapler with metal parts on the Yellow colored mat"
+      },
+      {
+        "seed": 100100033,
+        "instruction": "Grab the manual stapler with black base and stick it onto Red mat"
+      },
+      {
+        "seed": 100100045,
+        "instruction": "the right arm moves the stapler with white metallic components to the Magenta mat."
+      },
+      {
+        "seed": 100100047,
+        "instruction": "the right arm places the stapler with rounded edges on the Yellow mat."
+      },
+      {
+        "seed": 100100048,
+        "instruction": "the right arm grabs the blue stapler and sets it on Black mat."
+      },
+      {
+        "seed": 100100052,
+        "instruction": "the left arm moves the blue plastic stapler with silver metal to the Gray mat."
+      },
+      {
+        "seed": 100100056,
+        "instruction": "Slide the blue stapler with shiny silver parts to the Yellow colored mat."
+      },
+      {
+        "seed": 100100071,
+        "instruction": "Use the left arm and place the desk stapler with red body on Blue mat."
+      },
+      {
+        "seed": 100100083,
+        "instruction": "Pick up the blue stapler with curved design and place it on Yellow mat"
+      },
+      {
+        "seed": 100100084,
+        "instruction": "Set the small handheld stapler down on the Red mat"
+      },
+      {
+        "seed": 100100103,
+        "instruction": "Carry the blue stapler with black handle area to the Magenta colored mat"
+      },
+      {
+        "seed": 100100104,
+        "instruction": "Pick the small office stapler up and position it on Yellow mat"
+      },
+      {
+        "seed": 100100105,
+        "instruction": "Stick the compact stapler with smooth surface onto the Black colored mat."
+      },
+      {
+        "seed": 100100107,
+        "instruction": "Relocate the curved blue and silver stapler to the Gray mat."
+      },
+      {
+        "seed": 100100116,
+        "instruction": "Grab the stapler with curved blue top and drop it on Yellow mat."
+      },
+      {
+        "seed": 100100119,
+        "instruction": "Put the red plastic stapler with smooth top on the Blue mat"
+      },
+      {
+        "seed": 100100120,
+        "instruction": "Position the blue stapler on the Yellow mat."
+      },
+      {
+        "seed": 100100128,
+        "instruction": "Move the red plastic stapler with smooth top to the Red mat with the right arm"
+      },
+      {
+        "seed": 100100133,
+        "instruction": "Lift the metal and plastic stapler to the Magenta mat using the right arm"
+      },
+      {
+        "seed": 100100146,
+        "instruction": "Grab the handheld stapler, place it on the Yellow mat"
+      },
+      {
+        "seed": 100100149,
+        "instruction": "Stick the blue stapler with shiny silver parts on the Black mat."
+      },
+      {
+        "seed": 100100150,
+        "instruction": "Lift the curved blue and silver stapler and drop it onto Gray mat"
+      },
+      {
+        "seed": 100100152,
+        "instruction": "With the right arm, position the blue stapler with ergonomic curve on the Yellow mat"
+      },
+      {
+        "seed": 100100155,
+        "instruction": "Set the stapler with red top onto the Blue colored mat."
+      },
+      {
+        "seed": 100100159,
+        "instruction": "Place the stapler with black top section on the Yellow mat using the left arm"
+      },
+      {
+        "seed": 100100169,
+        "instruction": "Carry the office stapler with plastic and metal parts and drop it onto the Red mat"
+      },
+      {
+        "seed": 100100185,
+        "instruction": "the right arm grabs the stapler with black top section and sets it on Magenta mat."
+      },
+      {
+        "seed": 100100190,
+        "instruction": "Use the right arm to place the paper stapler with silver tray onto the Yellow mat"
+      },
+      {
+        "seed": 100100194,
+        "instruction": "the right arm moves the blue stapler with shiny silver parts to the Black mat."
+      },
+      {
+        "seed": 100100196,
+        "instruction": "Pick up the stapler with curved blue top with the left arm and set it on Gray"
+      },
+      {
+        "seed": 100100211,
+        "instruction": "Relocate the manual blue stapler to the Yellow mat."
+      },
+      {
+        "seed": 100100215,
+        "instruction": "Place the office stapler with plastic and metal parts onto the Blue colored mat."
+      },
+      {
+        "seed": 100100219,
+        "instruction": "Grab the blue stapler with black handle area using the left arm and set it on Yellow mat."
+      },
+      {
+        "seed": 100100223,
+        "instruction": "Relocate the stapler with red top to the Red colored mat"
+      },
+      {
+        "seed": 100100225,
+        "instruction": "the right arm places the stapler for stapling paper on the Magenta mat."
+      },
+      {
+        "seed": 100100226,
+        "instruction": "Move the stapler with orange button to the Yellow mat with the right arm"
+      },
+      {
+        "seed": 100100227,
+        "instruction": "Grab the metallic stapler with blue cover and drop it on Black mat."
+      },
+      {
+        "seed": 100100236,
+        "instruction": "Pick the blue stapler with the left arm and place it on Gray mat"
+      },
+      {
+        "seed": 100100238,
+        "instruction": "Slide the manual blue stapler to the Yellow colored mat."
+      },
+      {
+        "seed": 100100239,
+        "instruction": "the left arm moves the office stapler with plastic and metal parts to the Blue mat."
+      },
+      {
+        "seed": 100100240,
+        "instruction": "Using the left arm, set the stapler with black top section on the Yellow colored mat"
+      },
+      {
+        "seed": 100100246,
+        "instruction": "Pick the stapler for fastening papers up and position it on Red mat"
+      },
+      {
+        "seed": 100100254,
+        "instruction": "Lift the stapler with white metallic components to the Magenta mat using the right arm"
+      },
+      {
+        "seed": 100100258,
+        "instruction": "the right arm places the smooth plastic stapler on the Yellow mat."
+      },
+      {
+        "seed": 100100261,
+        "instruction": "Grab the blue plastic stapler with silver metal with the right arm and drop it on Black mat."
+      },
+      {
+        "seed": 100100262,
+        "instruction": "With the left arm, move the blue stapler to the Gray mat"
+      },
+      {
+        "seed": 100100264,
+        "instruction": "Pick the stapler with curved blue top up and position it on Yellow mat"
+      },
+      {
+        "seed": 100100269,
+        "instruction": "Position the stapler with red top on the Blue mat."
+      },
+      {
+        "seed": 100100277,
+        "instruction": "Move the handheld stapler with the left arm to the Yellow mat"
+      },
+      {
+        "seed": 100100278,
+        "instruction": "Transfer the stapler with metallic staple slot to the Red mat"
+      },
+      {
+        "seed": 100100289,
+        "instruction": "Transfer the stapler for stapling paper to the Magenta colored mat."
+      },
+      {
+        "seed": 100100318,
+        "instruction": "Stick the paper stapler with silver tray on the Yellow mat."
+      },
+      {
+        "seed": 100100320,
+        "instruction": "Move the manual blue stapler to the Black mat."
+      },
+      {
+        "seed": 100100333,
+        "instruction": "Place the compact stapler with smooth surface onto the Gray colored mat."
+      },
+      {
+        "seed": 100100335,
+        "instruction": "Use the right arm to place the stapler with smooth blue finish onto the Yellow mat"
+      },
+      {
+        "seed": 100100339,
+        "instruction": "Grab the compact office stapler using the left arm and set it on Blue mat."
+      },
+      {
+        "seed": 100100345,
+        "instruction": "Transfer the stapler with white metallic components to the Yellow mat"
+      },
+      {
+        "seed": 100100346,
+        "instruction": "Grab the manual stapler with black base with the right arm and drop it on Red mat."
+      },
+      {
+        "seed": 100100351,
+        "instruction": "With the right arm, move the blue stapler to the Magenta mat"
+      },
+      {
+        "seed": 100100368,
+        "instruction": "Transfer the modern design stapler to the Yellow mat"
+      },
+      {
+        "seed": 100100377,
+        "instruction": "Transfer the manual blue stapler to the Black mat"
+      },
+      {
+        "seed": 100100380,
+        "instruction": "Move the blue plastic stapler with silver metal with the left arm to the Gray mat"
+      },
+      {
+        "seed": 100100381,
+        "instruction": "With the right arm, move the curved blue and silver stapler to the Yellow mat"
+      },
+      {
+        "seed": 100100383,
+        "instruction": "Drop the stapler with red top onto the Blue mat."
+      },
+      {
+        "seed": 100100385,
+        "instruction": "Stick the plastic blue stapler with metal parts on the Yellow mat."
+      },
+      {
+        "seed": 100100386,
+        "instruction": "Move the red stapler with black base to the Red mat with the right arm"
+      },
+      {
+        "seed": 100100392,
+        "instruction": "Drop the plastic blue stapler with metal parts onto the Magenta mat."
+      },
+      {
+        "seed": 100100400,
+        "instruction": "Transfer the stapler for fastening papers to the Yellow mat"
+      },
+      {
+        "seed": 100100408,
+        "instruction": "Grab the stapler with curved blue top, place it on the Black mat"
+      },
+      {
+        "seed": 100100410,
+        "instruction": "Drop the metallic stapler with blue cover onto the Gray mat."
+      },
+      {
+        "seed": 100100417,
+        "instruction": "Stick the blue stapler with shiny silver parts onto the Yellow colored mat."
+      },
+      {
+        "seed": 100100424,
+        "instruction": "Pick the stapler with red top using the left arm and move it to Blue mat."
+      },
+      {
+        "seed": 100100434,
+        "instruction": "Put the small stapler on the Yellow mat"
+      },
+      {
+        "seed": 100100435,
+        "instruction": "Drop the stapler for fastening papers onto the Red mat."
+      },
+      {
+        "seed": 100100436,
+        "instruction": "Grab the stapler for stapling paper and stick it onto Magenta mat"
+      },
+      {
+        "seed": 100100439,
+        "instruction": "the right arm places the plastic and metal stapler on the Yellow mat."
+      },
+      {
+        "seed": 100100444,
+        "instruction": "the right arm moves the stapler with smooth blue finish to the Black mat."
+      },
+      {
+        "seed": 100100445,
+        "instruction": "Place the curved blue and silver stapler onto the Gray colored mat."
+      },
+      {
+        "seed": 100100446,
+        "instruction": "the right arm moves the blue stapler with shiny silver parts to the Yellow mat."
+      },
+      {
+        "seed": 100100449,
+        "instruction": "Lift the manual stapler with black base and drop it onto Blue mat"
+      },
+      {
+        "seed": 100100453,
+        "instruction": "Transfer the blue stapler to the Yellow colored mat."
+      },
+      {
+        "seed": 100100455,
+        "instruction": "Grab the red stapler with the right arm and drop it on Red mat."
+      },
+      {
+        "seed": 100100463,
+        "instruction": "Move the handheld stapler to the Magenta mat."
+      },
+      {
+        "seed": 100100467,
+        "instruction": "Move the smooth plastic stapler to the Yellow mat."
+      },
+      {
+        "seed": 100100481,
+        "instruction": "Use the right arm to grab the curved blue and silver stapler and place it on Black mat"
+      },
+      {
+        "seed": 100100493,
+        "instruction": "Place the stapler with smooth blue finish on the Gray mat using the left arm"
+      },
+      {
+        "seed": 100100505,
+        "instruction": "Grab the curved blue and silver stapler and drop it on Yellow mat."
+      },
+      {
+        "seed": 100100508,
+        "instruction": "Place the red stapler onto the Blue colored mat."
+      },
+      {
+        "seed": 100100510,
+        "instruction": "Grab the blue stapler with curved design using the left arm and set it on Yellow mat."
+      },
+      {
+        "seed": 100100529,
+        "instruction": "Grab the office stapler with plastic and metal parts using the right arm and set it on Red mat."
+      },
+      {
+        "seed": 100100531,
+        "instruction": "Move the stapler with white metallic components to the Magenta mat."
+      },
+      {
+        "seed": 100100535,
+        "instruction": "Shift the white stapler with rounded design manually to the Yellow mat"
+      },
+      {
+        "seed": 100100552,
+        "instruction": "Set the metallic stapler with blue cover down on the Black mat"
+      },
+      {
+        "seed": 100100554,
+        "instruction": "Drop the handheld blue and silver stapler onto the Gray mat."
+      }
+    ]
+  }
+}

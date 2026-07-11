@@ -1,0 +1,390 @@
+{
+  "shake_bottle": {
+    "episodes": [
+      {
+        "seed": 100100002,
+        "instruction": "Grab the bottle with green and white labels and move it to shake."
+      },
+      {
+        "seed": 100100003,
+        "instruction": "Hold the rounded bottle with printed details and shake it properly."
+      },
+      {
+        "seed": 100100004,
+        "instruction": "Lift the smooth plastic bottle with the right arm and give it a shake."
+      },
+      {
+        "seed": 100100006,
+        "instruction": "Hold the plastic bottle, shake it briefly."
+      },
+      {
+        "seed": 100100010,
+        "instruction": "Hold the smooth surface bottle with gray shade steady, then shake it."
+      },
+      {
+        "seed": 100100011,
+        "instruction": "Grab the medium cylinder-shaped bottle using the left arm, then shake."
+      },
+      {
+        "seed": 100100012,
+        "instruction": "Shake the orange bottle using the right arm after grabbing."
+      },
+      {
+        "seed": 100100015,
+        "instruction": "Grab the rectangular brown body with white top and give it a shake."
+      },
+      {
+        "seed": 100100017,
+        "instruction": "Grab the yellow bottle firmly, shake it, and put it down."
+      },
+      {
+        "seed": 100100022,
+        "instruction": "Grab the bottle with dark brown color and shake it steadily."
+      },
+      {
+        "seed": 100100025,
+        "instruction": "Grab and shake the smooth plastic bottle using the right arm."
+      },
+      {
+        "seed": 100100026,
+        "instruction": "Pick the yellow plastic bottle with white top, shake it with the left arm."
+      },
+      {
+        "seed": 100100031,
+        "instruction": "Grab the milk-bottle shape design carefully and shake."
+      },
+      {
+        "seed": 100100032,
+        "instruction": "Secure the smooth cylindrical bottle and perform a shake."
+      },
+      {
+        "seed": 100100035,
+        "instruction": "Shake the plastic bottle with sealed yellow cap thoroughly after grabbing it."
+      },
+      {
+        "seed": 100100037,
+        "instruction": "Use the right arm to lift and shake the rectangular-shaped bottle with round cap."
+      },
+      {
+        "seed": 100100038,
+        "instruction": "Shake the medium rectangular yellow bottle after grabbing it."
+      },
+      {
+        "seed": 100100039,
+        "instruction": "Grab the cylindrical bottle with narrow neck and give it a shake."
+      },
+      {
+        "seed": 100100040,
+        "instruction": "Secure the plastic bottle with curved sides, shake it, and place it down."
+      },
+      {
+        "seed": 100100041,
+        "instruction": "Shake the plastic bottle after holding it firmly."
+      },
+      {
+        "seed": 100100042,
+        "instruction": "Pick the hand-sized bottle with screw cap, shake it with the left arm."
+      },
+      {
+        "seed": 100100043,
+        "instruction": "Lift up the medium-sized plastic bottle using the left arm, then shake."
+      },
+      {
+        "seed": 100100044,
+        "instruction": "Grab and shake the bottle for liquids using the right arm."
+      },
+      {
+        "seed": 100100046,
+        "instruction": "Use the right arm to hold the smooth brown bottle with green label and shake it."
+      },
+      {
+        "seed": 100100047,
+        "instruction": "Lift the yellow bottle with a green design and shake it thoroughly."
+      },
+      {
+        "seed": 100100048,
+        "instruction": "Utilize the right arm to hold the smooth brown bottle and shake it."
+      },
+      {
+        "seed": 100100049,
+        "instruction": "Shake the handheld curvy bottle using the right arm after grabbing."
+      },
+      {
+        "seed": 100100053,
+        "instruction": "Utilize the left arm to hold the plastic bottle and shake it."
+      },
+      {
+        "seed": 100100054,
+        "instruction": "Lift up the hand-sized bottle with screw cap using the left arm, then shake."
+      },
+      {
+        "seed": 100100055,
+        "instruction": "Use the left arm to hold the gray bottle with slight shine and shake it."
+      },
+      {
+        "seed": 100100056,
+        "instruction": "Hold the plastic bottle with sealed yellow cap steady, then shake it."
+      },
+      {
+        "seed": 100100058,
+        "instruction": "Grab the rectangular-shaped bottle with round cap and give it a shake."
+      },
+      {
+        "seed": 100100060,
+        "instruction": "Use the left arm to pick and shake the bottle with a smooth plastic body."
+      },
+      {
+        "seed": 100100061,
+        "instruction": "Using the right arm, shake the handheld brown bottle with white lid and then place it back."
+      },
+      {
+        "seed": 100100063,
+        "instruction": "Pick up the yellow bottle with blue label and shake it."
+      },
+      {
+        "seed": 100100066,
+        "instruction": "Lift the yellow bottle and shake it gently."
+      },
+      {
+        "seed": 100100067,
+        "instruction": "Grab the bottle shaped like small cylinder using the left arm, then shake."
+      },
+      {
+        "seed": 100100068,
+        "instruction": "Grab the bottle shaped like small cylinder and give it a shake."
+      },
+      {
+        "seed": 100100073,
+        "instruction": "Grab and shake the medium-sized orange bottle using the right arm."
+      },
+      {
+        "seed": 100100075,
+        "instruction": "Grasp the brown bottle with the right arm and shake it."
+      },
+      {
+        "seed": 100100076,
+        "instruction": "With the left arm, pick the bottle with green label and shake properly."
+      },
+      {
+        "seed": 100100078,
+        "instruction": "Use the right arm to hold the bottle with white cap and shake it."
+      },
+      {
+        "seed": 100100083,
+        "instruction": "Grab the yellow bottle with dark label using the right arm, then shake."
+      },
+      {
+        "seed": 100100085,
+        "instruction": "Grab the bottle with green label and shake it steadily."
+      },
+      {
+        "seed": 100100086,
+        "instruction": "Use the left arm to grab the smooth cylindrical bottle and shake properly."
+      },
+      {
+        "seed": 100100087,
+        "instruction": "Pick the medium cylinder-shaped bottle up using the left arm and shake it."
+      },
+      {
+        "seed": 100100088,
+        "instruction": "Grab the bottle with narrow neck and move it to shake."
+      },
+      {
+        "seed": 100100089,
+        "instruction": "Catch the rectangular-shaped bottle with round cap and shake it instantly."
+      },
+      {
+        "seed": 100100090,
+        "instruction": "Hold the bottle with a smooth plastic body, shake it briefly."
+      },
+      {
+        "seed": 100100091,
+        "instruction": "Shake the bottle with white cap after holding it firmly."
+      },
+      {
+        "seed": 100100092,
+        "instruction": "Use the right arm to lift and shake the plastic bottle."
+      },
+      {
+        "seed": 100100094,
+        "instruction": "Use the left arm to grab the yellow bottle and shake properly."
+      },
+      {
+        "seed": 100100096,
+        "instruction": "Use the left arm to hold the bottle shaped like small cylinder and shake it."
+      },
+      {
+        "seed": 100100097,
+        "instruction": "Grab the milk-bottle shape design carefully and shake."
+      },
+      {
+        "seed": 100100101,
+        "instruction": "Use the right arm to grab the bottle with narrow neck and shake it."
+      },
+      {
+        "seed": 100100105,
+        "instruction": "Secure the rectangular brown body with white top and perform a shake."
+      },
+      {
+        "seed": 100100106,
+        "instruction": "Hold the yellow container with rounded edges, shake it briefly."
+      },
+      {
+        "seed": 100100108,
+        "instruction": "Shake the rounded bottle with printed details thoroughly after grabbing it."
+      },
+      {
+        "seed": 100100110,
+        "instruction": "Grip the smooth plastic bottle using the right arm and shake."
+      },
+      {
+        "seed": 100100111,
+        "instruction": "Shake the plastic bottle thoroughly after grabbing it."
+      },
+      {
+        "seed": 100100112,
+        "instruction": "Grab and shake the gray bottle with slight shine using the left arm."
+      },
+      {
+        "seed": 100100113,
+        "instruction": "Hold the smooth surface bottle with gray shade, shake it briefly."
+      },
+      {
+        "seed": 100100114,
+        "instruction": "Shake the plastic bottle after grabbing it."
+      },
+      {
+        "seed": 100100115,
+        "instruction": "Grab and shake the medium bottle with glossy surface using the right arm."
+      },
+      {
+        "seed": 100100116,
+        "instruction": "Use the left arm to grab the bottle with white cap and shake it."
+      },
+      {
+        "seed": 100100117,
+        "instruction": "Hold the bottle with white cap with the right arm and shake lightly."
+      },
+      {
+        "seed": 100100118,
+        "instruction": "Use the right arm to grab the yellow bottle and shake properly."
+      },
+      {
+        "seed": 100100119,
+        "instruction": "Lift the yellow plastic bottle with white top with the left arm and shake it."
+      },
+      {
+        "seed": 100100121,
+        "instruction": "Grab the milk-bottle shape design firmly, shake it, and put it down."
+      },
+      {
+        "seed": 100100122,
+        "instruction": "Catch the gray bottle with slight shine and shake it instantly."
+      },
+      {
+        "seed": 100100125,
+        "instruction": "Utilize the right arm to hold the plastic bottle with sealed yellow cap and shake it."
+      },
+      {
+        "seed": 100100126,
+        "instruction": "Use the right arm to hold the dark brown bottle with a squared body and shake it."
+      },
+      {
+        "seed": 100100127,
+        "instruction": "Use the left arm to lift and shake the rectangular bottle with cylindrical neck."
+      },
+      {
+        "seed": 100100128,
+        "instruction": "Grab the bottle with brown body and white top firmly, shake it, and put it down."
+      },
+      {
+        "seed": 100100132,
+        "instruction": "Pick the handheld curvy bottle, shake it with the right arm."
+      },
+      {
+        "seed": 100100136,
+        "instruction": "Pick the yellow bottle with a green design, shake it with the left arm."
+      },
+      {
+        "seed": 100100138,
+        "instruction": "Hold the rounded body bottle made of plastic steady, then shake it."
+      },
+      {
+        "seed": 100100142,
+        "instruction": "Shake the rounded body bottle made of plastic after holding it firmly."
+      },
+      {
+        "seed": 100100144,
+        "instruction": "Use the right arm to pick and shake the bottle for liquids."
+      },
+      {
+        "seed": 100100145,
+        "instruction": "Lift up the dark brown bottle with a squared body using the right arm, then shake."
+      },
+      {
+        "seed": 100100146,
+        "instruction": "Shake the yellow bottle thoroughly after grabbing it."
+      },
+      {
+        "seed": 100100148,
+        "instruction": "Catch the handheld brown bottle with white lid and shake it instantly."
+      },
+      {
+        "seed": 100100149,
+        "instruction": "Catch the plastic bottle with curved sides and shake it instantly."
+      },
+      {
+        "seed": 100100151,
+        "instruction": "Shake the yellow bottle after grabbing it."
+      },
+      {
+        "seed": 100100152,
+        "instruction": "Pick the hand-sized bottle with screw cap, shake it with the left arm."
+      },
+      {
+        "seed": 100100153,
+        "instruction": "Use the left arm to grab the medium-sized plastic bottle and shake properly."
+      },
+      {
+        "seed": 100100156,
+        "instruction": "Shake the yellow-capped plastic bottle firmly after grabbing."
+      },
+      {
+        "seed": 100100157,
+        "instruction": "Secure the rectangular brown body with white top, shake it, and place it down."
+      },
+      {
+        "seed": 100100158,
+        "instruction": "Use the left arm to grab the bottle with white cap and shake it."
+      },
+      {
+        "seed": 100100160,
+        "instruction": "Hold the bottle with dark brown color steady, then shake it."
+      },
+      {
+        "seed": 100100161,
+        "instruction": "Lift the yellow bottle for liquid storage and shake it gently."
+      },
+      {
+        "seed": 100100162,
+        "instruction": "Pick the bottle with green label, shake it with the left arm."
+      },
+      {
+        "seed": 100100170,
+        "instruction": "With the left arm, pick the milk-bottle shape design and shake properly."
+      },
+      {
+        "seed": 100100172,
+        "instruction": "Hold the rounded body bottle made of plastic and shake it properly."
+      },
+      {
+        "seed": 100100173,
+        "instruction": "Grip the smooth plastic bottle using the right arm and shake."
+      },
+      {
+        "seed": 100100174,
+        "instruction": "Shake the smooth brown bottle with green label after grabbing it."
+      }
+    ]
+  }
+}

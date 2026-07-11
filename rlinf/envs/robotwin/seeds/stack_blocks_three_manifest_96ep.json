@@ -1,0 +1,390 @@
+{
+  "stack_blocks_three": {
+    "episodes": [
+      {
+        "seed": 100577,
+        "instruction": "Center red block, green block, and blue block, then stack them with blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100578,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100579,
+        "instruction": "Move red block, green block, and blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100580,
+        "instruction": "Place red block, green block, blue block in the middle and stack them using the right arm, the left arm, the left arm, green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100581,
+        "instruction": "With the left arm, the right arm, and the right arm, shift red block, green block, and blue block to the center and arrange blue block over green block, green block on red block."
+      },
+      {
+        "seed": 100582,
+        "instruction": "Bring red block, green block, and blue block to the center point and arrange them by stacking blue block atop green block and green block atop red block."
+      },
+      {
+        "seed": 100583,
+        "instruction": "Reposition red block, green block, and blue block to the center, stacking green block on red block and blue block on green block."
+      },
+      {
+        "seed": 100584,
+        "instruction": "Place red block, green block, and blue block at the center, using the left arm, the right arm, and the left arm to stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100585,
+        "instruction": "Use the right arm, the left arm, and the right arm to move red block, green block, and blue block to the center and stack them."
+      },
+      {
+        "seed": 100586,
+        "instruction": "Bring red block, green block, and blue block to the middle. Stack green block onto red block and blue block onto green block."
+      },
+      {
+        "seed": 100587,
+        "instruction": "Move red block, green block, and blue block to the center of the table using the left arm, the left arm, and the right arm, then stack them."
+      },
+      {
+        "seed": 100588,
+        "instruction": "Place red block, green block, and blue block at the center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100589,
+        "instruction": "Center red block, green block, and blue block, then stack them with blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100590,
+        "instruction": "Use the right arm, the left arm, the left arm to place red block, green block, blue block at the center and stack them accordingly."
+      },
+      {
+        "seed": 100591,
+        "instruction": "With the right arm, the left arm, the left arm, position red block, green block, blue block at the table's center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100592,
+        "instruction": "Position red block, green block, and blue block centrally. Place green block on red block, then set blue block on green block."
+      },
+      {
+        "seed": 100593,
+        "instruction": "Bring red block, green block, and blue block to the center and stack green block over red block, blue block over green block."
+      },
+      {
+        "seed": 100594,
+        "instruction": "Shift red block, green block, blue block to the table's center, then stack blue block on green block, and green block on red block."
+      },
+      {
+        "seed": 100595,
+        "instruction": "With the left arm, the left arm, the right arm, position red block, green block, blue block at the table's center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100596,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100597,
+        "instruction": "Place red block, green block, and blue block at the center, then stack blue block onto green block and green block onto red block."
+      },
+      {
+        "seed": 100598,
+        "instruction": "Relocate red block, green block, and blue block to the center with the right arm, the left arm, the left arm, and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100599,
+        "instruction": "Move red block, green block, and blue block to the center using the right arm, the left arm, the left arm, and stack them with blue block on top."
+      },
+      {
+        "seed": 100600,
+        "instruction": "Move red block, green block, and blue block to the middle and position blue block on green block, green block on top of red block."
+      },
+      {
+        "seed": 100601,
+        "instruction": "Use arms the right arm, the left arm, and the right arm to centralize red block, green block, blue block and stack blue block above green block, then green block above red block."
+      },
+      {
+        "seed": 100602,
+        "instruction": "Centralize red block, green block, and blue block before stacking blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100603,
+        "instruction": "Place red block, green block, and blue block at the center, using the left arm, the left arm, and the right arm to stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100604,
+        "instruction": "Use the right arm, the left arm, and the left arm to place red block, green block, and blue block in the center. Stack blue block on top."
+      },
+      {
+        "seed": 100605,
+        "instruction": "Relocate red block, green block, and blue block to the center with the left arm, the right arm, the right arm, and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100606,
+        "instruction": "With the right arm, the left arm, the left arm, move red block, green block, blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100607,
+        "instruction": "Move red block, green block, and blue block to the middle and position blue block on green block, green block on top of red block."
+      },
+      {
+        "seed": 100608,
+        "instruction": "Use the left arm, the right arm, and the left arm to place red block, green block, and blue block in the center. Stack blue block on top."
+      },
+      {
+        "seed": 100609,
+        "instruction": "Use the right arm, the left arm, the right arm to place red block, green block, blue block at the center and stack them accordingly."
+      },
+      {
+        "seed": 100610,
+        "instruction": "Adjust red block, green block, blue block to the center and use the right arm, the left arm, the right arm to stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100611,
+        "instruction": "With the left arm, the left arm, the right arm, move red block, green block, blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100612,
+        "instruction": "Bring red block, green block, and blue block to the middle. Stack green block onto red block and blue block onto green block."
+      },
+      {
+        "seed": 100613,
+        "instruction": "Use the left arm, the right arm, and the right arm to move red block, green block, and blue block to the center and stack them."
+      },
+      {
+        "seed": 100614,
+        "instruction": "With the right arm, the left arm, the left arm, move red block, green block, blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100615,
+        "instruction": "Place red block, green block, and blue block at the center, using the right arm, the left arm, and the left arm to stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100616,
+        "instruction": "Move red block, green block, and blue block to the middle and position blue block on green block, green block on top of red block."
+      },
+      {
+        "seed": 100617,
+        "instruction": "Place red block, green block, and blue block in the center, then arrange green block on red block and blue block on green block."
+      },
+      {
+        "seed": 100618,
+        "instruction": "Center red block, green block, and blue block, then stack them with blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100619,
+        "instruction": "Use arms the left arm, the left arm, and the right arm to centralize red block, green block, blue block and stack blue block above green block, then green block above red block."
+      },
+      {
+        "seed": 100620,
+        "instruction": "With the right arm, the left arm, the left arm, position red block, green block, blue block at the table's center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100621,
+        "instruction": "Use the left arm, the right arm, and the right arm to place red block, green block, and blue block in the center. Stack blue block on top."
+      },
+      {
+        "seed": 100622,
+        "instruction": "Move red block, green block, and blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100623,
+        "instruction": "Relocate red block, green block, and blue block to the center with the right arm, the left arm, the left arm, and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100624,
+        "instruction": "Bring red block, green block, and blue block to the center using the left arm, the right arm, and the left arm. Stack green block on red block."
+      },
+      {
+        "seed": 100625,
+        "instruction": "Reposition red block, green block, and blue block to the middle and arrange blue block above green block and green block above red block."
+      },
+      {
+        "seed": 100626,
+        "instruction": "Position red block, green block, and blue block in the center and stack blue block on green block, followed by green block on red block."
+      },
+      {
+        "seed": 100627,
+        "instruction": "Bring red block, green block, and blue block to the center using the left arm, the left arm, and the right arm. Stack green block on red block."
+      },
+      {
+        "seed": 100628,
+        "instruction": "Use the right arm, the left arm, and the left arm to centralize red block, green block, and blue block and build a stack with them."
+      },
+      {
+        "seed": 100629,
+        "instruction": "Move red block, green block, and blue block to the center of the table using the left arm, the right arm, and the right arm, then stack them."
+      },
+      {
+        "seed": 100630,
+        "instruction": "Place red block, green block, and blue block at the center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100631,
+        "instruction": "Using the right arm, the left arm, and the left arm, bring red block, green block, and blue block to the center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100632,
+        "instruction": "Reposition red block, green block, and blue block to the middle and arrange blue block above green block and green block above red block."
+      },
+      {
+        "seed": 100633,
+        "instruction": "Gather red block, green block, and blue block at the table's center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100634,
+        "instruction": "Move red block, green block, and blue block to the table's center and stack green block over red block, blue block over green block."
+      },
+      {
+        "seed": 100635,
+        "instruction": "Bring red block, green block, and blue block to the table's center and arrange them by stacking blue block over green block and green block over red block."
+      },
+      {
+        "seed": 100636,
+        "instruction": "Arrange red block, green block, and blue block in the table's center and stack blue block atop green block, then green block atop red block."
+      },
+      {
+        "seed": 100637,
+        "instruction": "Use the left arm, the right arm, and the right arm to move red block, green block, blue block to the center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100638,
+        "instruction": "Move red block, green block, and blue block to the table's center and stack green block over red block, blue block over green block."
+      },
+      {
+        "seed": 100639,
+        "instruction": "Using the right arm, the left arm, the left arm, place red block, green block, blue block centrally and stack blue block atop green block, then green block atop red block."
+      },
+      {
+        "seed": 100640,
+        "instruction": "Bring red block, green block, and blue block to the center point and arrange them by stacking blue block atop green block and green block atop red block."
+      },
+      {
+        "seed": 100641,
+        "instruction": "Reposition red block, green block, and blue block to the middle and arrange blue block above green block and green block above red block."
+      },
+      {
+        "seed": 100642,
+        "instruction": "Adjust red block, green block, blue block to the center and use the right arm, the left arm, the right arm to stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100643,
+        "instruction": "Relocate red block, green block, and blue block to the center with the left arm, the left arm, the right arm, and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100644,
+        "instruction": "Centralize red block, green block, and blue block before stacking blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100645,
+        "instruction": "Place red block, green block, and blue block at the center, then stack blue block onto green block and green block onto red block."
+      },
+      {
+        "seed": 100646,
+        "instruction": "Place red block, green block, and blue block at the center, using the right arm, the left arm, and the left arm to stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100647,
+        "instruction": "Gather red block, green block, and blue block at the table's center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100648,
+        "instruction": "Place red block, green block, and blue block at the center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100649,
+        "instruction": "Move red block, green block, and blue block to the center. Stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100650,
+        "instruction": "Bring red block, green block, and blue block to the middle. Stack green block onto red block and blue block onto green block."
+      },
+      {
+        "seed": 100651,
+        "instruction": "Move red block, green block, and blue block to the center of the table using the left arm, the left arm, and the right arm, then stack them."
+      },
+      {
+        "seed": 100652,
+        "instruction": "Grab red block, green block, and blue block using the right arm, the left arm, the left arm, move them to the center, then stack them."
+      },
+      {
+        "seed": 100653,
+        "instruction": "With the left arm, the right arm, the right arm, move red block, green block, blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100654,
+        "instruction": "With the right arm, the left arm, and the left arm, move red block, green block, and blue block centrally and stack green block on red block."
+      },
+      {
+        "seed": 100655,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100656,
+        "instruction": "Use the left arm, the right arm, and the left arm to move red block, green block, and blue block to the center, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100657,
+        "instruction": "Place red block, green block, and blue block at the center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100658,
+        "instruction": "With the right arm, the left arm, the right arm, move red block, green block, blue block to the center and stack green block on red block, blue block on green block."
+      },
+      {
+        "seed": 100659,
+        "instruction": "Adjust red block, green block, blue block to the center and use the left arm, the left arm, the right arm to stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100660,
+        "instruction": "Adjust red block, green block, blue block to the center and use the right arm, the left arm, the left arm to stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100661,
+        "instruction": "Using the left arm, the right arm, and the right arm, bring red block, green block, and blue block to the center and stack blue block on green block, green block on red block."
+      },
+      {
+        "seed": 100662,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100663,
+        "instruction": "Gather red block, green block, and blue block at the table's center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100664,
+        "instruction": "Use arms the left arm, the right arm, and the left arm to centralize red block, green block, blue block and stack blue block above green block, then green block above red block."
+      },
+      {
+        "seed": 100665,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100666,
+        "instruction": "Place red block, green block, and blue block at the center, using the right arm, the left arm, and the right arm to stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100667,
+        "instruction": "Move red block, green block, and blue block to the middle first, then stack blue block on green block and green block on red block."
+      },
+      {
+        "seed": 100668,
+        "instruction": "Using the right arm, the left arm, the left arm, place red block, green block, blue block centrally and stack blue block atop green block, then green block atop red block."
+      },
+      {
+        "seed": 100669,
+        "instruction": "Gather red block, green block, and blue block at the table's center and stack blue block on green block, then green block on red block."
+      },
+      {
+        "seed": 100670,
+        "instruction": "Using the right arm, the left arm, the left arm, place red block, green block, blue block centrally and stack blue block atop green block, then green block atop red block."
+      },
+      {
+        "seed": 100671,
+        "instruction": "Use the right arm, the left arm, and the left arm to place red block, green block, and blue block in the center. Stack blue block on top."
+      },
+      {
+        "seed": 100672,
+        "instruction": "Position red block, green block, and blue block centrally. Place green block on red block, then set blue block on green block."
+      }
+    ]
+  }
+}

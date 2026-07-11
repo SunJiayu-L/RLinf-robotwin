@@ -1,0 +1,390 @@
+{
+  "place_phone_stand": {
+    "episodes": [
+      {
+        "seed": 100100002,
+        "instruction": "Move the palm-sized phone onto the phonestand with smooth texture."
+      },
+      {
+        "seed": 100100003,
+        "instruction": "Lift the silver phone with black screen onto the compact phonestand."
+      },
+      {
+        "seed": 100100005,
+        "instruction": "Put the sleek rectangular phone atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100006,
+        "instruction": "Put the phone with smooth glossy screen atop the small green and silver stand."
+      },
+      {
+        "seed": 100100007,
+        "instruction": "Put the phone with smooth glossy screen atop the smooth brown phone holder."
+      },
+      {
+        "seed": 100100009,
+        "instruction": "Move the glass and metal smartphone onto the light brown phonestand."
+      },
+      {
+        "seed": 100100010,
+        "instruction": "Lift the compact phone with flat design onto the phone holder with cutout underneath."
+      },
+      {
+        "seed": 100100013,
+        "instruction": "Move the phone with smooth glossy screen onto the compact phonestand."
+      },
+      {
+        "seed": 100100015,
+        "instruction": "Carry the phone with metallic body to the small plastic phonestand."
+      },
+      {
+        "seed": 100100017,
+        "instruction": "Put the silver phone atop the flat base phonestand."
+      },
+      {
+        "seed": 100100018,
+        "instruction": "Move the smooth-screen phone onto the phonestand with slot."
+      },
+      {
+        "seed": 100100020,
+        "instruction": "Put the rectangular phone with rounded corners atop the green plastic holder."
+      },
+      {
+        "seed": 100100023,
+        "instruction": "Put the rectangle-shaped communication phone atop the light brown phone holder."
+      },
+      {
+        "seed": 100100027,
+        "instruction": "Carry the silver-edged phone to the light brown phone holder."
+      },
+      {
+        "seed": 100100028,
+        "instruction": "Carry the phone with black touchscreen to the phonestand with curved edges."
+      },
+      {
+        "seed": 100100029,
+        "instruction": "Carry the rectangular phone with rounded corners to the compact phonestand."
+      },
+      {
+        "seed": 100100030,
+        "instruction": "Move the phone with smooth glass front onto the light brown phone holder."
+      },
+      {
+        "seed": 100100031,
+        "instruction": "Move the rectangular phone onto the dark green holder with clamp."
+      },
+      {
+        "seed": 100100032,
+        "instruction": "Take the glass-faced phone to the small plastic phonestand."
+      },
+      {
+        "seed": 100100033,
+        "instruction": "Put the silver-edged phone atop the green phone rack."
+      },
+      {
+        "seed": 100100034,
+        "instruction": "Carry the phone featuring glass and silver frame to the phonestand with curved edges."
+      },
+      {
+        "seed": 100100035,
+        "instruction": "Move the black front phone with silver sides onto the compact plastic phonestand."
+      },
+      {
+        "seed": 100100037,
+        "instruction": "Carry the phone with smooth glass front to the light brown phone holder."
+      },
+      {
+        "seed": 100100038,
+        "instruction": "Put the black phone atop the phonestand with green hooks."
+      },
+      {
+        "seed": 100100040,
+        "instruction": "Put the compact phone with flat design atop the curved phonestand with phone slot."
+      },
+      {
+        "seed": 100100041,
+        "instruction": "Take the compact phone with flat design to the phonestand with smooth texture."
+      },
+      {
+        "seed": 100100042,
+        "instruction": "Lift the black and white phone onto the smooth brown phone holder."
+      },
+      {
+        "seed": 100100043,
+        "instruction": "Carry the rectangular phone with rounded corners to the flat base phonestand."
+      },
+      {
+        "seed": 100100046,
+        "instruction": "Take the black front phone with silver sides to the phonestand with curved edges."
+      },
+      {
+        "seed": 100100048,
+        "instruction": "Put the sleek black-faced smartphone atop the compact plastic phonestand."
+      },
+      {
+        "seed": 100100049,
+        "instruction": "Put the sleek phone atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100050,
+        "instruction": "Lift the rectangle-shaped communication phone onto the metal adjustable phone clamp."
+      },
+      {
+        "seed": 100100055,
+        "instruction": "Put the silver phone with black screen atop the curved phonestand with phone slot."
+      },
+      {
+        "seed": 100100056,
+        "instruction": "Lift the compact phone with flat design onto the flat base phonestand."
+      },
+      {
+        "seed": 100100057,
+        "instruction": "Carry the glass-faced phone to the light brown phonestand."
+      },
+      {
+        "seed": 100100059,
+        "instruction": "Carry the phone with smooth glossy screen to the metal adjustable phone clamp."
+      },
+      {
+        "seed": 100100066,
+        "instruction": "Put the sleek black-faced smartphone atop the phonestand with slot."
+      },
+      {
+        "seed": 100100067,
+        "instruction": "Take the phone with smooth glossy screen to the smooth brown phone holder."
+      },
+      {
+        "seed": 100100068,
+        "instruction": "Move the phone with screen and side buttons onto the curved phonestand with phone slot."
+      },
+      {
+        "seed": 100100069,
+        "instruction": "Lift the slim palm-sized phone onto the phonestand with silver bar."
+      },
+      {
+        "seed": 100100070,
+        "instruction": "Take the phone with black touchscreen to the curved phonestand with phone slot."
+      },
+      {
+        "seed": 100100071,
+        "instruction": "Lift the phone with smooth glass front onto the small green and silver stand."
+      },
+      {
+        "seed": 100100072,
+        "instruction": "Take the phone with touchscreen to the light brown phone holder."
+      },
+      {
+        "seed": 100100075,
+        "instruction": "Lift the black front phone with silver sides onto the compact adjustable phone holder."
+      },
+      {
+        "seed": 100100077,
+        "instruction": "Take the glass and metal smartphone to the curved phonestand with phone slot."
+      },
+      {
+        "seed": 100100078,
+        "instruction": "Move the black phone onto the light brown phone holder."
+      },
+      {
+        "seed": 100100079,
+        "instruction": "Carry the silver phone to the angled holder for phones."
+      },
+      {
+        "seed": 100100080,
+        "instruction": "Take the slim palm-sized phone to the green phone rack."
+      },
+      {
+        "seed": 100100083,
+        "instruction": "Carry the phone with smooth back panel to the phonestand with slot."
+      },
+      {
+        "seed": 100100084,
+        "instruction": "Take the sleek phone to the metal adjustable phone clamp."
+      },
+      {
+        "seed": 100100086,
+        "instruction": "Lift the phone with buttons and screen onto the phonestand with curved edges."
+      },
+      {
+        "seed": 100100088,
+        "instruction": "Lift the glass and metal smartphone onto the small green and silver stand."
+      },
+      {
+        "seed": 100100091,
+        "instruction": "Carry the phone featuring glass and silver frame to the phonestand for holding phones."
+      },
+      {
+        "seed": 100100092,
+        "instruction": "Move the black phone onto the angled holder for phones."
+      },
+      {
+        "seed": 100100094,
+        "instruction": "Put the phone with metallic body atop the light brown phone holder."
+      },
+      {
+        "seed": 100100096,
+        "instruction": "Put the compact phone with shiny texture atop the flat base phonestand."
+      },
+      {
+        "seed": 100100097,
+        "instruction": "Lift the metallic phone with glass screen front onto the compact plastic phonestand."
+      },
+      {
+        "seed": 100100098,
+        "instruction": "Put the phone with black touchscreen atop the angled green phone support."
+      },
+      {
+        "seed": 100100100,
+        "instruction": "Move the phone with touchscreen onto the phone holder with cutout underneath."
+      },
+      {
+        "seed": 100100103,
+        "instruction": "Move the glass and metal smartphone onto the phonestand with silver bar."
+      },
+      {
+        "seed": 100100104,
+        "instruction": "Move the black front phone with silver sides onto the phonestand for holding phones."
+      },
+      {
+        "seed": 100100105,
+        "instruction": "Take the black phone to the phonestand for holding phones."
+      },
+      {
+        "seed": 100100106,
+        "instruction": "Take the silver phone to the light brown phonestand."
+      },
+      {
+        "seed": 100100107,
+        "instruction": "Lift the phone with polished silver border onto the dark green holder with clamp."
+      },
+      {
+        "seed": 100100108,
+        "instruction": "Put the palm-sized phone atop the small plastic phonestand."
+      },
+      {
+        "seed": 100100110,
+        "instruction": "Move the rectangular phone onto the green phone rack."
+      },
+      {
+        "seed": 100100111,
+        "instruction": "Lift the glass-faced phone onto the light brown phonestand."
+      },
+      {
+        "seed": 100100112,
+        "instruction": "Carry the rectangle-shaped communication phone to the phonestand with green hooks."
+      },
+      {
+        "seed": 100100113,
+        "instruction": "Move the sleek black-faced smartphone onto the phonestand with curved edges."
+      },
+      {
+        "seed": 100100115,
+        "instruction": "Carry the glass and metal smartphone to the phonestand with curved edges."
+      },
+      {
+        "seed": 100100117,
+        "instruction": "Put the sleek phone atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100118,
+        "instruction": "Lift the glass and metal smartphone onto the small green and silver stand."
+      },
+      {
+        "seed": 100100119,
+        "instruction": "Lift the palm-sized phone onto the small plastic phonestand."
+      },
+      {
+        "seed": 100100121,
+        "instruction": "Move the phone with metallic body onto the metal adjustable phone clamp."
+      },
+      {
+        "seed": 100100122,
+        "instruction": "Put the flat phone atop the phone holder with cutout underneath."
+      },
+      {
+        "seed": 100100123,
+        "instruction": "Carry the phone featuring glass and silver frame to the flat base phonestand."
+      },
+      {
+        "seed": 100100124,
+        "instruction": "Put the silver-edged phone atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100125,
+        "instruction": "Take the glass and metal smartphone to the phonestand with slot."
+      },
+      {
+        "seed": 100100126,
+        "instruction": "Carry the palm-sized phone to the smooth brown phone holder."
+      },
+      {
+        "seed": 100100127,
+        "instruction": "Carry the silver-edged phone to the dark green holder with clamp."
+      },
+      {
+        "seed": 100100129,
+        "instruction": "Take the phone with metallic body to the angled holder for phones."
+      },
+      {
+        "seed": 100100130,
+        "instruction": "Lift the phone with smooth glass front onto the compact phonestand."
+      },
+      {
+        "seed": 100100131,
+        "instruction": "Put the phone with buttons and screen atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100132,
+        "instruction": "Carry the black front phone with silver sides to the flat base phonestand."
+      },
+      {
+        "seed": 100100133,
+        "instruction": "Put the slim palm-sized phone atop the phonestand with curved edges."
+      },
+      {
+        "seed": 100100134,
+        "instruction": "Lift the phone with smooth glossy screen onto the angled holder for phones."
+      },
+      {
+        "seed": 100100136,
+        "instruction": "Take the phone with screen and side buttons to the phonestand with curved edges."
+      },
+      {
+        "seed": 100100138,
+        "instruction": "Move the sleek black-faced smartphone onto the green phone rack."
+      },
+      {
+        "seed": 100100139,
+        "instruction": "Move the rectangular phone onto the smooth brown phone holder."
+      },
+      {
+        "seed": 100100140,
+        "instruction": "Lift the phone with screen and side buttons onto the compact phonestand."
+      },
+      {
+        "seed": 100100142,
+        "instruction": "Lift the glass-faced phone onto the small plastic phonestand."
+      },
+      {
+        "seed": 100100144,
+        "instruction": "Take the black phone to the dark green holder with clamp."
+      },
+      {
+        "seed": 100100147,
+        "instruction": "Carry the phone with polished silver border to the phonestand for holding phones."
+      },
+      {
+        "seed": 100100148,
+        "instruction": "Move the rectangle-shaped communication phone onto the phone holder with cutout underneath."
+      },
+      {
+        "seed": 100100150,
+        "instruction": "Carry the phone with screen and side buttons to the smooth brown phone holder."
+      },
+      {
+        "seed": 100100153,
+        "instruction": "Carry the black front phone with silver sides to the phonestand with silver bar."
+      }
+    ]
+  }
+}

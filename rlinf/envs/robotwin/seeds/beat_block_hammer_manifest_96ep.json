@@ -1,0 +1,390 @@
+{
+  "beat_block_hammer": {
+    "episodes": [
+      {
+        "seed": 100000,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100003,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100007,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100008,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100009,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100010,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100011,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100012,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100013,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100014,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100015,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100020,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100022,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100023,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100026,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100027,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100028,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100029,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100030,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100035,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100036,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100037,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100038,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100039,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100040,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100041,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100042,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100044,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100045,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100046,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100047,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100048,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100049,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100051,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100052,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100053,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100054,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100055,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100056,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100057,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100059,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100063,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100064,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100066,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100067,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100068,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100069,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100070,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100071,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100072,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100074,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100075,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100077,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100080,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100084,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100085,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100086,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100087,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100088,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100089,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100090,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100092,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100093,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100094,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100095,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100096,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100097,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100098,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100100,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100101,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100104,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100105,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100107,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100108,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100110,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100111,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100112,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100113,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100114,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100115,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100116,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100120,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100121,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100122,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100123,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100124,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100125,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100126,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100127,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100128,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100129,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100130,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100133,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100134,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100135,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      },
+      {
+        "seed": 100136,
+        "instruction": "Hold the hammer with claw-shaped end and pound the block."
+      }
+    ]
+  }
+}

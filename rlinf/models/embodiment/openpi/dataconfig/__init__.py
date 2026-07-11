@@ -308,6 +308,100 @@ _CONFIGS = [
         num_train_steps=20_000,
     ),
     TrainConfig(
+        name="pi05_aloha_robotwin15",
+        model=pi0_config.Pi0Config(pi05=True, discrete_state_input=True),
+        data=LeRobotAlohaDataConfig(
+            repo_id="physical-intelligence/robotwin15",
+            base_config=DataConfig(prompt_from_task=True),
+            assets=AssetsConfig(
+                assets_dir="checkpoints/torch/pi05_aloha_robotwin/assets"
+            ),
+            extra_delta_transform=True,
+        ),
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+        num_train_steps=30_000,
+    ),
+    TrainConfig(
+
+        name="pi05_aloha_robotwin_random10_h16",
+
+        model=pi0_config.Pi0Config(
+
+            pi05=True, action_horizon=16, discrete_state_input=True
+
+        ),
+
+        data=LeRobotAlohaDataConfig(
+
+            repo_id="physical-intelligence/robotwin_random10_h16",
+
+            base_config=DataConfig(prompt_from_task=True),
+
+            assets=AssetsConfig(
+
+                assets_dir="checkpoints/torch/pi05_aloha_robotwin/assets"
+
+            ),
+
+            adapt_to_pi=False,
+
+            extra_delta_transform=True,
+
+        ),
+
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+
+        num_train_steps=30_000,
+
+    ),
+
+    TrainConfig(
+        name="pi05_aloha_robotwin_blocks_ranking_rgb_h16",
+        model=pi0_config.Pi0Config(
+            pi05=True, action_horizon=16, discrete_state_input=True
+        ),
+        data=LeRobotAlohaDataConfig(
+            repo_id="physical-intelligence/robotwin_blocks_ranking_rgb_h16",
+            base_config=DataConfig(prompt_from_task=True),
+            assets=AssetsConfig(
+                assets_dir="checkpoints/torch/pi05_aloha_robotwin/assets"
+            ),
+            adapt_to_pi=False,
+            extra_delta_transform=True,
+        ),
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+        num_train_steps=20_000,
+    ),
+    TrainConfig(
+        name="pi05_aloha_robotwin5",
+        model=pi0_config.Pi0Config(pi05=True, discrete_state_input=True),
+        data=LeRobotAlohaDataConfig(
+            repo_id="physical-intelligence/robotwin5",
+            base_config=DataConfig(prompt_from_task=True),
+            assets=AssetsConfig(
+                assets_dir="checkpoints/torch/pi05_aloha_robotwin/assets"
+            ),
+            extra_delta_transform=True,
+        ),
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+        num_train_steps=30_000,
+    ),
+    TrainConfig(
+        name="pi05_aloha_moe_demo_clean",
+        model=pi0_config.Pi0Config(pi05=True, discrete_state_input=True),
+        data=LeRobotAlohaDataConfig(
+            repo_id="robotwin_moe_demo_clean",
+            base_config=DataConfig(prompt_from_task=True),
+            assets=AssetsConfig(
+                assets_dir="assets",
+            ),
+            adapt_to_pi=False,
+            extra_delta_transform=True,
+        ),
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+        num_train_steps=20_000,
+    ),
+    TrainConfig(
         name="pi0_behavior",
         model=pi0_config.Pi0Config(),
         data=LeRobotBehaviorDataConfig(
