@@ -1007,6 +1007,16 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
         """
         self.setup_model_and_optimizer()
 
+        self.ref_policy_state_dict = None
+        self.offload_model_buffer = None
+        ref_policy_path = self.cfg.algorithm.get("ref_policy_path", None)
+        if self.cfg.algorithm.kl_beta > 0 and ref_policy_path is not None:
+            self.ref_policy_state_dict = torch.load(
+                ref_policy_path, map_location="cpu", weights_only=False
+            )
+            self.offload_model_buffer = {}
+            self.log_info(f"[KL] Loaded reference policy from {ref_policy_path}")
+
         if self.enable_offload:
             self.offload_param_and_grad()
             self.offload_optimizer()
@@ -1389,6 +1399,29 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
 
                     forward_inputs = batch.get("forward_inputs", None)
 
+                    # Reference forward pass for KL constraint (before training fwd
+                    # to avoid cpu_weight_swap corrupting the autograd graph)
+                    ref_logprobs_raw = None
+                    if (
+                        self.cfg.algorithm.kl_beta > 0
+                        and self.ref_policy_state_dict is not None
+                    ):
+                        with torch.no_grad():
+                            with self.amp_context:
+                                with cpu_weight_swap(
+                                    self.model,
+                                    self.ref_policy_state_dict,
+                                    self.offload_model_buffer,
+                                ):
+                                    _ref_out = self.model(
+                                        forward_inputs=forward_inputs,
+                                        compute_logprobs=True,
+                                        compute_entropy=False,
+                                        compute_values=False,
+                                        use_cache=False,
+                                    )
+                            ref_logprobs_raw = _ref_out["logprobs"].detach().float()
+
                     kwargs = {}
                     if SupportedModel(self.cfg.actor.model.model_type) in [
                         SupportedModel.OPENVLA,
@@ -1445,6 +1478,9 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                         "task_type": self.cfg.runner.task_type,
                         "critic_warmup": self.optimizer_steps
                         < self.critic_warmup_steps,
+                        "ref_logprobs": ref_logprobs_raw,
+                        "kl_beta": self.cfg.algorithm.kl_beta,
+                        "kl_penalty_type": self.cfg.algorithm.get("kl_penalty", "kl"),
                     }
                     loss, metrics_data = policy_loss(**kwargs)
 

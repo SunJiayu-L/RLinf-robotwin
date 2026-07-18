@@ -17,7 +17,7 @@ from typing import Callable, Optional
 import torch
 
 from rlinf.algorithms.registry import register_policy_loss
-from rlinf.algorithms.utils import huber_loss
+from rlinf.algorithms.utils import huber_loss, kl_penalty
 from rlinf.utils.utils import masked_mean, masked_mean_ratio
 
 
@@ -279,6 +279,16 @@ def compute_ppo_actor_loss(
     if critic_warmup:
         policy_loss = torch.tensor(0.0, device=policy_loss.device)
 
+    # Reference-policy KL: D_KL(π_current ∥ π_ref) — k1 estimator
+    ref_kl_loss = torch.tensor(0.0, device=logprobs.device)
+    _ref_logprobs = kwargs.get("ref_logprobs", None)
+    _kl_beta = float(kwargs.get("kl_beta", 0.0))
+    if _ref_logprobs is not None and _kl_beta > 0:
+        _kl_type = kwargs.get("kl_penalty_type", kwargs.get("kl_penalty", "kl"))
+        kld = kl_penalty(logprobs, _ref_logprobs, _kl_type)
+        ref_kl_loss = loss_agg_func(kld, loss_mask, loss_mask_ratio)
+        policy_loss = policy_loss + _kl_beta * ref_kl_loss
+
     # Compile metrics for logging
     loss_mask_for_metrics = loss_mask
     ratio_for_metrics = ratio.detach()
@@ -305,6 +315,7 @@ def compute_ppo_actor_loss(
         ),
         "actor/approx_kl": approx_kl.detach(),
         "actor/clip_fraction": clip_fraction.detach(),
+        "actor/ref_kl_loss": ref_kl_loss.detach(),
     }
     return policy_loss, metrics_data
 
