@@ -102,7 +102,7 @@ env:
       - click_bell
       - handover_block
       - move_playingcard_away
-    total_num_envs: 80
+    total_num_envs: 128
     reward_coef: ${algorithm.reward_coef}
     max_episode_steps: 400
     max_steps_per_rollout_epoch: 400

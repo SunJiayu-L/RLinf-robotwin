@@ -1,0 +1,198 @@
+[
+  {
+    "episode": 0,
+    "length": 446,
+    "frames": [
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000000/frame_000441.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000000/frame_000442.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000000/frame_000443.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000000/frame_000444.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000000/frame_000445.jpg"
+    ],
+    "final_state": [
+      0.020001348108053207,
+      2.2998603526502848e-05,
+      -2.8215323254698887e-05,
+      1.7280039173783734e-05,
+      9.443156159250066e-07,
+      2.694310296647018e-06,
+      1.0,
+      0.6666120886802673,
+      1.8969885110855103,
+      1.44597327709198,
+      -1.10200035572052,
+      0.022459588944911957,
+      0.6631931662559509,
+      1.0
+    ],
+    "final_action": [
+      0.020001348108053207,
+      2.2998603526502848e-05,
+      -2.8215323254698887e-05,
+      1.7280039173783734e-05,
+      9.443156159250066e-07,
+      2.694310296647018e-06,
+      1.0,
+      0.6665781736373901,
+      1.8962727785110474,
+      1.4467432498931885,
+      -1.1030094623565674,
+      0.022471122443675995,
+      0.6631444692611694,
+      1.0
+    ],
+    "final_grippers": {
+      "state_left": 1.0,
+      "state_right": 1.0,
+      "action_left": 1.0,
+      "action_right": 1.0
+    }
+  },
+  {
+    "episode": 1,
+    "length": 440,
+    "frames": [
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000001/frame_000435.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000001/frame_000436.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000001/frame_000437.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000001/frame_000438.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000001/frame_000439.jpg"
+    ],
+    "final_state": [
+      0.020001348108053207,
+      2.2998603526502848e-05,
+      -2.8215323254698887e-05,
+      1.7280039173783734e-05,
+      9.443156159250066e-07,
+      2.694310296647018e-06,
+      1.0,
+      0.687644362449646,
+      1.885599136352539,
+      1.3872756958007812,
+      -1.0538181066513062,
+      0.014252514578402042,
+      0.6851531267166138,
+      1.0
+    ],
+    "final_action": [
+      0.020001348108053207,
+      2.2998603526502848e-05,
+      -2.8215323254698887e-05,
+      1.7280039173783734e-05,
+      9.443156159250066e-07,
+      2.694310296647018e-06,
+      1.0,
+      0.687644362449646,
+      1.885599136352539,
+      1.3872756958007812,
+      -1.0538181066513062,
+      0.014252514578402042,
+      0.6851531267166138,
+      1.0
+    ],
+    "final_grippers": {
+      "state_left": 1.0,
+      "state_right": 1.0,
+      "action_left": 1.0,
+      "action_right": 1.0
+    }
+  },
+  {
+    "episode": 2,
+    "length": 461,
+    "frames": [
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000002/frame_000456.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000002/frame_000457.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000002/frame_000458.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000002/frame_000459.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000002/frame_000460.jpg"
+    ],
+    "final_state": [
+      -0.9688601493835449,
+      2.3295884132385254,
+      2.048536777496338,
+      -1.2775360345840454,
+      -0.001687359414063394,
+      -0.976733386516571,
+      1.0,
+      0.009995082393288612,
+      -1.7367434566040174e-06,
+      -2.7082671294920146e-05,
+      -7.991459824552294e-06,
+      -5.129726559971459e-06,
+      4.561281912174309e-06,
+      1.0
+    ],
+    "final_action": [
+      -0.9688601493835449,
+      2.3295884132385254,
+      2.048536777496338,
+      -1.2775360345840454,
+      -0.001687359414063394,
+      -0.976733386516571,
+      1.0,
+      0.009995082393288612,
+      -1.7367434566040174e-06,
+      -2.7082671294920146e-05,
+      -7.991459824552294e-06,
+      -5.129726559971459e-06,
+      4.561281912174309e-06,
+      1.0
+    ],
+    "final_grippers": {
+      "state_left": 1.0,
+      "state_right": 1.0,
+      "action_left": 1.0,
+      "action_right": 1.0
+    }
+  },
+  {
+    "episode": 3,
+    "length": 470,
+    "frames": [
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000003/frame_000465.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000003/frame_000466.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000003/frame_000467.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000003/frame_000468.jpg",
+      "/mnt/petrelfs/muyao/jiayusun/RLinf-robotwin/my_docs/assets/blocks_rgb_training_frames/episode_000003/frame_000469.jpg"
+    ],
+    "final_state": [
+      -0.9041411876678467,
+      2.4600067138671875,
+      2.305762767791748,
+      -1.4069269895553589,
+      -0.008785390295088291,
+      -0.9206878542900085,
+      1.0,
+      0.009995082393288612,
+      -1.7367434566040174e-06,
+      -2.7082671294920146e-05,
+      -7.991459824552294e-06,
+      -5.129726559971459e-06,
+      4.561281912174309e-06,
+      1.0
+    ],
+    "final_action": [
+      -0.9040337204933167,
+      2.4597349166870117,
+      2.3065567016601562,
+      -1.4077134132385254,
+      -0.008791367523372173,
+      -0.9206275343894958,
+      1.0,
+      0.009995082393288612,
+      -1.7367434566040174e-06,
+      -2.7082671294920146e-05,
+      -7.991459824552294e-06,
+      -5.129726559971459e-06,
+      4.561281912174309e-06,
+      1.0
+    ],
+    "final_grippers": {
+      "state_left": 1.0,
+      "state_right": 1.0,
+      "action_left": 1.0,
+      "action_right": 1.0
+    }
+  }
+]

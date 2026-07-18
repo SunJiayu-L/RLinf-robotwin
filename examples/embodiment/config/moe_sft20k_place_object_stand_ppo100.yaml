@@ -86,6 +86,7 @@ env:
     center_crop: False
     task_config:
       embodiment: [aloha-agilex]
+      clear_cache_freq: 2
       camera:
         collect_wrist_camera: true
       domain_randomization:
@@ -138,8 +139,8 @@ rollout:
 actor:
   group_name: "ActorGroup"
   training_backend: "fsdp"
-  micro_batch_size: 64
-  global_batch_size: 4096
+  micro_batch_size: 32
+  global_batch_size: 2048
   seed: 1234
   enable_offload: True
   model:

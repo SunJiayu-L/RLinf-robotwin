@@ -387,6 +387,21 @@ _CONFIGS = [
         num_train_steps=30_000,
     ),
     TrainConfig(
+        name="pi05_aloha_moe_demo_clean_hb1to1",
+        model=pi0_config.Pi0Config(pi05=True, discrete_state_input=True),
+        data=LeRobotAlohaDataConfig(
+            repo_id="robotwin_moe_demo_clean_hb1to1",
+            base_config=DataConfig(prompt_from_task=True),
+            assets=AssetsConfig(
+                assets_dir="assets",
+            ),
+            adapt_to_pi=False,
+            extra_delta_transform=True,
+        ),
+        pytorch_weight_path="checkpoints/torch/pi05_base",
+        num_train_steps=5_000,
+    ),
+    TrainConfig(
         name="pi05_aloha_moe_demo_clean",
         model=pi0_config.Pi0Config(pi05=True, discrete_state_input=True),
         data=LeRobotAlohaDataConfig(
