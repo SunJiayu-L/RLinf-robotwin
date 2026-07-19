@@ -1015,6 +1015,16 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                 ref_policy_path, map_location="cpu", weights_only=False
             )
             self.offload_model_buffer = {}
+            model_keys = set(self.model.state_dict().keys())
+            ref_keys = set(self.ref_policy_state_dict.keys())
+            if model_keys != ref_keys:
+                missing = list(model_keys - ref_keys)[:5]
+                unexpected = list(ref_keys - model_keys)[:5]
+                raise RuntimeError(
+                    f"[KL] ref_policy key mismatch with current model. "
+                    f"Missing in ref (first 5): {missing}. "
+                    f"Unexpected in ref (first 5): {unexpected}."
+                )
             self.log_info(f"[KL] Loaded reference policy from {ref_policy_path}")
 
         if self.enable_offload:

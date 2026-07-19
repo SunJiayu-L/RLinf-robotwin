@@ -35,7 +35,7 @@ runner:
 
 algorithm:
   normalize_advantages: True
-  kl_penalty: kl
+  kl_penalty: low_var_kl
   group_size: 1
   reward_coef: 1.0
   rollout_epoch: 4
