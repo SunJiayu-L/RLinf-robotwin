@@ -282,12 +282,13 @@ def compute_ppo_actor_loss(
     # Reference-policy KL: D_KL(π_current ∥ π_ref) — k1 estimator
     ref_kl_loss = torch.tensor(0.0, device=logprobs.device)
     _ref_logprobs = kwargs.get("ref_logprobs", None)
-    _kl_beta = float(kwargs.get("kl_beta", 0.0))
-    if _ref_logprobs is not None and _kl_beta > 0:
+    _ref_kl_beta = float(kwargs.get("ref_kl_beta", 0.0))
+    if _ref_logprobs is not None:
         _kl_type = kwargs.get("kl_penalty_type", kwargs.get("kl_penalty", "kl"))
         kld = kl_penalty(logprobs, _ref_logprobs, _kl_type)
         ref_kl_loss = loss_agg_func(kld, loss_mask, loss_mask_ratio)
-        policy_loss = policy_loss + _kl_beta * ref_kl_loss
+        if _ref_kl_beta > 0:
+            policy_loss = policy_loss + _ref_kl_beta * ref_kl_loss
 
     # Compile metrics for logging
     loss_mask_for_metrics = loss_mask

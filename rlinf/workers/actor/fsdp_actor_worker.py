@@ -1010,7 +1010,7 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
         self.ref_policy_state_dict = None
         self.offload_model_buffer = None
         ref_policy_path = self.cfg.algorithm.get("ref_policy_path", None)
-        if self.cfg.algorithm.kl_beta > 0 and ref_policy_path is not None:
+        if ref_policy_path is not None:
             self.ref_policy_state_dict = torch.load(
                 ref_policy_path, map_location="cpu", weights_only=False
             )
@@ -1412,10 +1412,7 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                     # Reference forward pass for KL constraint (before training fwd
                     # to avoid cpu_weight_swap corrupting the autograd graph)
                     ref_logprobs_raw = None
-                    if (
-                        self.cfg.algorithm.kl_beta > 0
-                        and self.ref_policy_state_dict is not None
-                    ):
+                    if self.ref_policy_state_dict is not None:
                         with torch.no_grad():
                             with self.amp_context:
                                 with cpu_weight_swap(
@@ -1489,7 +1486,7 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                         "critic_warmup": self.optimizer_steps
                         < self.critic_warmup_steps,
                         "ref_logprobs": ref_logprobs_raw,
-                        "kl_beta": self.cfg.algorithm.kl_beta,
+                        "ref_kl_beta": self.cfg.algorithm.get("ref_kl_beta", 0.0),
                         "kl_penalty_type": self.cfg.algorithm.get("kl_penalty", "kl"),
                     }
                     loss, metrics_data = policy_loss(**kwargs)
