@@ -34,6 +34,48 @@ if "rlinf.envs.wrappers" not in sys.modules:
 from rlinf.workers.env.env_worker import EnvWorker  # noqa: E402
 
 
+class TestEnvWorkerInitBarrier(unittest.TestCase):
+    def _make_worker(self, train_env_type: str, eval_env_type: str) -> EnvWorker:
+        worker = object.__new__(EnvWorker)
+        worker.cfg = OmegaConf.create(
+            {
+                "env": {
+                    "train": {"env_type": train_env_type},
+                    "eval": {"env_type": eval_env_type},
+                }
+            }
+        )
+        worker._world_size = 2
+        worker._group_name = "EnvGroup"
+        worker.only_eval = True
+        worker.enable_eval = False
+        worker._setup_dst_rank_map = MagicMock(return_value={})
+        worker._setup_src_rank_map = MagicMock(return_value={})
+        worker.log_info = MagicMock()
+        worker.broadcast = MagicMock()
+        worker.update_env_cfg = MagicMock()
+        return worker
+
+    def test_robotwin_skips_realworld_init_barrier(self):
+        """RoboTwin workers must not wait on the RealWorld-only barrier."""
+        worker = self._make_worker("robotwin", "robotwin")
+
+        worker.init_worker()
+
+        worker.broadcast.assert_not_called()
+
+    def test_realworld_uses_init_barrier(self):
+        """RealWorld workers synchronize after their initial ROS setup."""
+        worker = self._make_worker("realworld", "realworld")
+
+        worker.init_worker()
+
+        worker.broadcast.assert_called_once_with(
+            True,
+            groups=[("EnvGroup", [0, 1])],
+        )
+
+
 class TestOverlapEnvBootstrap(unittest.TestCase):
     def setUp(self):
         self.cfg = OmegaConf.create(

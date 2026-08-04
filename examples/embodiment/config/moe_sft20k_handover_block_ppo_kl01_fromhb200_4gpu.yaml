@@ -1,0 +1,16 @@
+defaults:
+  - moe_sft20k_handover_block_ppo150_128env_4gpu
+  - _self_
+
+# The base config supplies the 4-GPU placement, 128 environments, current
+# asset path, and clear_cache_freq: 2.  runner.resume_dir is passed at submit
+# time so this file remains portable across storage mounts.
+runner:
+  max_steps: 500
+  logger:
+    experiment_name: "handover_block_ppo_kl01_fromhb200_128env_4gpu"
+
+algorithm:
+  kl_penalty: low_var_kl
+  ref_kl_beta: 0.01
+  ref_policy_path: "/mnt/shared-storage-user/chenzanxin/jiayusun/five_task_ppo_step100/full_weights.pt"

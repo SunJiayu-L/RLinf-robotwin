@@ -1,0 +1,16 @@
+defaults:
+  - moe_sft20k_handover_block_ppo150_128env_4gpu
+  - _self_
+
+# Resume the actor's complete FSDP/DCP training state from step 50.  Actor and
+# rollout both load the checkpoint's full weights, so the inherited disabled
+# initial patch sync remains correct.
+runner:
+  logger:
+    experiment_name: "moe_sft20k_handover_block_ppo50to500_128env_4gpu_resume_m1400"
+  max_steps: 500
+  resume_dir: "/mnt/shared-storage-user/chenzanxin/jiayusun/RLinf-robotwin/logs/20260725-11:32:49-moe_sft20k_handover_block_ppo150_128env_4gpu/moe_sft20k_handover_block_ppo150_128env_4gpu/checkpoints/global_step_50"
+
+actor:
+  model:
+    model_path: "/mnt/shared-storage-user/chenzanxin/jiayusun/RLinf-robotwin/logs/20260725-11:32:49-moe_sft20k_handover_block_ppo150_128env_4gpu/moe_sft20k_handover_block_ppo150_128env_4gpu/checkpoints/global_step_50"

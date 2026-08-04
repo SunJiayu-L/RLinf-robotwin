@@ -136,32 +136,47 @@ class EnvWorker(Worker):
         self.log_info(f"Env worker initialized with dst_rank_map: {self.dst_rank_map}")
         self.log_info(f"Env worker initialized with src_rank_map: {self.src_rank_map}")
 
-        # This is a barrier to ensure all envs' initial setup upon import is done
-        # Essential for RealWorld env to ensure initial ROS node setup is done
-        self.broadcast(
-            True,
-            groups=[(self._group_name, list(range(self._world_size)))],
-        )
+        # RealWorld needs this barrier so every worker finishes its initial ROS
+        # setup before environment construction. Other environments, including
+        # RoboTwin, can start workers at different times and deadlock here.
+        env_types = {
+            str(env_cfg.env_type)
+            for env_cfg in (self.cfg.env.get("train", None), self.cfg.env.eval)
+            if env_cfg is not None
+        }
+        if "realworld" in env_types:
+            self.broadcast(
+                True,
+                groups=[(self._group_name, list(range(self._world_size)))],
+            )
 
+        self.log_info("Updating environment configuration")
         self.update_env_cfg()
+        self.log_info("Environment configuration updated")
 
         if not self.only_eval:
+            self.log_info("Constructing training environments")
             train_env_cls = get_env_cls(self.cfg.env.train.env_type, self.cfg.env.train)
             self.env_list = self._setup_env_and_wrappers(
                 env_cls=train_env_cls,
                 env_cfg=self.cfg.env.train,
                 num_envs_per_stage=self.train_num_envs_per_stage,
             )
+            self.log_info("Training environments constructed")
         if self.enable_eval:
+            self.log_info("Constructing evaluation environments")
             eval_env_cls = get_env_cls(self.cfg.env.eval.env_type, self.cfg.env.eval)
             self.eval_env_list = self._setup_env_and_wrappers(
                 env_cls=eval_env_cls,
                 env_cfg=self.cfg.env.eval,
                 num_envs_per_stage=self.eval_num_envs_per_stage,
             )
+            self.log_info("Evaluation environments constructed")
 
         if not self.only_eval:
+            self.log_info("Performing initial environment reset")
             self._init_env()
+            self.log_info("Initial environment reset completed")
             if self.reward_mode == "history_buffer":
                 self.train_history_managers = [
                     HistoryManager(self.cfg.reward, self.train_num_envs_per_stage)

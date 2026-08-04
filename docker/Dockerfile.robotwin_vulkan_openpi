@@ -1,0 +1,129 @@
+FROM docker.1ms.run/nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-c"]
+
+RUN echo 'deb http://mirrors.i.h.pjlab.org.cn/ubuntu/ jammy main restricted universe multiverse' > /etc/apt/sources.list && \
+    echo 'deb http://mirrors.i.h.pjlab.org.cn/ubuntu/ jammy-updates main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo 'deb http://mirrors.i.h.pjlab.org.cn/ubuntu/ jammy-security main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo 'deb http://mirrors.i.h.pjlab.org.cn/ubuntu/ jammy-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo '[global]' > /etc/pip.conf && \
+    echo 'timeout = 60' >> /etc/pip.conf && \
+    echo 'index-url = http://mirrors.i.h.pjlab.org.cn/repository/pypi-proxy/simple/' >> /etc/pip.conf && \
+    echo 'extra-index-url = http://pypi.i.h.pjlab.org.cn/brain/dev/+simple' >> /etc/pip.conf && \
+    echo 'trusted-host = mirrors.i.h.pjlab.org.cn pypi.i.h.pjlab.org.cn' >> /etc/pip.conf && \
+    mkdir -p /root/.config/uv && \
+    printf '[[index]]\nurl = \"http://mirrors.i.h.pjlab.org.cn/repository/pypi-proxy/simple/\"\n\n[[index]]\nurl = \"http://pypi.i.h.pjlab.org.cn/brain/dev/+simple\"\ndefault = true\n' > /root/.config/uv/uv.toml && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        vim \
+        tmux \
+        sudo \
+        curl \
+        wget \
+        unzip \
+        ca-certificates \
+        openssh-server \
+        build-essential \
+        python3 \
+        python3-dev \
+        python3-pip \
+        python3-venv \
+        cmake \
+        pkg-config \
+        iproute2 \
+        pciutils \
+        xvfb \
+        libdrm2 \
+        libgbm1 \
+        libwayland-client0 \
+        libwayland-server0 \
+        libx11-xcb1 \
+        libxcb-dri3-0 \
+        libxcb-present0 \
+        libxcb1 \
+        libx11-6 \
+        libxext6 \
+        libxtst6 \
+        libxv1 \
+        libegl1 \
+        libglu1-mesa \
+        x11-common && \
+    wget http://deploy.i.h.pjlab.org.cn/packages/vulkansdk-linux-x86_64-1.3.296.0.tar.xz -P /tmp && \
+    cd /tmp && \
+    tar xf vulkansdk-linux-x86_64-1.3.296.0.tar.xz && \
+    cp -r /tmp/1.3.296.0/x86_64/* /usr/ && \
+    wget http://deploy.i.h.pjlab.org.cn/packages/libnvidia-common-570_570.133.07-0ubuntu0.22.04.1_all.deb -P /tmp && \
+    wget http://deploy.i.h.pjlab.org.cn/packages/libnvidia-gl-570_570.133.20-0ubuntu1_amd64.deb -P /tmp && \
+    dpkg -i /tmp/libnvidia-common-570_570.133.07-0ubuntu0.22.04.1_all.deb && \
+    dpkg -i /tmp/libnvidia-gl-570_570.133.20-0ubuntu1_amd64.deb && \
+    wget http://deploy.i.h.pjlab.org.cn/packages/virtualgl_3.1.4_amd64.deb -P /tmp && \
+    dpkg -i /tmp/virtualgl_3.1.4_amd64.deb && \
+    python3 -m pip install --upgrade pip setuptools wheel uv && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/*
+
+ENV NVIDIA_DRIVER_CAPABILITIES=all
+ENV HF_HOME=/opt/.cache/huggingface
+ENV PIP_INDEX_URL=http://mirrors.i.h.pjlab.org.cn/repository/pypi-proxy/simple/
+ENV PIP_EXTRA_INDEX_URL=http://pypi.i.h.pjlab.org.cn/brain/dev/+simple
+ENV PIP_TRUSTED_HOST="mirrors.i.h.pjlab.org.cn pypi.i.h.pjlab.org.cn"
+ENV UV_HTTP_TIMEOUT=300
+ENV UV_HTTP_RETRIES=10
+ENV UV_CONCURRENT_DOWNLOADS=4
+ENV UV_CONCURRENT_INSTALLS=4
+ENV UV_LINK_MODE=hardlink
+ENV UV_CACHE_DIR=/opt/uv-cache
+ENV UV_FIND_LINKS=/opt/wheels
+ENV VENV_PATH=/opt/venvs/openpi-robotwin-cu124
+ENV PATH=/usr/local/cuda/bin:/usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+
+# GPU workers cannot rely on the public internet. Limit concurrent transfers
+# to keep the internal PyPI proxy stable when resolving large wheel sets.
+RUN printf '[[index]]\nurl = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-proxy/simple/"\n\n[[index]]\nurl = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple"\n\n[[index]]\nurl = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple"\ndefault = true\n' > /root/.config/uv/uv.toml
+
+WORKDIR /opt/RLinf-robotwin
+
+COPY pyproject.toml /opt/RLinf-robotwin/pyproject.toml
+COPY requirements /opt/RLinf-robotwin/requirements
+COPY examples /opt/RLinf-robotwin/examples
+COPY rlinf /opt/RLinf-robotwin/rlinf
+COPY toolkits /opt/RLinf-robotwin/toolkits
+COPY ray_utils /opt/RLinf-robotwin/ray_utils
+COPY tests /opt/RLinf-robotwin/tests
+COPY docs /opt/RLinf-robotwin/docs
+COPY CONTRIBUTING.md /opt/RLinf-robotwin/CONTRIBUTING.md
+COPY README.md /opt/RLinf-robotwin/README.md
+COPY LICENSE /opt/RLinf-robotwin/LICENSE
+
+# `uv pip install git+...` does not consume OpenPI's uv.lock and otherwise
+# selects a different prerelease rerun-sdk on each resolver run. Pin the lock's
+# Linux-compatible version locally, so no rerun-sdk wheel is fetched through
+# the intermittently failing internal PyPI proxy.
+RUN mkdir -p /opt/wheels && \
+    curl -fL --retry 5 --retry-all-errors --connect-timeout 30 \
+      http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/rerun-sdk/0.23.1/rerun_sdk-0.23.1-cp39-abi3-manylinux_2_31_x86_64.whl \
+      -o /opt/wheels/rerun_sdk-0.23.1-cp39-abi3-manylinux_2_31_x86_64.whl && \
+    curl -fL --retry 5 --retry-all-errors --connect-timeout 30 \
+      https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl \
+      -o /opt/wheels/flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl && \
+    curl -fL --retry 5 --retry-all-errors --connect-timeout 30 \
+      http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/open3d/0.19.0/open3d-0.19.0-cp310-cp310-manylinux_2_31_x86_64.whl \
+      -o /opt/wheels/open3d-0.19.0-cp310-cp310-manylinux_2_31_x86_64.whl && \
+    curl -fL --retry 5 --retry-all-errors --connect-timeout 30 \
+      https://mirrors.cloud.tencent.com/pypi/packages/c2/bb/21e9396a963d50171f539f4a4c9411435e7bb9c5131f4480f882d5e51dc6/warp_lang-1.11.1-py3-none-manylinux_2_28_x86_64.whl \
+      -o /opt/wheels/warp_lang-1.11.1-py3-none-manylinux_2_28_x86_64.whl
+
+RUN sed -i '/uv pip install git+${GITHUB_PREFIX}https:\/\/github.com\/RLinf\/openpi$/i\            uv pip install rerun-sdk==0.23.1' requirements/install.sh && \
+    sed -i 's@uv pip install "${base_url}/${wheel_name}"@uv pip install "/opt/wheels/${wheel_name}"@' requirements/install.sh && \
+    sed -i 's@uv pip install warp-lang==1.11.1@uv pip install /opt/wheels/warp_lang-1.11.1-py3-none-manylinux_2_28_x86_64.whl@' requirements/install.sh && \
+    MAX_JOBS=2 bash requirements/install.sh embodied --model openpi --env robotwin --venv "${VENV_PATH}" --python 3.10 --install-rlinf
+
+RUN echo 'source /opt/venvs/openpi-robotwin-cu124/bin/activate' >> /root/.bashrc && \
+    echo 'export MUJOCO_GL=egl' >> /root/.bashrc && \
+    echo 'export PYOPENGL_PLATFORM=egl' >> /root/.bashrc && \
+    echo 'export ROBOT_PLATFORM=ALOHA' >> /root/.bashrc
+
+WORKDIR /workspace
