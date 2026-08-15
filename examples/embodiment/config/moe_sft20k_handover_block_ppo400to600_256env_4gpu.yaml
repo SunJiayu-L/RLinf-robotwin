@@ -1,0 +1,15 @@
+defaults:
+  - moe_sft20k_handover_block_ppo150_128env_4gpu
+  - _self_
+
+# Continue the no-KL handover_block PPO run from global_step_400 with the
+# train env count doubled to 256 (was 128). resume_dir/ckpt_path stay null
+# here and are set via CLI at submit time, same pattern as the 400resume run.
+runner:
+  logger:
+    experiment_name: "moe_sft20k_handover_block_ppo400to600_256env_4gpu"
+  max_steps: 600
+
+env:
+  train:
+    total_num_envs: 256

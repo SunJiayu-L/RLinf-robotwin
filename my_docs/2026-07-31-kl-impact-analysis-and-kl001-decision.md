@@ -1,6 +1,6 @@
 # Reference-KL 对 handover_block 的实际影响：数据分析与 β=0.001 诊断实验
 
-**日期：** 2026-07-31
+**日期：** 2026-07-31（最后更新 2026-08-05，含 3.7 节评测方差重跑结果）
 **Branch：** `KL`
 **关联文档：** [`2026-07-18-handover-block-ppo-kl-constraint.md`](2026-07-18-handover-block-ppo-kl-constraint.md)（实现细节）、[`2026-07-31-why-KL.md`](2026-07-31-why-KL.md)（设计动机）、[`2026-07-29-handover-block-active-experiments.md`](2026-07-29-handover-block-active-experiments.md)（实验总览）
 
@@ -81,6 +81,62 @@ KL 项 / PPO 信号 ≈ 49%
 
 另外一个旁证：同期观察的实验 E（无 KL，从 `global_step_250` 续训，见第五节末尾）在其自身窗口（252–301，50 步）的 success_once 也基本走平（均值 0.292，t=-0.035 不显著），并不像 A 在 step 200–250 区间那样持续上升。这提示 A 观察到的上升趋势可能只是 step 200–250 这一段"补涨"，success_once 到 step ~250 附近本身就会自然趋于平台（约 0.29–0.30），与是否加 KL 无关。因此上面"β=0.001 均值比 A 低 2.7pp"这个差距，也可能部分是"对比窗口所处训练阶段不同"造成的，而不是纯粹的 KL 效应——**更严谨的做法是让 KL(0.001) 也跑到 step 250+ 后，直接对比同一 step 区间内 KL(0.001) vs 实验 E（两者都从各自续训点出发，且都已进入"自然平台期"），排除训练阶段本身的混杂因素**。
 
+### 3.6 5-task 固定种子评测对比（step 300，2026-08-05）
+
+上面 3.1–3.5 的对比都基于训练过程中 rollout 阶段的在线 `success_once`（小批量、随机种子，噪声大）。为了拿到更干净、更能跟 `why-KL.md` 里引用的 baseline 数字（SFT 37.5%）对齐口径的结果，对 KL(0.001)（实验 F）和无 KL（实验 E）在**同一个 step（300）**上分别跑了一次标准的 5-task 固定种子评测。
+
+**评测方法**：每个任务（bbh/ca/cb/hb/mpa）用专门的 seed manifest 文件（`rlinf/envs/robotwin/seeds/<task>_manifest_96ep.json`，每个任务 96 条固定 `(seed, instruction)`），配合 `use_fixed_reset_state_ids: True`，env reset 时按 `partition_episode_manifest` 分片后顺序、不重复地消费。`env.eval.total_num_envs=32` × `algorithm.eval_rollout_epoch=3` = 96，理论上覆盖全部 96 条种子；但由于 `auto_reset: True` + `ignore_terminations: True`，episode 天然较短的任务会在同一个 400-step 窗口内完成并重置多次，实际消耗的 trajectory 数会超过 96（例如 bbh 跑了 325 条），episode 接近占满窗口的任务则精确等于 96（cb、hb）。这个机制细节还没有完全查清楚（manifest 严格来说是有限且不重复的，超出理论应报错，但实际没有报错），标记为待确认项。
+
+新建了 10 个 eval config（`examples/embodiment/config/eval_kl001_s300_{bbh,ca,cb,hb,mpa}.yaml` 和 `eval_nokl_s300_{bbh,ca,cb,hb,mpa}.yaml`，从已有的 `eval_ppo5task_s200_*.yaml` 模板改造，替换成本地集群路径和对应 checkpoint），提交脚本 [`submit_eval_kl001_s300_5task_openpi_vulkan_4gpu.sh`](submit_eval_kl001_s300_5task_openpi_vulkan_4gpu.sh) / [`submit_eval_nokl_s300_5task_openpi_vulkan_4gpu.sh`](submit_eval_nokl_s300_5task_openpi_vulkan_4gpu.sh)，各用 4 GPU / 400GB 依次跑完 5 个任务。
+
+**结果**：
+
+| 任务 | KL β=0.001 | 无 KL | 差值（KL − 无KL） |
+|---|---|---|---|
+| bbh（beat_block_hammer） | 61.5% | 59.2% | +2.3pp |
+| ca（click_alarmclock） | 75.0% | 84.1% | −9.1pp |
+| cb（click_bell） | 82.3% | 81.3% | +1.0pp |
+| **hb（handover_block）** | **62.5%** | **55.2%** | **+7.3pp** |
+| mpa（move_playingcard_away） | 81.0% | 80.6% | +0.4pp |
+| **均值** | **72.5%** | **72.1%** | **+0.4pp** |
+
+**解读**：
+
+- 五任务均值几乎持平（+0.4pp），说明 β=0.001 这个强度下，KL 约束**没有拖累**整体多任务表现。
+- 在训练目标任务 handover_block 本身，KL 组明显更高（+7.3pp）——这跟 3.5 节用训练时 on-policy 指标做的对比（KL(0.001) 走平、没有超过无 KL 组）方向不完全一致，原因很可能是评测方式不同：训练时的 `success_once` 是小批量随机种子的在线读数噪声大，这里是固定种子、确定性评测，样本更干净，且是更晚的 step（300 vs 之前对比的 251 附近）。
+- click_alarmclock 上 KL 组明显更差（-9.1pp），是唯一一个 KL 组落后超过 5pp 的任务，需要留意。
+- **局限**：每个 config 只跑了一次，没有多组随机种子重复评测来估计方差，单任务 ±5~9pp 的差异有多少是真实效应、多少是评测噪声还不能完全确定。目前能下的结论是"β=0.001 至少没有对整体多任务能力造成净损害，且在目标任务上有正向信号"，还不能下"KL 约束确定性地帮助了 handover_block"这么强的结论。
+
+**⚠️ 见 3.7 节：这个结论被后续重复评测推翻了。**
+
+### 3.7 5-task 评测重跑（2026-08-05）：单次评测的方差比 KL vs 无KL 的差异还大
+
+3.6 节的结论只基于一次评测。用完全相同的 checkpoint（KL(0.001) 和无 KL 都是 `global_step_300`）、完全相同的 eval config，重新各跑一遍 5-task 评测（`eval_kl001_s300_*` / `eval_nokl_s300_*` 原样重新提交）。由于 eval 配置里 `sampling_params.do_sample: True`、`temperature_eval: 0.6`，策略动作采样本身有随机性（环境侧种子是固定的，但策略输出不是确定性的），即使 checkpoint 和固定种子完全一样，重复跑的结果也会有波动。
+
+**两次评测汇总**：
+
+| 任务 | KL run1 | KL run2 | KL 均值 | 无KL run1 | 无KL run2 | 无KL 均值 | 均值差(KL−无KL) |
+|---|---|---|---|---|---|---|---|
+| bbh | 61.5% | 53.4% | 57.5% | 59.2% | 51.3% | 55.3% | +2.2pp |
+| ca | 75.0% | 87.1% | 81.1% | 84.1% | 91.4% | 87.8% | −6.7pp |
+| cb | 82.3% | 88.5% | 85.4% | 81.3% | 82.3% | 81.8% | +3.6pp |
+| **hb** | 62.5% | 51.0% | **56.8%** | 55.2% | 52.1% | **53.7%** | **+3.1pp** |
+| mpa | 81.0% | 85.5% | 83.3% | 80.6% | 88.7% | 84.7% | −1.4pp |
+| **五任务均值** | 72.5% | 73.1% | **72.8%** | 72.1% | 73.2% | **72.6%** | **+0.2pp** |
+
+**单次评测的波动幅度**（同一 checkpoint 两次评测的绝对差）：
+
+- KL 组：bbh 8.1pp、ca **12.1pp**、cb 6.2pp、hb **11.5pp**、mpa 4.5pp
+- 无KL 组：bbh 7.9pp、ca 7.3pp、cb 1.0pp、hb 3.1pp、mpa 8.1pp
+
+**结论：3.6 节"KL 组在 handover_block 上 +7.3pp、click_alarmclock 上 -9.1pp"的结论不成立。** 单次评测的波动幅度（普遍 5~9pp，个别任务到 11~12pp）跟 3.6 节里观察到的 KL vs 无KL 差异是同一量级。两轮取均值后：
+
+- hb 上 KL 只领先 3.1pp（run1 的 +7.3pp 里，一大半是噪声）
+- ca 上 KL 反而落后 6.7pp（run1 显示落后 9.1pp，方向一致但幅度也在变）
+- 五任务总均值两边几乎完全打平（72.8% vs 72.6%，只差 0.2pp）
+
+**现在能确认的、比较站得住的结论只有**："β=0.001 的 KL 约束在 step 300 附近，对五任务整体表现没有造成可辨识的净损害"——仅此而已。"KL 约束帮助了 handover_block 本身"这个更强的说法，从目前两轮数据看，还不能确认，需要更多轮次评测（至少 4-5 轮）取更稳定的均值才能判断这类个位数到十位数百分点的差异是否是真实效应。
+
 ---
 
 ## 四、下一步决策
@@ -98,9 +154,13 @@ KL 项 / PPO 信号 ≈ 49%
 - 若 β=0.001 依然明显压制 → 说明问题不只是系数大小，需要重新审视参考策略选择（5-task step-100 是否合适）/ KL 估计器 / 加入位置本身。
 - 无论哪种结果，仍需要补一次"从 SFT（step 0）+ KL β=0.01”对照，来验证这个方法在它本来设计要解决的场景下是否真的有效（当前完全没有这组数据）。
 
-**实际结果（见 3.5）**：介于两者之间——不再压制，但也没有恢复上升趋势，KL 本身也基本不收缩了。下一步建议：
-1. 在 0.003~0.005 之间取一个中间 β 值做 sweep，寻找"success_once 不明显受压 + ref_kl_loss 有实质收缩"的平衡点；
-2. 让 KL(0.001)（实验 F）和无 KL 的实验 E 都跑到同一个更靠后的 step 区间（例如都到 step 300+），做同阶段对比，排除"训练阶段本身处于自然平台期"这个混杂因素；
+**实际结果（见 3.5）**：介于两者之间——不再压制，但也没有恢复上升趋势，KL 本身也基本不收缩了。
+
+**已完成**：第 2 项（同阶段对比）已经用固定种子的 5-task 评测做完，见 3.6 节，并在 3.7 节用第二轮重复评测验证了方差——两轮取均值后，五任务总均值基本打平（+0.2pp），单任务差异（包括之前看起来很显著的 hb +7.3pp）大多落在评测本身的采样噪声范围内。
+
+**仍然待办**：
+1. 3.7 节已经证明"跑一次评测就下结论"不可靠，如果还想验证 β=0.001 对 handover_block 是否有真实（哪怕很小）的正面效应，需要至少 4-5 轮重复评测取更稳定的均值，或者改用更大的 eval 样本量 / 关闭采样随机性（`do_sample: False`）来降低评测本身的方差；
+2. 在 0.003~0.005 之间取一个中间 β 值做 sweep 目前优先级降低——既然 β=0.001 相对无 KL 看不出明显差异（正面或负面都在噪声范围内），先把评测方法的方差问题解决，再决定要不要继续 sweep 更多 β 值；
 3. "从 SFT（step 0）+ KL β=0.01"这组原始设计场景的对照实验仍未补，如果要验证 KL 约束在它本来要解决的问题（SFT 直接 PPO 崩溃）上是否有效，这组数据依然缺失。
 
 ---
@@ -127,9 +187,9 @@ KL 项 / PPO 信号 ≈ 49%
 | rjob | `handover-block-ppo200-kl001-novideo-4g-m1400-2f3f1` |
 | showname | `handover-block-ppo200-kl001-novideo-4g-m1400-0803-1155` |
 | 日志/新 checkpoint | `/mnt/ailab-eailabagent-gpfs/chenzanxin/rlinf-robotwin-runs/handover-block-ppo200-kl001-novideo-4g-m1400-0803-1155`（本机侧读取用新挂载路径；容器内部路径仍是 `/mnt/shared-storage-gpfs2/...`） |
-| 状态（截至 2026-08-04 14:15 HKT） | `Running`，step 254/500 |
+| 最终状态 | 人工在 2026-08-05 12:41 HKT 停止（`rjob stop`），最终停在 step 304/500；已保存 checkpoint `global_step_250`、`global_step_300` |
 
-对比结果见第 3.5 节。
+训练时 on-policy 指标对比结果见第 3.5 节；用 `global_step_300` checkpoint 做的固定种子 5-task 评测结果见第 3.6 节。
 
 ## 六、实验 E 重提交（无 KL 对照，用于排除训练阶段混杂因素）
 
@@ -142,6 +202,6 @@ KL 项 / PPO 信号 ≈ 49%
 | 内存 | 1400000（同样从 800000 提高） |
 | 起点 | 实验 A 产出的 `global_step_250`（与原实验 E 相同） |
 | 日志 | `/mnt/ailab-eailabagent-gpfs/chenzanxin/rlinf-robotwin-runs/handover-block-ppo250resume-novideo-4g-m1400-0803-1155` |
-| 状态（截至 2026-08-04 14:15 HKT） | `Running`，step 328/500 |
+| 状态（截至 2026-08-05 14:49 HKT） | `Running`，step 400/500，已保存 checkpoint `global_step_300`、`global_step_350`、`global_step_400` |
 
-这组数据目前主要用于第 3.5 节里"排除训练阶段混杂因素"的旁证对比（E 自身在 252–301 窗口 success_once 也基本走平，均值 0.292）。
+训练时 on-policy 指标用于第 3.5 节里"排除训练阶段混杂因素"的旁证对比（E 自身在 252–301 窗口 success_once 也基本走平，均值 0.292）；用 `global_step_300` checkpoint 做的固定种子 5-task 评测结果见第 3.6 节。

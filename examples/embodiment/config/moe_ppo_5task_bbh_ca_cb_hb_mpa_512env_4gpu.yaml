@@ -1,0 +1,14 @@
+defaults:
+  - moe_ppo_5task_bbh_ca_cb_hb_mpa_128env_4gpu
+  - _self_
+
+# Same 5-task joint PPO setup as moe_ppo_5task_bbh_ca_cb_hb_mpa_128env_4gpu,
+# with train env count raised to 512 (was 128) for more rollout throughput.
+# resume_dir/ckpt_path stay null here and are set via CLI at submit time.
+runner:
+  logger:
+    experiment_name: "moe_ppo_5task_bbh_ca_cb_hb_mpa_512env_4gpu"
+
+env:
+  train:
+    total_num_envs: 512

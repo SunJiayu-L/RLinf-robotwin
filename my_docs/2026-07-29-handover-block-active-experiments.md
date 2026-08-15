@@ -161,7 +161,7 @@ Exception occurred while running EmbodiedFSDPActor's function recv_rollout_traje
 | 项目 | 设置 |
 | --- | --- |
 | rjob（第一次，m800） | `handover-block-ppo200-kl001-novideo-4g-m800-45365` | `Stopped`（系统升级杀掉，跑到 step 211） |
-| rjob（重提交，m1400） | `handover-block-ppo200-kl001-novideo-4g-m1400-2f3f1` | `Running`，截至 2026-08-04 14:15 HKT，step 254/500 |
+| rjob（重提交，m1400） | `handover-block-ppo200-kl001-novideo-4g-m1400-2f3f1` | 人工在 2026-08-05 12:41 HKT 停止，最终停在 step 304/500，保存了 `global_step_250`、`global_step_300` |
 | showname | `handover-block-ppo200-kl001-novideo-4g-m1400-0803-1155` |
 | 起点 | 与实验 A/B 相同的 `global_step_200` DCP checkpoint |
 | 参考策略 | 5-task joint PPO step-100（同实验 B） |
@@ -173,9 +173,11 @@ Exception occurred while running EmbodiedFSDPActor's function recv_rollout_traje
 
 目的：实验 B（`ref_kl_beta=0.01`）数据分析显示 KL 惩罚项量级 ≈ PPO 信号量级的一半（0.01×4.46≈0.045 vs 纯 PPO policy_loss ≈0.092），压制了 success_once 提升趋势，但幅度不足以让 `ref_kl_loss` 明显下降。本实验把 β 降到 0.001（KL 项约为 PPO 信号的 5%），验证问题是否纯粹是力度过大。
 
-**结果（2026-08-04 更新，51-step 窗口 202–251）**：success_once 均值 0.255，介于 A（0.282，明显上升）和 B（0.241，明显下降）之间，趋势基本走平（不再下降，但也没恢复上升）；`ref_kl_loss` 基本不再收缩。说明 β=0.001 解决了"持续下降"问题但没有恢复健康增长，建议在 0.003~0.005 之间取中间值继续 sweep。详细分析见 [`2026-07-31-kl-impact-analysis-and-kl001-decision.md`](2026-07-31-kl-impact-analysis-and-kl001-decision.md)。
+**训练时 on-policy 指标（2026-08-04 更新，51-step 窗口 202–251）**：success_once 均值 0.255，介于 A（0.282，明显上升）和 B（0.241，明显下降）之间，趋势基本走平（不再下降，但也没恢复上升）；`ref_kl_loss` 基本不再收缩。
 
-同期无 KL 对照实验 E 也因系统升级被杀（`Failed`），重提交为 `handover-block-ppo250resume-novideo-4g-m1400-058d8`（`Running`，截至 2026-08-04 14:15 HKT，step 328/500），内存同样从 800000 提到 1400000。
+**5-task 固定种子评测对比（2026-08-05，checkpoint `global_step_300`，vs 无 KL 实验 E 同 step）**：第一轮显示 KL 组在 handover_block 上明显更高（+7.3pp）、click_alarmclock 上明显更差（-9.1pp）。但重复评测同一 checkpoint 第二轮后（eval 配置 `do_sample=True` 导致策略采样有随机性），发现单次评测的波动幅度（普遍 5~9pp，个别到 11~12pp）跟第一轮观察到的差异是同一量级——两轮取均值后，五任务总均值基本打平（KL 72.8% vs 无KL 72.6%，+0.2pp），hb 上 KL 只领先 3.1pp，ca 上反而落后 6.7pp。**结论：目前能确认的只有"β=0.001 没有拖累整体多任务能力"，"KL 帮助了 handover_block"这个更强的说法尚未被证实，需要更多轮次评测。** 详细分析见 [`2026-07-31-kl-impact-analysis-and-kl001-decision.md`](2026-07-31-kl-impact-analysis-and-kl001-decision.md)。
+
+同期无 KL 对照实验 E 也因系统升级被杀（`Failed`），重提交为 `handover-block-ppo250resume-novideo-4g-m1400-058d8`（`Running`，截至 2026-08-05 14:49 HKT，step 400/500），内存同样从 800000 提到 1400000。
 
 ## 已停止的对照作业
 
