@@ -19,6 +19,10 @@ import numpy as np
 import torch
 import torch.distributed
 
+from rlinf.algorithms.value_stats import (
+    value_metrics_from_statistics,
+    value_sufficient_statistics,
+)
 from rlinf.scheduler import Worker
 
 
@@ -173,6 +177,23 @@ def compute_rollout_metrics(data_buffer: dict) -> dict:
         }
         rollout_metrics.update(returns_metrics)
 
+    if (
+        data_buffer.get("returns") is not None
+        and data_buffer.get("prev_values") is not None
+    ):
+        old_values = data_buffer["prev_values"][:-1]
+        returns = data_buffer["returns"]
+        stats = value_sufficient_statistics(
+            old_values, returns, data_buffer.get("loss_mask")
+        )
+        stats = stats.to(Worker.torch_platform.current_device())
+        torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
+        rollout_metrics.update(
+            {
+                key: value.item()
+                for key, value in value_metrics_from_statistics(stats).items()
+            }
+        )
     return rollout_metrics
 
 

@@ -163,7 +163,10 @@ def _process_single_parquet(
         if dataset_type == "sft":
             is_success = True
         else:
-            is_success = bool(is_success_col[ep_end - 1])
+            success_flag = np.asarray(is_success_col[ep_end - 1])
+            if success_flag.size != 1:
+                raise ValueError(f"Expected scalar episode success, got {success_flag}")
+            is_success = bool(success_flag.item())
 
         ep_returns, ep_rewards = compute_returns_for_episode(
             episode_length=ep_length,

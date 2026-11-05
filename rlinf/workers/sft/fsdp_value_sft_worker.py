@@ -21,6 +21,7 @@ via supervised fine-tuning with FSDP.
 This module is self-contained and does NOT share code with fsdp_sft_worker.py.
 """
 
+import json
 import os
 from pathlib import Path
 
@@ -79,23 +80,10 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
 
     @staticmethod
     def _compute_spearman(values_a: np.ndarray, values_b: np.ndarray) -> float:
-        """Compute Spearman correlation with simple rank-based Pearson."""
-        if len(values_a) < 2 or len(values_b) < 2:
-            return 0.0
+        """Compute tie-aware Spearman; constant inputs are undefined (NaN)."""
+        from rlinf.algorithms.recap_value_metrics import spearman
 
-        rank_a = np.empty_like(values_a, dtype=np.float64)
-        rank_b = np.empty_like(values_b, dtype=np.float64)
-        order_a = np.argsort(values_a, kind="mergesort")
-        order_b = np.argsort(values_b, kind="mergesort")
-        rank_a[order_a] = np.arange(len(values_a), dtype=np.float64)
-        rank_b[order_b] = np.arange(len(values_b), dtype=np.float64)
-
-        rank_a -= rank_a.mean()
-        rank_b -= rank_b.mean()
-        denom = np.linalg.norm(rank_a) * np.linalg.norm(rank_b)
-        if denom == 0.0:
-            return 0.0
-        return float(np.dot(rank_a, rank_b) / denom)
+        return spearman(values_a, values_b)
 
     @classmethod
     def _compute_value_spearman(
@@ -314,6 +302,8 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
 
             entry_kwargs = {
                 **common_ds_kwargs,
+                "return_min": entry.get("return_min", global_return_min),
+                "return_max": entry.get("return_max", global_return_max),
                 "dataset_path": ds_path,
                 "robot_type": entry.get("robot_type", shared["robot_type"]),
                 "model_type": entry.get("model_type", shared["model_type"]),
@@ -390,7 +380,9 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
             if not eval_dataset_path:
                 continue
 
-            if "return_min" in eval_entry or "return_max" in eval_entry:
+            if (
+                "return_min" in eval_entry or "return_max" in eval_entry
+            ) and not data_cfg.get("per_task_returns", False):
                 self.logger.warning(
                     "[ValueSFT] eval entry return_min/return_max are ignored. "
                     "Eval reward/return normalization always uses train global "
@@ -410,8 +402,12 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                     "action_horizon", shared["action_horizon"]
                 ),
                 gamma=eval_entry.get("gamma", shared["gamma"]),
-                return_min=global_return_min,
-                return_max=global_return_max,
+                return_min=eval_entry.get("return_min", global_return_min)
+                if data_cfg.get("per_task_returns", False)
+                else global_return_min,
+                return_max=eval_entry.get("return_max", global_return_max)
+                if data_cfg.get("per_task_returns", False)
+                else global_return_max,
                 normalize_to_minus_one_zero=eval_entry.get(
                     "normalize_to_minus_one_zero", shared["normalize_to_minus_one_zero"]
                 ),
@@ -477,6 +473,7 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                 self.model.gradient_checkpointing_disable()
 
             all_metrics = []
+            predicted_batches, target_batches = [], []
 
             for idx in range(self.gradient_accumulation):
                 backward_ctx = self.before_micro_batch(
@@ -518,11 +515,20 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                         else result.mae
                     )
                 if result.predicted_values is not None and target_values is not None:
-                    metrics.update(
-                        self._compute_value_spearman(
-                            result.predicted_values,
-                            target_values,
+                    metrics["continuous_mae"] = (
+                        (
+                            result.predicted_values.float().view(-1)
+                            - target_values.float().view(-1)
                         )
+                        .abs()
+                        .mean()
+                        .item()
+                    )
+                    predicted_batches.append(
+                        result.predicted_values.detach().float().view(-1).cpu().numpy()
+                    )
+                    target_batches.append(
+                        target_values.detach().float().view(-1).cpu().numpy()
                     )
 
                 scaled_loss = loss / self.gradient_accumulation
@@ -546,6 +552,14 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
             train_metrics["grad_norm"] = grad_norm
             train_metrics["lr"] = lr_list[0] if lr_list else 0.0
 
+            if predicted_batches:
+                from rlinf.algorithms.recap_value_metrics import value_metrics
+
+                full_predictions = self._gather_eval_array(
+                    np.concatenate(predicted_batches)
+                )
+                full_targets = self._gather_eval_array(np.concatenate(target_batches))
+                train_metrics.update(value_metrics(full_predictions, full_targets))
             train_metrics = all_reduce_dict(
                 train_metrics, op=torch.distributed.ReduceOp.AVG
             )
@@ -576,6 +590,7 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
 
             self.model.eval()
             all_dataset_metrics: dict[str, dict[str, float]] = {}
+            rollout_predictions, rollout_targets = [], []
 
             with torch.no_grad():
                 for ds_name, loader in self.eval_data_loaders:
@@ -621,6 +636,15 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                             result.predicted_values is not None
                             and target_values is not None
                         ):
+                            metrics["continuous_mae"] = (
+                                (
+                                    result.predicted_values.float().view(-1)
+                                    - target_values.float().view(-1)
+                                )
+                                .abs()
+                                .mean()
+                                .item()
+                            )
                             metrics.update(
                                 self._compute_value_spearman(
                                     result.predicted_values,
@@ -666,12 +690,16 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                                 gathered_pred is not None
                                 and gathered_target is not None
                             ):
-                                all_dataset_metrics[ds_name].update(
-                                    self._compute_value_spearman_from_arrays(
-                                        gathered_pred,
-                                        gathered_target,
-                                    )
+                                from rlinf.algorithms.recap_value_metrics import (
+                                    value_metrics,
                                 )
+
+                                all_dataset_metrics[ds_name].update(
+                                    value_metrics(gathered_pred, gathered_target)
+                                )
+                                if ds_name.startswith("rank_"):
+                                    rollout_predictions.append(gathered_pred)
+                                    rollout_targets.append(gathered_target)
 
             if not all_dataset_metrics:
                 return {}
@@ -690,9 +718,48 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                 if vals:
                     final_metrics[k] = sum(vals) / len(vals)
 
+            if rollout_predictions:
+                from rlinf.algorithms.recap_value_metrics import value_metrics
+
+                predictions = np.concatenate(rollout_predictions)
+                targets = np.concatenate(rollout_targets)
+                final_metrics.update(
+                    {
+                        "rollout/" + k: v
+                        for k, v in value_metrics(predictions, targets).items()
+                    }
+                )
+                # This protocol has success returns > -0.5 and failure returns <= -0.5.
+                for name, mask in [
+                    ("success", targets > -0.5),
+                    ("failure", targets <= -0.5),
+                ]:
+                    if mask.any():
+                        final_metrics["rollout/" + name + "_mae"] = float(
+                            np.abs(predictions[mask] - targets[mask]).mean()
+                        )
+                        final_metrics["rollout/" + name + "_value_bias"] = float(
+                            (predictions[mask] - targets[mask]).mean()
+                        )
             final_metrics = all_reduce_dict(
                 final_metrics, op=torch.distributed.ReduceOp.AVG
             )
+            if self._rank == 0:
+                directory = (
+                    Path(self.cfg.runner.logger.log_path)
+                    / self.cfg.runner.logger.experiment_name
+                )
+                directory.mkdir(parents=True, exist_ok=True)
+                with (directory / "value_validation.jsonl").open("a") as stream:
+                    stream.write(
+                        json.dumps(
+                            {
+                                "completed_steps": self.global_step + 1,
+                                "metrics": final_metrics,
+                            }
+                        )
+                        + "\n"
+                    )
 
             if self.cfg.actor.get("enable_offload", False):
                 with self.device_lock:

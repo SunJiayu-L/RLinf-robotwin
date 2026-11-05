@@ -1,0 +1,158 @@
+data:
+  data_root: null
+  train_data_paths:
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/sft_train
+    type: sft
+    weight: 0.5
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_00/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_01/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_02/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_03/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_04/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_05/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_06/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_07/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/sft_val
+    type: sft
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_00/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_01/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_02/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_03/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_04/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_05/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_06/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/iter000/datasets/rollout/rank_07/val
+    type: rollout
+    weight: 1.0
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  dataset_type: sft
+  gamma: 1.0
+  failure_reward: -400.0
+  tag: robotwin_time_v1
+  num_workers: 16
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

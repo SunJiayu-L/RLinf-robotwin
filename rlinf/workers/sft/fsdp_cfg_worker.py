@@ -174,6 +174,8 @@ class FSDPCfgWorker(FSDPSftWorker):
             dataset_meta = lerobot_dataset.LeRobotDatasetMetadata(
                 data_path, root=dataset_root
             )
+            if episodes is None:
+                episodes = sorted(dataset_meta.episodes)
             base_dataset = lerobot_dataset.LeRobotDataset(
                 data_path,
                 root=dataset_root,
@@ -345,7 +347,10 @@ class FSDPCfgWorker(FSDPSftWorker):
                     self.load_optimizer(self.device)
 
             self.model.train()
-            if hasattr(self.model, "gradient_checkpointing_disable"):
+            if self.cfg.actor.fsdp_config.get("gradient_checkpointing", False):
+                if hasattr(self.model, "gradient_checkpointing_enable"):
+                    self.model.gradient_checkpointing_enable()
+            elif hasattr(self.model, "gradient_checkpointing_disable"):
                 self.model.gradient_checkpointing_disable()
 
             assert (

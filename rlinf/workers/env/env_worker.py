@@ -1224,6 +1224,12 @@ class EnvWorker(Worker):
     def evaluate(self, input_channel: Channel, rollout_channel: Channel):
         eval_metrics = defaultdict(list)
 
+        # A finite paired RoboTwin manifest is consumed by auto-reset. Rewind
+        # once per validation call, rather than once per rollout epoch.
+        if self.cfg.env.eval.env_type == "robotwin":
+            for env in self.eval_env_list:
+                env.unwrapped.begin_evaluation()
+
         for eval_rollout_epoch in range(self.cfg.algorithm.eval_rollout_epoch):
             if not self.cfg.env.eval.auto_reset or eval_rollout_epoch == 0:
                 for stage_id in range(self.stage_num):

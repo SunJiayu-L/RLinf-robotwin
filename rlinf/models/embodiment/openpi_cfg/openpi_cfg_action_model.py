@@ -291,35 +291,21 @@ class OpenPi0ForCFGActionPrediction(BasePolicy, PI0Pytorch):
                     sample,
                 )
             if first_process:
-                sample["prompt"] = obs["prompt"][i]
-                positive_guidance_prompt = obs["positive_guidance_prompt"][i]
-                positive_guidance_dict = self._tokenize_transform(
-                    {"prompt": positive_guidance_prompt}
+                from rlinf.models.embodiment.openpi_cfg.prompt_transforms import (
+                    transform_with_guidance,
                 )
-                negative_guidance_prompt = obs["negative_guidance_prompt"][i]
-                negative_guidance_dict = self._tokenize_transform(
-                    {"prompt": negative_guidance_prompt}
+
+                sample["prompt"] = obs["prompt"][i]
+                transformed_sample = transform_with_guidance(
+                    sample,
+                    self._input_transform.transforms,
+                    self._tokenize_transform,
+                    obs["positive_guidance_prompt"][i],
+                    obs["negative_guidance_prompt"][i],
                 )
             else:
                 sample["prompt"] = "xxxx"
-            transformed_sample = self._input_transform(sample)
-            if first_process:
-                transformed_sample.update(
-                    {
-                        "tokenized_positive_guidance_prompt": positive_guidance_dict[
-                            "tokenized_prompt"
-                        ],
-                        "tokenized_positive_guidance_prompt_mask": positive_guidance_dict[
-                            "tokenized_prompt_mask"
-                        ],
-                        "tokenized_negative_guidance_prompt": negative_guidance_dict[
-                            "tokenized_prompt"
-                        ],
-                        "tokenized_negative_guidance_prompt_mask": negative_guidance_dict[
-                            "tokenized_prompt_mask"
-                        ],
-                    }
-                )
+                transformed_sample = self._input_transform(sample)
             transformed_samples.append(transformed_sample)
         inputs = tree_map(
             lambda *torch_arr: torch.from_numpy(np.asarray(torch_arr).copy()),

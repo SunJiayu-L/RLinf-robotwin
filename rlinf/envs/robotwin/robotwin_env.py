@@ -18,6 +18,7 @@ from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
 from typing import Optional, Union
+from uuid import uuid4
 
 import gymnasium as gym
 import numpy as np
@@ -79,6 +80,11 @@ class RoboTwinEnv(gym.Env):
         self._task_current_episode_indices = {}
         self._task_current_seed_indices = {}
         self.current_instructions = None
+        # Keep observed text separate: current_instructions controls manifest
+        # resets, and filling it from observations would change train sampling.
+        self._observed_instructions = [""] * self.num_envs
+        self._episode_log_written = np.zeros(self.num_envs, dtype=bool)
+        self._episode_ids = np.zeros(self.num_envs, dtype=np.int64)
         self._episode_log_path = None
         self._init_reset_state_ids()
         self._init_episode_log()
@@ -153,10 +159,14 @@ class RoboTwinEnv(gym.Env):
 
         if not self.is_multitask:
             return
-        if len(self.task_names) > self.num_group:
+        distribute_tasks = self.cfg.get("distribute_tasks_across_workers", False)
+        available_groups = self.num_group * (
+            self.total_num_processes if distribute_tasks else 1
+        )
+        if len(self.task_names) > available_groups:
             raise ValueError(
                 "RoboTwin multi-task mode requires at least one env group per task: "
-                f"{len(self.task_names)} tasks > {self.num_group} groups"
+                f"{len(self.task_names)} tasks > {available_groups} groups"
             )
 
         self.env_task_names = [""] * self.num_envs
@@ -166,7 +176,8 @@ class RoboTwinEnv(gym.Env):
         self.task_to_group_indices = {task_name: [] for task_name in self.task_names}
 
         for group_idx in range(self.num_group):
-            task_id = group_idx % len(self.task_names)
+            global_offset = self.seed_offset * self.num_group if distribute_tasks else 0
+            task_id = (global_offset + group_idx) % len(self.task_names)
             task_name = self.task_names[task_id]
             self.task_to_group_indices[task_name].append(group_idx)
             for offset in range(self.group_size):
@@ -177,6 +188,31 @@ class RoboTwinEnv(gym.Env):
                     self.task_to_global_indices[task_name]
                 )
                 self.task_to_global_indices[task_name].append(env_idx)
+
+        # A worker may own only a subset of the global task list. Do not create
+        # empty VectorEnvs or partition manifests for tasks absent on this rank.
+        self.task_to_global_indices = {
+            task: indices
+            for task, indices in self.task_to_global_indices.items()
+            if indices
+        }
+        self.task_to_group_indices = {
+            task: self.task_to_group_indices[task]
+            for task in self.task_to_global_indices
+        }
+        self.task_worker_ranks = {}
+        for task in self.task_to_global_indices:
+            task_id = self.task_names.index(task)
+            self.task_worker_ranks[task] = [
+                rank
+                for rank in range(self.total_num_processes)
+                if any(
+                    ((rank * self.num_group if distribute_tasks else 0) + group)
+                    % len(self.task_names)
+                    == task_id
+                    for group in range(self.num_group)
+                )
+            ]
 
     def _init_episode_log(self):
         episode_log_path = self.cfg.get("episode_log_path", None)
@@ -189,7 +225,8 @@ class RoboTwinEnv(gym.Env):
             f"{path.stem}.worker-{self.seed_offset}{suffix}"
         )
         self._episode_log_path.parent.mkdir(parents=True, exist_ok=True)
-        self._episode_log_path.write_text("")
+        self._episode_log_path.touch(exist_ok=True)
+        self._episode_log_session = uuid4().hex
 
     @property
     def device(self):
@@ -222,6 +259,9 @@ class RoboTwinEnv(gym.Env):
         )
 
     def _reset_metrics(self, env_idx=None):
+        indices = self._normalize_env_indices(env_idx)
+        self._episode_log_written[indices] = False
+        self._episode_ids[indices] += 1
         if env_idx is not None:
             mask = torch.zeros(self.num_envs, dtype=bool, device=self.device)
             mask[env_idx] = True
@@ -270,7 +310,12 @@ class RoboTwinEnv(gym.Env):
             return
 
         records = []
-        for env_idx in torch.nonzero(dones, as_tuple=False).flatten().tolist():
+        pending_indices = [
+            idx
+            for idx in torch.nonzero(dones, as_tuple=False).flatten().tolist()
+            if not self._episode_log_written[idx]
+        ]
+        for env_idx in pending_indices:
             records.append(
                 {
                     "task": self.env_task_names[env_idx]
@@ -279,9 +324,10 @@ class RoboTwinEnv(gym.Env):
                     "worker": self.seed_offset,
                     "env_index": env_idx,
                     "seed": int(self.reset_state_ids[env_idx]),
-                    "instruction": self.current_instructions[env_idx]
-                    if self.current_instructions is not None
-                    else "",
+                    "instruction": self._observed_instructions[env_idx],
+                    "instruction_source": "observation",
+                    "episode_id": int(self._episode_ids[env_idx]),
+                    "session_id": self._episode_log_session,
                     "success": bool(self.success_once[env_idx].item()),
                     "success_step": (
                         int(self.first_success_steps[env_idx].item())
@@ -295,6 +341,7 @@ class RoboTwinEnv(gym.Env):
         with self._episode_log_path.open("a", encoding="utf-8") as file:
             for record in records:
                 file.write(json.dumps(record, ensure_ascii=True) + "\n")
+        self._episode_log_written[pending_indices] = True
 
     def center_and_crop(self, image, center_crop=False):
         image = np.array(image)
@@ -309,7 +356,14 @@ class RoboTwinEnv(gym.Env):
         batch_wrist_images = []
         batch_states = []
         batch_instructions = []
-        for obs in raw_obs:
+        for env_idx, obs in enumerate(raw_obs):
+            instruction = obs["instruction"]
+            if not isinstance(instruction, str) or not instruction.strip():
+                raise ValueError(
+                    f"Empty RoboTwin instruction for env {env_idx}, "
+                    f"seed {int(self.reset_state_ids[env_idx])}"
+                )
+            self._observed_instructions[env_idx] = instruction
             batch_images.append(
                 self.center_and_crop(obs["full_image"], center_crop=self.center_crop)
             )
@@ -513,6 +567,7 @@ class RoboTwinEnv(gym.Env):
                     infos["episode"]["success_at_end"] = infos["success"].clone()
 
         dones = torch.logical_or(terminations, truncations)
+        self._write_episode_records(dones, infos)
 
         _auto_reset = auto_reset and self.auto_reset
         if dones.any() and _auto_reset:
@@ -529,19 +584,31 @@ class RoboTwinEnv(gym.Env):
         chunk_step = chunk_actions.shape[1]
         obs_list = []
         infos_list = []
+        record_full_obs = (
+            not self.is_multitask
+            and self.cfg.get("is_eval", False)
+            and self.video_cfg.get("save_video", False)
+        )
 
         if self.is_multitask:
             raw_obs, step_reward, terminations, truncations, info_list = (
                 self._multitask_env_step(chunk_actions)
             )
+        elif record_full_obs:
+            raw_obs_list, step_reward, terminations, truncations, info_list = (
+                self.venv.step_with_full_obs(chunk_actions)
+            )
+            raw_obs = raw_obs_list[-1]
         else:
             raw_obs, step_reward, terminations, truncations, info_list = self.venv.step(
                 chunk_actions
             )
-        extracted_obs = self._extract_obs_image(raw_obs)
+        if record_full_obs:
+            obs_list = [self._extract_obs_image(obs) for obs in raw_obs_list]
+        else:
+            obs_list.append(self._extract_obs_image(raw_obs))
         infos = list_of_dict_to_dict_of_list(info_list)
-        obs_list.append(extracted_obs)
-        infos_list.append(infos)
+        infos_list = [{} for _ in range(len(obs_list) - 1)] + [infos]
         if isinstance(terminations, list):
             terminations = torch.as_tensor(
                 np.array(terminations).reshape(-1), device=self.device
@@ -648,6 +715,21 @@ class RoboTwinEnv(gym.Env):
 
     def sample_action_space(self):
         return np.random.randn(self.num_envs, self.horizon, 14)
+
+    def begin_evaluation(self):
+        """Rewind finite manifests so each PPO validation uses the same episodes."""
+        if not self.cfg.get("is_eval", False):
+            return
+        if self._uses_multitask_manifest:
+            self._task_current_episode_indices = dict.fromkeys(
+                self.task_to_global_indices, 0
+            )
+            self._multitask_reset_state_ids_initialized = False
+            self.update_reset_state_ids()
+            self._multitask_reset_state_ids_initialized = True
+        elif self.episode_manifest is not None:
+            self._current_episode_index = 0
+            self._update_manifest_episodes()
 
     def _init_reset_state_ids(self):
         if not hasattr(self, "_generator"):
@@ -813,15 +895,18 @@ class RoboTwinEnv(gym.Env):
                 seeds_data = json.load(f)
 
         manifest_tasks = set()
-        for task_name in self.task_names:
+        active_tasks = set(self.task_to_global_indices)
+        for task_name in self.task_to_global_indices:
+            task_workers = self.task_worker_ranks[task_name]
+            task_worker_offset = task_workers.index(self.seed_offset)
             task_data = seeds_data.get(task_name, {})
             episodes = task_data.get("episodes", None)
             if episodes is not None:
                 manifest_tasks.add(task_name)
                 self.task_episode_manifests[task_name] = partition_episode_manifest(
                     episodes,
-                    seed_offset=self.seed_offset,
-                    total_num_processes=self.total_num_processes,
+                    seed_offset=task_worker_offset,
+                    total_num_processes=len(task_workers),
                     num_group=len(self.task_to_group_indices[task_name]),
                 )
                 self._task_current_episode_indices[task_name] = 0
@@ -832,16 +917,16 @@ class RoboTwinEnv(gym.Env):
                 self.task_success_seeds[task_name] = partition_success_seeds(
                     torch.as_tensor(success_seeds, dtype=torch.long),
                     base_seed=self.base_seed,
-                    seed_offset=self.seed_offset,
-                    total_num_processes=self.total_num_processes,
+                    seed_offset=task_worker_offset,
+                    total_num_processes=len(task_workers),
                     num_group=max(1, len(self.task_to_group_indices[task_name])),
                 )
             self._task_current_seed_indices[task_name] = 0
 
-        if manifest_tasks and manifest_tasks != set(self.task_names):
+        if manifest_tasks and manifest_tasks != active_tasks:
             raise ValueError(
                 "RoboTwin multi-task manifest evaluation requires every task to "
-                f"provide episodes. Missing: {sorted(set(self.task_names) - manifest_tasks)}"
+                f"provide episodes. Missing: {sorted(active_tasks - manifest_tasks)}"
             )
 
         self._uses_multitask_manifest = bool(manifest_tasks)

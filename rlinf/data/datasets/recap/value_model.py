@@ -36,6 +36,7 @@ from torch.utils.data import Dataset
 from rlinf.models.embodiment.openpi.policies import franka_policy, libero_policy
 
 from .common import BaseDataLoaderImpl, ReCapMixtureDataset
+from .robotwin import normalized_return, robotwin_value_input
 from .utils import (
     decode_image_struct_batch,
     load_returns_sidecar,
@@ -164,8 +165,7 @@ class ReturnNormalizer(DataTransformFn):
 
     def normalize_value(self, value: float) -> float:
         if self.normalize_to_minus_one_zero:
-            denom = abs(self.return_min) if self.return_min != 0 else 1.0
-            return value / denom
+            return normalized_return(value, self.return_min, self.return_max)
         span = self.return_max - self.return_min
         if span == 0:
             return 0.0
@@ -243,7 +243,10 @@ class ValueDataset(Dataset):
         self._base = LeRobotDataset(
             local_path.name,
             root=local_path,
-            delta_timestamps=delta_timestamps,
+            episodes=sorted(self.dataset_meta.episodes),
+            delta_timestamps=None
+            if robot_type.lower() in ("robotwin", "aloha")
+            else delta_timestamps,
             download_videos=False,
         )
         self._base.hf_dataset.set_transform(decode_image_struct_batch)
@@ -301,6 +304,8 @@ class ValueDataset(Dataset):
 
     @staticmethod
     def _build_transform(robot_type, model_type, action_dim, default_prompt):
+        if robot_type.lower() in ("robotwin", "aloha"):
+            return robotwin_value_input
         model_type_lower = model_type.lower()
         model_type_enum = _MODEL_TYPE_MAP[model_type_lower]
         robot = robot_type.lower()

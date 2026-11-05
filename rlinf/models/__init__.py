@@ -233,7 +233,12 @@ def get_model(cfg: DictConfig):
         model = model.to(Worker.torch_device_type)
 
     if cfg.is_lora:
-        from peft import LoraConfig, PeftModel, get_peft_model
+        from peft import (
+            LoraConfig,
+            PeftModel,
+            get_peft_model,
+            inject_adapter_in_model,
+        )
 
         if not hasattr(cfg, "lora_path") or cfg.lora_path is None:
             lora_config = LoraConfig(
@@ -264,11 +269,27 @@ def get_model(cfg: DictConfig):
                 SupportedModel.OPENPI,
                 SupportedModel.CFG_MODEL,
             ):
-                module_to_lora = model.paligemma_with_expert.paligemma
-                module_to_lora = get_peft_model(module_to_lora, lora_config)
-                tag_vlm_subtree(model, False)
-                tag_vlm_subtree(module_to_lora, True)
-                model.paligemma_with_expert.paligemma = module_to_lora
+                if cfg.get("lora_scope", "vlm") == "policy":
+                    # Keep OpenPI's module interface intact while adapting both
+                    # the vision-language backbone and the action expert.
+                    model = inject_adapter_in_model(lora_config, model)
+                    tag_vlm_subtree(model, True)
+                    trainable_non_lora = [
+                        name
+                        for name, param in model.named_parameters()
+                        if param.requires_grad and "lora_" not in name
+                    ]
+                    if trainable_non_lora:
+                        raise RuntimeError(
+                            "Policy LoRA left non-adapter parameters trainable: "
+                            f"{trainable_non_lora[:10]}"
+                        )
+                else:
+                    module_to_lora = model.paligemma_with_expert.paligemma
+                    module_to_lora = get_peft_model(module_to_lora, lora_config)
+                    tag_vlm_subtree(model, False)
+                    tag_vlm_subtree(module_to_lora, True)
+                    model.paligemma_with_expert.paligemma = module_to_lora
             else:
                 model = get_peft_model(model, lora_config)
         else:

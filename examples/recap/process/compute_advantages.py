@@ -53,6 +53,11 @@ from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from rlinf.data.datasets.recap.robotwin import (
+    normalized_return,
+    per_task_thresholds,
+    robotwin_value_input,
+)
 from rlinf.data.datasets.recap.utils import (
     decode_image_struct_batch,
     load_return_stats_from_dataset,
@@ -337,7 +342,7 @@ def load_lerobot_dataset(
     Returns:
         Tuple of (dataset, tasks_dict, metadata, returns_sidecar)
     """
-    meta = LeRobotDatasetMetadata(str(dataset_path))
+    meta = LeRobotDatasetMetadata(dataset_path.name, root=dataset_path)
 
     logger.info(f"Dataset features: {list(meta.features.keys())}")
 
@@ -370,7 +375,9 @@ def load_lerobot_dataset(
     logger.info(f"  FPS: {meta.fps}")
 
     dataset = LeRobotDataset(
-        str(dataset_path),
+        dataset_path.name,
+        root=dataset_path,
+        episodes=sorted(meta.episodes),
         download_videos=False,
     )
     dataset.hf_dataset.set_transform(decode_image_struct_batch)
@@ -407,6 +414,11 @@ def build_obs(
     Returns:
         Raw observation dict compatible with ValueCriticModel.infer()
     """
+    if robot_type in ("robotwin", "aloha"):
+        prompt = sample.get("prompt", sample.get("task"))
+        if prompt is None and "task_index" in sample:
+            prompt = tasks[int(to_scalar(sample["task_index"]))]
+        return robotwin_value_input({**sample, "prompt": prompt})
     if robot_type not in KEY_MAPPINGS:
         raise ValueError(
             f"Unknown robot_type {robot_type!r}. "
@@ -579,20 +591,15 @@ def compute_advantages_for_dataset(
     discount_next_value = cfg.advantage.get("discount_next_value", True)
     batch_size = cfg.advantage.get("batch_size", 64)
 
-    ret_min = global_return_min
-    ret_max = global_return_max
+    ret_min = dataset_cfg.get("return_min", global_return_min)
+    ret_max = dataset_cfg.get("return_max", global_return_max)
 
     if rank == 0:
         logger.info(f"  Using global return_range: [{ret_min}, {ret_max}]")
         logger.info(f"  Using batch inference with batch_size: {batch_size}")
 
-    # Maps [ret_min, ret_max] -> [-1, 0]
-    ret_range = ret_max - ret_min
-
     def normalize(x):
-        if ret_range <= 0:
-            return -0.5
-        return (x - ret_min) / ret_range - 1.0
+        return normalized_return(x, ret_min, ret_max)
 
     gamma_powers = np.array([gamma**i for i in range(action_horizon)], dtype=np.float64)
 
@@ -962,6 +969,7 @@ def save_advantages_to_dataset(
     rank: int = 0,
     world_size: int = 1,
     tag: str | None = None,
+    force_sft_positive: bool = True,
 ):
     """Save advantages parquet directly into the source dataset's meta/ directory.
 
@@ -975,7 +983,7 @@ def save_advantages_to_dataset(
         dataset_path: Source LeRobot dataset path (writes into its meta/)
         advantages_df: DataFrame with advantage values
         threshold: Threshold for positive advantage
-        dataset_type: Dataset type ("sft" forces all-True advantage labels)
+        dataset_type: Dataset type; labels normally follow estimated advantage.
         rank: Current process rank
         world_size: Total number of processes
         tag: Optional tag for advantages parquet filename
@@ -987,14 +995,14 @@ def save_advantages_to_dataset(
         # Build advantages parquet with boolean advantage column
         save_df = advantages_df.copy()
         save_df.rename(columns={"advantage": "advantage_continuous"}, inplace=True)
-        if (dataset_type or "").lower() == "sft":
+        if force_sft_positive and (dataset_type or "").lower() == "sft":
             save_df["advantage"] = True
         else:
             save_df["advantage"] = save_df["advantage_continuous"] >= threshold
 
         adv_filename = f"advantages_{tag}.parquet" if tag else "advantages.parquet"
         save_df.to_parquet(meta_dir / adv_filename, index=False)
-        if (dataset_type or "").lower() == "sft":
+        if force_sft_positive and (dataset_type or "").lower() == "sft":
             logger.info(
                 f"  Dataset type is sft, forcing all advantage labels to True ({len(save_df)} entries)"
             )
@@ -1172,6 +1180,15 @@ def main(cfg: DictConfig) -> None:
         unified_threshold = float(
             np.percentile(combined_advantages, (1 - positive_quantile) * 100)
         )
+        threshold_scope = cfg.advantage.get("threshold_scope", "global")
+        if threshold_scope not in ("global", "per_task"):
+            raise ValueError(f"Unknown threshold_scope: {threshold_scope}")
+        reference_type = cfg.advantage.get("threshold_reference_type", None)
+        task_thresholds = (
+            per_task_thresholds(dataset_results, positive_quantile, reference_type)
+            if threshold_scope == "per_task"
+            else {}
+        )
 
         if rank == 0:
             logger.info(f"\n{'=' * 60}")
@@ -1213,6 +1230,9 @@ def main(cfg: DictConfig) -> None:
         tag_stats = {
             "unified_threshold": unified_threshold,
             "positive_quantile": positive_quantile,
+            "threshold_scope": threshold_scope,
+            "task_thresholds": task_thresholds,
+            "threshold_reference_type": reference_type,
         }
 
         import yaml
@@ -1220,14 +1240,25 @@ def main(cfg: DictConfig) -> None:
         for ds_path, result in dataset_results.items():
             df = result["df"]
             dataset_type = result["config"].get("type")
+            selected_threshold = task_thresholds.get(
+                result["config"].get("task_name"), unified_threshold
+            )
+            if rank == 0:
+                logger.info(
+                    "Applied threshold %s for %s: positive fraction %.5f",
+                    selected_threshold,
+                    ds_path,
+                    float((df["advantage"] >= selected_threshold).mean()),
+                )
             save_advantages_to_dataset(
                 dataset_path=ds_path,
                 advantages_df=df,
-                threshold=unified_threshold,
+                threshold=selected_threshold,
                 dataset_type=dataset_type,
                 rank=rank,
                 world_size=world_size,
                 tag=tag,
+                force_sft_positive=cfg.advantage.get("force_sft_positive", True),
             )
 
             if rank == 0:

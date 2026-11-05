@@ -415,6 +415,10 @@ class OpenPi0ForRLActionPrediction(PI0Pytorch, BasePolicy):
         denoise_inds = forward_inputs["denoise_inds"]
         # input transform
         observation = self.input_transform(forward_inputs, transpose=False)
+        # Match predict_action_batch: normalize and resize on the policy device.
+        # CPU/CUDA rounding differences propagate through BF16 vision features
+        # and invalidate the old/new chunk logprob comparison before any update.
+        observation = self.precision_processor(observation)
         observation = _model.Observation.from_dict(observation)
         images, img_masks, lang_tokens, lang_masks, state = (
             self._preprocess_observation(observation, train=False)
@@ -447,11 +451,14 @@ class OpenPi0ForRLActionPrediction(PI0Pytorch, BasePolicy):
             :, None
         ]  # [:,None] to align with loss-mask shape
         value_t = value_t.mean(dim=-1, keepdim=False)
-        return {
+        result = {
             "logprobs": log_probs,
             "values": value_t,
             "entropy": entropy,
         }
+        if kwargs.get("return_recompute_diagnostics", False):
+            result["diagnostic_chain_dtype"] = str(chains.dtype)
+        return result
 
     def nft_forward(
         self,
@@ -733,7 +740,13 @@ class OpenPi0ForRLActionPrediction(PI0Pytorch, BasePolicy):
         if self.use_vlm_value:
             values = values_vlm[:, None]
         else:
-            values = torch.stack(values, dim=1).mean(dim=-1, keepdim=True)
+            values = torch.stack(values, dim=1)
+            if mode == "train" and not self.config.joint_logprob:
+                # Match get_log_prob_value: PPO clips against the same value
+                # function evaluated at the sampled denoising transition.
+                values = values.gather(1, denoise_inds[:, :1].to(values.device))
+            else:
+                values = values.mean(dim=-1, keepdim=True)
         result = {
             "actions": x_0,
             "chains": chains,

@@ -148,6 +148,10 @@ def build_input_transforms(
     Uses openpi policies for robot-specific transforms and openpi transforms
     for model transforms (Normalize, ResizeImages, PadStatesAndActions).
     """
+    if env_type in ("robotwin", "aloha"):
+        from rlinf.data.datasets.recap.robotwin import robotwin_value_input
+
+        return [robotwin_value_input]
     import openpi.models.model as _openpi_model
     import openpi.transforms as _openpi_transforms
 

@@ -15,6 +15,7 @@
 import os
 import time
 from functools import partial
+from pathlib import Path
 from typing import Optional
 
 import numpy as np
@@ -28,6 +29,10 @@ import rlinf.algorithms  # noqa: F401
 from rlinf.algorithms.registry import calculate_adv_and_returns, policy_loss
 from rlinf.algorithms.utils import (
     kl_penalty,
+)
+from rlinf.algorithms.value_stats import (
+    value_metrics_from_statistics,
+    value_sufficient_statistics,
 )
 from rlinf.config import SupportedModel, torch_dtype_from_precision
 from rlinf.data.embodied_io_struct import Trajectory, convert_trajectories_to_batch
@@ -1041,12 +1046,14 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
             incompatible = model.load_state_dict(model_dict, strict=False)
             if incompatible.missing_keys:
                 import logging
+
                 logging.getLogger(__name__).info(
                     "ckpt_path load: missing keys (will use random init): %s",
                     incompatible.missing_keys,
                 )
             if incompatible.unexpected_keys:
                 import logging
+
                 logging.getLogger(__name__).warning(
                     "ckpt_path load: unexpected keys (ignored): %s",
                     incompatible.unexpected_keys,
@@ -1367,6 +1374,8 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
             f"{rollout_size} is not divisible by {batch_size_per_rank}"
         )
         metrics = {}
+        critic_stats = torch.zeros(8, device=self.device, dtype=torch.float64)
+        consistency = torch.zeros(3, device=self.device, dtype=torch.float64)
         update_epoch = self.cfg.algorithm.get("update_epoch", 1)
         for _ in range(update_epoch):
             rollout_dataloader_iter = split_dict_to_chunk(
@@ -1455,6 +1464,9 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                             compute_entropy=self.cfg.algorithm.entropy_bonus > 0,
                             compute_values=compute_values,
                             use_cache=False,
+                            return_recompute_diagnostics=bool(
+                                self.cfg.actor.get("verify_rollout_consistency", False)
+                            ),
                             **kwargs,
                         )
 
@@ -1489,6 +1501,76 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
                         "ref_kl_beta": self.cfg.algorithm.get("ref_kl_beta", 0.0),
                         "kl_penalty_type": self.cfg.algorithm.get("kl_penalty", "kl"),
                     }
+                    if output_dict.get("values") is not None and returns is not None:
+                        critic_stats += value_sufficient_statistics(
+                            output_dict["values"], returns, loss_mask
+                        )
+                    if (
+                        self.cfg.actor.get("verify_rollout_consistency", False)
+                        and self.optimizer_steps == 0
+                    ):
+                        # Check before any optimizer update, including all
+                        # accumulation microbatches of the first global batch.
+                        current = output_dict["logprobs"].detach().float()
+                        previous = prev_logprobs.detach().float()
+                        log_delta = (current - previous).abs()
+                        value_delta = (
+                            output_dict["values"].detach().reshape(-1)
+                            - prev_values.reshape(-1)
+                        ).abs()
+                        valid = (
+                            loss_mask.reshape(-1)
+                            if loss_mask is not None
+                            else torch.ones_like(value_delta, dtype=torch.bool)
+                        )
+                        dump_dir = self.cfg.actor.get("consistency_dump_dir", None)
+                        if dump_dir:
+                            folder = Path(dump_dir)
+                            folder.mkdir(parents=True, exist_ok=True)
+                            payload = {
+                                "forward_inputs": forward_inputs,
+                                "previous_logprobs": previous,
+                                "current_logprobs": current,
+                                "previous_values": prev_values,
+                                "current_values": output_dict["values"],
+                                "loss_mask": loss_mask,
+                                "chain_input_dtype": output_dict.get(
+                                    "diagnostic_chain_dtype", "unreported"
+                                ),
+                                "model_config": OmegaConf.to_container(
+                                    self.cfg.actor.model, resolve=True
+                                ),
+                            }
+                            payload = torch.utils._pytree.tree_map(
+                                lambda value: (
+                                    value.detach().cpu()
+                                    if isinstance(value, torch.Tensor)
+                                    else value
+                                ),
+                                payload,
+                            )
+                            torch.save(
+                                payload,
+                                folder / f"rank{self._rank}_micro{idx}.pt",
+                            )
+                        if valid.any():
+                            max_log = log_delta[valid].max()
+                            chunk_log = (
+                                (current - previous)
+                                .reshape(current.shape[0], -1)
+                                .sum(-1)[valid]
+                                .abs()
+                                .max()
+                            )
+                            max_value = value_delta[valid].max()
+                            consistency = torch.maximum(
+                                consistency,
+                                torch.stack([max_log, chunk_log, max_value]).double(),
+                            )
+                            if max_value > 0.01 or max_log > 0.05 or chunk_log > 0.05:
+                                raise RuntimeError(
+                                    f"Rollout recomputation mismatch before update: value={max_value.item()}, logprob={max_log.item()}, chunk={chunk_log.item()}"
+                                )
                     loss, metrics_data = policy_loss(**kwargs)
 
                     entropy_loss = torch.tensor(
@@ -1541,6 +1623,22 @@ class EmbodiedFSDPActor(FSDPModelManager, Worker):
             mean_metric_dict, op=torch.distributed.ReduceOp.AVG
         )
 
+        # Pool sufficient statistics across every valid prediction and rank;
+        # averaging per-microbatch EV is mathematically incorrect.
+        torch.distributed.all_reduce(critic_stats, op=torch.distributed.ReduceOp.SUM)
+        if critic_stats[0] > 0:
+            pooled = value_metrics_from_statistics(critic_stats)
+            pooled["critic/valid_samples"] /= update_epoch
+            mean_metric_dict.update(
+                {key: value.item() for key, value in pooled.items()}
+            )
+        if self.cfg.actor.get("verify_rollout_consistency", False):
+            torch.distributed.all_reduce(consistency, op=torch.distributed.ReduceOp.MAX)
+            for key, value in zip(
+                ["component_logprob", "chunk_logprob", "value"], consistency
+            ):
+                mean_metric_dict[f"diagnostic/recompute_{key}_max_abs"] = value.item()
+            mean_metric_dict["diagnostic/optimizer_steps"] = self.optimizer_steps
         return mean_metric_dict
 
     def set_global_step(self, global_step: int) -> None:

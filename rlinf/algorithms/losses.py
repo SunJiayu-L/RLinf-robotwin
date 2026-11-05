@@ -369,8 +369,8 @@ def compute_ppo_critic_loss(
     value_loss = torch.max(value_loss_original, value_loss_clipped)
     value_loss = loss_agg_func(value_loss, loss_mask, loss_mask_ratio)
 
-    value_clip_indicator = (value_pred_clipped - prev_values).abs() > value_clip
-    value_clip_ratio = value_clip_indicator.float().mean()
+    value_clip_indicator = (values - prev_values).abs() > value_clip
+    value_clip_ratio = masked_mean(value_clip_indicator.float(), loss_mask)
 
     # explained variance
     if loss_mask is not None:
@@ -380,11 +380,15 @@ def compute_ppo_critic_loss(
         masked_returns = returns
         masked_values = values
 
-    var_returns = torch.var(masked_returns)
+    var_returns = (
+        torch.var(masked_returns, correction=0)
+        if masked_returns.numel() > 1
+        else returns.new_tensor(float("nan"))
+    )
     if torch.isnan(var_returns) or var_returns == 0:
         explained_variance = torch.tensor(float("nan"), device=returns.device)
     else:
-        var_diff = torch.var(masked_returns - masked_values)
+        var_diff = torch.var(masked_returns - masked_values, correction=0)
         if torch.isnan(var_diff):
             explained_variance = torch.tensor(float("nan"), device=returns.device)
         else:

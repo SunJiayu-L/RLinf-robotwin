@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import logging
 import os
 
-import torch
 from omegaconf import DictConfig
 
 
@@ -40,13 +40,14 @@ def get_model(cfg: DictConfig, torch_dtype=None):
         for key, val in override_config_kwargs.items():
             actor_model_config.__dict__[key] = val
     checkpoint_dir = download.maybe_download(str(cfg.model_path))
+    from rlinf.models.embodiment.openpi_cfg.checkpoint import (
+        load_pt_policy,
+        resolve_pt_checkpoint,
+    )
 
-    full_weights_path = os.path.join(
-        checkpoint_dir, "model_state_dict", "full_weights.pt"
-    )
-    actor_full_weights_path = os.path.join(
-        checkpoint_dir, "actor", "model_state_dict", "full_weights.pt"
-    )
+    checkpoint_path = resolve_pt_checkpoint(str(checkpoint_dir))
+    if os.path.isfile(checkpoint_dir):
+        checkpoint_dir = os.path.dirname(checkpoint_dir)
 
     model: OpenPi0ForCFGActionPrediction = OpenPi0ForCFGActionPrediction(
         actor_model_config
@@ -54,12 +55,12 @@ def get_model(cfg: DictConfig, torch_dtype=None):
     if actor_model_config.train_expert_only:
         model.freeze_vlm()
 
-    if os.path.exists(full_weights_path):
-        model_state_dict = torch.load(full_weights_path, map_location="cpu")
-        model.load_state_dict(model_state_dict, strict=False)
-    elif os.path.exists(actor_full_weights_path):
-        model_state_dict = torch.load(actor_full_weights_path, map_location="cpu")
-        model.load_state_dict(model_state_dict, strict=False)
+    if checkpoint_path is not None:
+        provenance = load_pt_policy(
+            model, checkpoint_path, strict=getattr(cfg, "strict_checkpoint", True)
+        )
+        model.checkpoint_provenance = provenance
+        logging.getLogger(__name__).info("CFG initialized from %s", provenance)
     else:
         weight_paths = sorted(glob.glob(os.path.join(checkpoint_dir, "*.safetensors")))
         if not weight_paths:

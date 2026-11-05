@@ -107,6 +107,7 @@ def main(
     config_name: str,
     repo_id: str,
     output_path: str | None = None,
+    num_workers: int = 64,
 ):
     dataset_root = resolve_lerobot_dataset_root(repo_id)
     if not (dataset_root / "meta" / "info.json").is_file():
@@ -132,9 +133,10 @@ def main(
             config.model.action_horizon,
             config.batch_size,
             config.model,
-            config.num_workers,
+            num_workers,
         )
 
+    print(f"Using {num_workers} DataLoader workers for norm stats", flush=True)
     keys = ["state", "actions"]
     stats = {key: normalize.RunningStats() for key in keys}
 

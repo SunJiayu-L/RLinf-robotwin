@@ -463,7 +463,14 @@ class RecordVideo(gym.Wrapper):
         """Save frames to disk (runs in background)."""
         video_writer = None
         try:
-            video_writer = imageio.get_writer(mp4_path, fps=self._fps)
+            # Use a widely supported pixel format. The default RGB/GBR 4:4:4
+            # encoding can appear pink/green in players that expect YUV 4:2:0.
+            video_writer = imageio.get_writer(
+                mp4_path,
+                fps=self._fps,
+                codec="libx264",
+                pixelformat="yuv420p",
+            )
             for img in frames:
                 video_writer.append_data(img)
         except Exception as exc:

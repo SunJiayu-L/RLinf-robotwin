@@ -109,13 +109,16 @@ class ValueHead(nn.Module):
         self.v_max = v_max
         self.delta_z = (v_max - v_min) / (num_bins - 1)
 
-    def get_cls_embedding(self, batch_size: int) -> Tensor:
+    def get_cls_embedding(self, batch_size: int, device=None) -> Tensor:
         """Get CLS embedding expanded to batch size. Returns [B, 1, hidden_size]."""
         # Use embedding lookup instead of reading `.weight` directly.
         # Under FSDP, `.weight` can be a view into a flattened parameter and may
         # trigger autograd view/inplace conflicts during backward.
         cls_token_ids = torch.zeros(
-            batch_size, 1, dtype=torch.long, device=self.cls_embedding.weight.device
+            batch_size,
+            1,
+            dtype=torch.long,
+            device=self.atoms.device if device is None else device,
         )
         return self.cls_embedding(cls_token_ids)
 
@@ -298,12 +301,14 @@ class ValueCriticModel(nn.Module):
 
         return torch.cat(embs, dim=1), torch.cat(pad_masks, dim=1)
 
-    def get_cls_embedding(self, batch_size: int) -> Tensor:
-        return self.value_head.get_cls_embedding(batch_size)
+    def get_cls_embedding(self, batch_size: int, device=None) -> Tensor:
+        return self.value_head.get_cls_embedding(batch_size, device=device)
 
-    def embed_suffix(self, batch_size: int) -> tuple[Tensor, Tensor, Tensor]:
+    def embed_suffix(
+        self, batch_size: int, device=None
+    ) -> tuple[Tensor, Tensor, Tensor]:
         """Create suffix with [CLS] token for value prediction."""
-        cls_emb = self.get_cls_embedding(batch_size)
+        cls_emb = self.get_cls_embedding(batch_size, device=device)
         pad_mask = torch.ones(batch_size, 1, dtype=torch.bool, device=cls_emb.device)
         ar_mask = torch.ones(batch_size, 1, dtype=torch.long, device=cls_emb.device)
         return cls_emb, pad_mask, ar_mask
@@ -324,7 +329,9 @@ class ValueCriticModel(nn.Module):
         prefix_embs, prefix_pad_masks = self.embed_prefix(
             images, img_masks, lang_tokens, lang_masks
         )
-        suffix_embs, suffix_pad_masks, suffix_ar_masks = self.embed_suffix(batch_size)
+        suffix_embs, suffix_pad_masks, suffix_ar_masks = self.embed_suffix(
+            batch_size, device=prefix_embs.device
+        )
 
         stop_gradient = getattr(self.config, "stop_gradient_to_vlm", False)
         values, hidden_states, logits, probs, backward_anchor = self._forward_expert(
@@ -529,7 +536,9 @@ class ValueCriticModel(nn.Module):
         prefix_embs, prefix_pad_masks = self.embed_prefix(
             images, img_masks, lang_tokens, lang_masks
         )
-        suffix_embs, suffix_pad_masks, suffix_ar_masks = self.embed_suffix(batch_size)
+        suffix_embs, suffix_pad_masks, suffix_ar_masks = self.embed_suffix(
+            batch_size, device=prefix_embs.device
+        )
 
         # Prefix is fully bidirectional, so attention = pad_mask outer product.
         prefix_attn = prefix_pad_masks[:, None, :] * prefix_pad_masks[:, :, None]

@@ -1,0 +1,115 @@
+defaults:
+- _self_
+advantage:
+  value_checkpoint: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/runs/value/checkpoints/global_step_7000/actor
+  batch_size: 8
+  flush_interval: 256
+  num_dataloader_workers_per_gpu: 2
+  prefetch_factor: 2
+  discount_next_value: true
+  positive_quantile: 0.4
+  tag: robotwin_adv_4096_v2
+  returns_tag: robotwin_time_4096_v2
+  model:
+    precision: bf16
+    siglip_path: /data2/sjy/recap_assets/siglip2-so400m-patch14-224
+    gemma3_path: /data2/sjy/recap_assets/gemma-3-270m
+    tokenizer_path: /data2/sjy/recap_assets/gemma-3-270m
+    freeze_vlm: false
+    action_dim: 14
+    action_horizon: 50
+    critic_expert_variant: gemma_100m
+  threshold_scope: per_task
+  force_sft_positive: false
+  threshold_reference_type: rollout
+data:
+  model_type: pi05
+  robot_type: robotwin
+  train_data_paths:
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/sft_train
+    type: sft
+    weight: 0.5
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_00/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_01/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_02/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_03/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_04/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_05/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_06/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/beat_block_hammer/rollout4096_v2/datasets/rollout/rank_07/train
+    type: rollout
+    weight: 0.0625
+    task_name: beat_block_hammer
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  advantage_lookahead_step: 50
+  gamma: 1.0
+  action_dim: 14
+  return_min: -800.0
+  return_max: 0.0
+distributed:
+  enabled: true
+  backend: nccl
+  timeout: 3600
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

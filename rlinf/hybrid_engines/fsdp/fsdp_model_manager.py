@@ -427,13 +427,17 @@ class FSDPModelManager:
 
         self.grad_scaler.update()
 
-        if self.critic_warmup_steps > 0:
-            lr_list = [0.0 for _ in self.optimizer.param_groups]
-            if self.optimizer_steps >= self.critic_warmup_steps:
-                self.optimizer = self.build_optimizer(model=self.model)
-                self.critic_warmup_steps = 0
-        else:
-            lr_list = [group["lr"] for group in self.optimizer.param_groups]
+        if self.critic_warmup_steps > 0 and self.optimizer_steps >= self.critic_warmup_steps:
+            # Keep the original optimizer and scheduler. Rebuilding here used to
+            # discard critic Adam moments and leave the scheduler attached to the
+            # stale warmup optimizer.
+            for name, param in self.model.named_parameters():
+                if name in self.store_requires_grad_param_name:
+                    param.requires_grad = True
+            self.store_requires_grad_param_name.clear()
+            self.critic_warmup_steps = 0
+
+        lr_list = [group["lr"] for group in self.optimizer.param_groups]
 
         return grad_norm, lr_list
 
@@ -502,6 +506,10 @@ class FSDPModelManager:
                         params_critic.append(param)
                         continue
                     param.requires_grad = False
+                    # Keep frozen actor parameters in the optimizer group so
+                    # the scheduler is built with both groups from the start.
+                    # Their gradients stay None until warmup completes.
+                    params_actor.append(param)
 
         else:
             for name, param in model.named_parameters():

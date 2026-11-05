@@ -30,6 +30,7 @@ from rlinf.models import get_model
 from rlinf.models.embodiment.base_policy import BasePolicy
 from rlinf.scheduler import Channel, Cluster, Worker
 from rlinf.utils.comm_mapping import CommMapper
+from rlinf.utils.evaluation_rng import evaluation_rng
 from rlinf.utils.placement import HybridComponentPlacement
 
 
@@ -102,12 +103,14 @@ class MultiStepRolloutWorker(Worker):
             incompatible = self.hf_model.load_state_dict(model_dict, strict=False)
             if incompatible.missing_keys:
                 import logging
+
                 logging.getLogger(__name__).info(
                     "ckpt_path load: missing keys (will use random init): %s",
                     incompatible.missing_keys,
                 )
             if incompatible.unexpected_keys:
                 import logging
+
                 logging.getLogger(__name__).warning(
                     "ckpt_path load: unexpected keys (ignored): %s",
                     incompatible.unexpected_keys,
@@ -469,6 +472,12 @@ class MultiStepRolloutWorker(Worker):
             self.offload_model()
 
     async def evaluate(self, input_channel: Channel, output_channel: Channel):
+        with evaluation_rng(
+            self.cfg.rollout.get("eval_seed", None), self._rank, self.device
+        ):
+            return await self._evaluate_seeded(input_channel, output_channel)
+
+    async def _evaluate_seeded(self, input_channel: Channel, output_channel: Channel):
         if self.enable_offload:
             self.reload_model()
         for _ in tqdm(
