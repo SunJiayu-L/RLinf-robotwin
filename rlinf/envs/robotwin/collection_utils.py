@@ -2,6 +2,75 @@
 # SPDX-License-Identifier: Apache-2.0
 """Bounded LeRobot writing and fresh scene-conditioned collection instructions."""
 
+import numpy as np
+
+
+def append_chunk_frames(
+    frames: list[list[dict]],
+    initial_obs: dict,
+    actions: np.ndarray,
+    post_observations: list[dict],
+    executed_counts: list[int],
+    active: np.ndarray,
+) -> None:
+    """Pair pre-action observations with executed actions, excluding terminal padding.
+
+    Native full-observation execution returns post-action observations padded to
+    the requested chunk length. The terminal observation is retained separately
+    by the collector, rather than becoming an extra fictitious action frame.
+    """
+    chunk_length = actions.shape[1]
+    if len(post_observations) != chunk_length:
+        raise ValueError("Full-observation count must equal the requested chunk length")
+    if len(executed_counts) != len(frames) or len(active) != len(frames):
+        raise ValueError(
+            "Executed counts and active flags must match environment count"
+        )
+    for index in np.flatnonzero(active):
+        count = int(executed_counts[index])
+        if not 0 < count <= chunk_length:
+            raise ValueError(
+                f"Invalid executed action count for active env {index}: {count}"
+            )
+        for action_index in range(count):
+            obs = (
+                initial_obs
+                if action_index == 0
+                else post_observations[action_index - 1]
+            )
+            images = [obs["main_images"][index], *obs["wrist_images"][index]]
+            frames[index].append(
+                {
+                    "observation.state": obs["states"][index]
+                    .cpu()
+                    .numpy()
+                    .astype(np.float32, copy=True),
+                    "action": np.asarray(
+                        actions[index, action_index], dtype=np.float32
+                    ).copy(),
+                    **{
+                        f"observation.images.{name}": image.cpu().numpy().copy()
+                        for name, image in zip(
+                            ["cam_high", "cam_left_wrist", "cam_right_wrist"],
+                            images,
+                            strict=True,
+                        )
+                    },
+                    "task": obs["task_descriptions"][index],
+                }
+            )
+
+
+def collection_task_name(env_cfg) -> str:
+    """Require one consistent task per collection shard."""
+    task = str(env_cfg["task_config"]["task_name"])
+    tasks = [str(name) for name in env_cfg.get("task_names", [task])]
+    if tasks != [task]:
+        raise ValueError(
+            f"Collection requires a single consistent task: {tasks}, {task}"
+        )
+    return task
+
 
 def release_saved_arrow_cache(writer) -> None:
     """Drop saved in-memory image tables; episode metadata and Parquet stay intact."""

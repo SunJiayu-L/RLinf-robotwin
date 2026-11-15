@@ -226,6 +226,44 @@ SIX_TASKS = [
 ]
 
 
+def test_collection_observations_execute_one_full_chunk(monkeypatch, tmp_path):
+    _install_fake_robotwin(monkeypatch)
+    path = tmp_path / "seeds.json"
+    _write_seed_file(path)
+    cfg = _make_cfg(path)
+    cfg.task_names = ["task_a"]
+    cfg.is_eval = False
+    cfg.video_cfg.save_video = False
+    env = RoboTwinEnv(cfg, 2, 0, 1, None)
+    calls = []
+
+    def full_step(actions):
+        calls.append(actions.copy())
+        observations = []
+        for index in range(actions.shape[1]):
+            raw = env.venv.get_obs()
+            for row in raw:
+                row["full_image"].fill(index + 1)
+            observations.append(raw)
+        infos = [
+            {"success": True, "executed_action_count": 1},
+            {"success": False, "executed_action_count": actions.shape[1]},
+        ]
+        return observations, [1.0, 0.0], [True, False], [False, False], infos
+
+    env.venv.step_with_full_obs = full_step
+    actions = np.arange(2 * 3 * 14).reshape(2, 3, 14)
+    obs, _, terms, _, infos = env.chunk_step(actions, record_full_obs=True)
+    assert len(calls) == 1
+    np.testing.assert_array_equal(calls[0], actions)
+    assert not env.venv.step_calls
+    assert len(obs) == 3
+    assert obs[0]["main_images"][0, 0, 0, 0] == 1
+    assert obs[-1]["main_images"][0, 0, 0, 0] == 3
+    assert infos[-1]["executed_action_count"] == [1, 3]
+    assert terms[0, -1] and not terms[1].any()
+
+
 def test_robotwin_six_tasks_dispatch_actions_and_cycle_seeds(monkeypatch, tmp_path):
     _install_fake_robotwin(monkeypatch)
     seeds_path = tmp_path / "six_train.json"

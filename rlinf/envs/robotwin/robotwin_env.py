@@ -575,7 +575,16 @@ class RoboTwinEnv(gym.Env):
 
         return extracted_obs, step_reward, terminations, truncations, infos
 
-    def chunk_step(self, chunk_actions):
+    def chunk_step(self, chunk_actions, *, record_full_obs: bool = False):
+        """Execute one planned chunk, optionally returning each action's observation.
+
+        Full observations are captured inside the native execution loop. Splitting
+        the input into separate step calls would change RoboTwin's TOPP planning.
+        """
+        if record_full_obs and self.is_multitask:
+            raise NotImplementedError(
+                "Full chunk observations currently require a single-task environment"
+            )
         if isinstance(chunk_actions, torch.Tensor):
             chunk_actions = chunk_actions.cpu().numpy()
 
@@ -584,7 +593,7 @@ class RoboTwinEnv(gym.Env):
         chunk_step = chunk_actions.shape[1]
         obs_list = []
         infos_list = []
-        record_full_obs = (
+        record_full_obs = record_full_obs or (
             not self.is_multitask
             and self.cfg.get("is_eval", False)
             and self.video_cfg.get("save_video", False)

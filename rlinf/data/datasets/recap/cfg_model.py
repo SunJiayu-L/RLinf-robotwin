@@ -38,13 +38,22 @@ class AdvantagePreservingDataset:
         self,
         base_dataset: Any,
         transformed_dataset: Any,
-        advantages_lookup: dict[tuple[int, int], bool] | None = None,
+        advantages_lookup: dict[tuple[int, int], bool | None] | None = None,
     ):
         self._transformed_dataset = transformed_dataset
         self._advantage_by_index = self._build_advantage_index(
             base_dataset, advantages_lookup
         )
         self._base_dataset = base_dataset if self._advantage_by_index is None else None
+        self._eligible_indices = None
+        if self._advantage_by_index is not None and any(
+            label is None for label in self._advantage_by_index.values()
+        ):
+            self._eligible_indices = [
+                idx
+                for idx, label in self._advantage_by_index.items()
+                if label is not None
+            ]
 
     @staticmethod
     def _get_hf_dataset(dataset: Any) -> Any:
@@ -61,10 +70,14 @@ class AdvantagePreservingDataset:
     def _build_advantage_index(
         self,
         base_dataset: Any,
-        advantages_lookup: dict[tuple[int, int], bool] | None,
-    ) -> dict[int, bool] | None:
+        advantages_lookup: dict[tuple[int, int], bool | None] | None,
+    ) -> dict[int, bool | None] | None:
         hf_dataset = self._get_hf_dataset(base_dataset)
         if hf_dataset is None:
+            if advantages_lookup is not None and None in advantages_lookup.values():
+                raise ValueError(
+                    "Cannot filter policy samples without the HF dataset index"
+                )
             logger.warning(
                 "Cannot access underlying HF dataset, "
                 "falling back to per-sample advantage loading (slower)."
@@ -102,9 +115,13 @@ class AdvantagePreservingDataset:
         )
 
     def __len__(self) -> int:
+        if self._eligible_indices is not None:
+            return len(self._eligible_indices)
         return len(self._transformed_dataset)
 
     def __getitem__(self, idx: int) -> dict[str, Any]:
+        if self._eligible_indices is not None:
+            idx = self._eligible_indices[idx]
         sample = self._transformed_dataset[idx]
 
         if self._advantage_by_index is not None:

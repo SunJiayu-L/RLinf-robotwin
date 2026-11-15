@@ -47,7 +47,14 @@ class RoboTwinCollector(Worker):
     def run(self):
         from lerobot.common.datasets.lerobot_dataset import LeRobotDataset
 
+        from examples.recap.collection_resume import (
+            read_summaries,
+            resume_writer,
+            seek_batch,
+        )
         from rlinf.envs.robotwin.collection_utils import (
+            append_chunk_frames,
+            collection_task_name,
             install_fresh_collection_reset,
             release_saved_arrow_cache,
         )
@@ -58,22 +65,48 @@ class RoboTwinCollector(Worker):
         install_fresh_collection_reset()
         cfg = self.cfg
         rank = self._rank
+        root = Path(cfg.collect.output) / f"rank_{rank:02d}"
+        resuming = bool(cfg.collect.get("resume", False))
+        root.mkdir(parents=True, exist_ok=resuming)
+        quota = cfg.collect.episodes_per_worker
+        nenv = cfg.collect.num_envs_per_worker
+        assert quota % nenv == 0
+        summaries = read_summaries(
+            root, quota, cfg.collect.validation_episodes_per_worker
+        )
+        if len(summaries) == quota:
+            (root / "DONE.json").write_text(
+                json.dumps(
+                    {
+                        "episodes": quota,
+                        "successes": sum(r["success"] for r in summaries),
+                    }
+                )
+            )
+            return
         device = torch.device("cuda", 0)
         torch.cuda.set_device(device)
         torch.manual_seed(cfg.collect.seed + rank)
         np.random.seed(cfg.collect.seed + rank)
-        model = get_model(cfg.actor.model)
+        from transformers.modeling_utils import no_init_weights
+
+        assert cfg.actor.model.strict_checkpoint
+        with no_init_weights():
+            model = get_model(cfg.actor.model)
         if cfg.collect.get("policy_checkpoint"):
             model.checkpoint_provenance = load_pt_policy(
                 model, Path(cfg.collect.policy_checkpoint)
             )
         model = model.to(device).eval()
-        root = Path(cfg.collect.output) / f"rank_{rank:02d}"
-        root.mkdir(parents=True, exist_ok=False)
+        if (root / "policy.json").exists():
+            previous = json.loads((root / "policy.json").read_text())
+            if previous != model.checkpoint_provenance:
+                raise ValueError(f"Cannot resume with different policy: {root}")
         (root / "policy.json").write_text(
             json.dumps(model.checkpoint_provenance, indent=2)
         )
         env_cfg = OmegaConf.create(OmegaConf.to_container(cfg.env.train, resolve=True))
+        task_name = collection_task_name(env_cfg)
         env = RoboTwinEnv(
             cfg=env_cfg,
             num_envs=cfg.collect.num_envs_per_worker,
@@ -83,14 +116,19 @@ class RoboTwinCollector(Worker):
             record_metrics=True,
         )
         datasets = {}
-        summaries = []
         try:
-            quota = cfg.collect.episodes_per_worker
-            nenv = cfg.collect.num_envs_per_worker
-            assert quota % nenv == 0
-            for batch in range(quota // nenv):
+            start_batch = len(summaries) // nenv
+            seek_batch(env, start_batch)
+            batch_limit = int(cfg.collect.get("max_batches_per_run", quota // nenv))
+            if batch_limit <= 0:
+                raise ValueError("max_batches_per_run must be positive")
+            end_batch = min(quota // nenv, start_batch + batch_limit)
+            self.log_info(
+                f"Resuming {len(summaries)}/{quota} episodes; batches {start_batch}:{end_batch}"
+            )
+            for batch in range(start_batch, end_batch):
                 noise_seed = cfg.collect.seed + rank * 10000 + batch
-                obs, _ = reset_collection_batch(env, batch)
+                obs, _ = reset_collection_batch(env, batch - start_batch)
                 torch.manual_seed(noise_seed)
                 np.random.seed(noise_seed)
                 requested_seeds = env.reset_state_ids.tolist()
@@ -104,52 +142,49 @@ class RoboTwinCollector(Worker):
                 active = np.ones(nenv, dtype=bool)
                 success = np.zeros(nenv, dtype=bool)
                 truncated = np.zeros(nenv, dtype=bool)
+                executed_chunk_lengths = [[] for _ in range(nenv)]
+                terminal_observations = [None for _ in range(nenv)]
                 for start in range(
                     0, env_cfg.max_episode_steps, cfg.collect.action_chunk
                 ):
                     with torch.inference_mode():
                         actions, _ = model.predict_action_batch(obs, mode="eval")
-                    for j in range(
-                        min(cfg.collect.action_chunk, env_cfg.max_episode_steps - start)
-                    ):
-                        for index in np.flatnonzero(active):
-                            images = [
-                                obs["main_images"][index],
-                                *obs["wrist_images"][index],
-                            ]
-                            frames[index].append(
-                                {
-                                    "observation.state": obs["states"][index]
-                                    .numpy()
-                                    .astype(np.float32, copy=True),
-                                    "action": np.asarray(
-                                        actions[index, j], dtype=np.float32
-                                    ).copy(),
-                                    **{
-                                        f"observation.images.{name}": image.numpy().copy()
-                                        for name, image in zip(
-                                            [
-                                                "cam_high",
-                                                "cam_left_wrist",
-                                                "cam_right_wrist",
-                                            ],
-                                            images,
-                                            strict=True,
-                                        )
-                                    },
-                                    "task": obs["task_descriptions"][index],
-                                }
-                            )
-                        obs, _, terms, truncs, _ = env.step(
-                            actions[:, j], auto_reset=False
-                        )
-                        term_array = terms.cpu().numpy().astype(bool)
-                        trunc_array = truncs.cpu().numpy().astype(bool)
-                        success |= active & term_array
-                        truncated |= active & trunc_array
-                        active &= ~(term_array | trunc_array)
-                        if not active.any():
-                            break
+                    actions = actions[
+                        :,
+                        : min(
+                            cfg.collect.action_chunk, env_cfg.max_episode_steps - start
+                        ),
+                    ]
+                    post_obs, _, terms, truncs, infos = env.chunk_step(
+                        actions, record_full_obs=True
+                    )
+                    counts = infos[-1]["executed_action_count"]
+                    append_chunk_frames(frames, obs, actions, post_obs, counts, active)
+                    term_array = terms.any(dim=1).cpu().numpy().astype(bool)
+                    trunc_array = truncs.any(dim=1).cpu().numpy().astype(bool)
+                    for index in np.flatnonzero(active):
+                        executed_chunk_lengths[index].append(int(counts[index]))
+                        if term_array[index] or trunc_array[index]:
+                            terminal_observations[index] = {
+                                "state": post_obs[-1]["states"][index]
+                                .cpu()
+                                .numpy()
+                                .copy(),
+                                "images": np.stack(
+                                    [
+                                        post_obs[-1]["main_images"][index]
+                                        .cpu()
+                                        .numpy(),
+                                        *post_obs[-1]["wrist_images"][index]
+                                        .cpu()
+                                        .numpy(),
+                                    ]
+                                ),
+                            }
+                    success |= active & term_array
+                    truncated |= active & trunc_array
+                    active &= ~(term_array | trunc_array)
+                    obs = post_obs[-1]
                     if not active.any():
                         break
                 for index in range(nenv):
@@ -159,6 +194,32 @@ class RoboTwinCollector(Worker):
                         if episode_number < cfg.collect.validation_episodes_per_worker
                         else "train"
                     )
+                    if episode_number < len(summaries):
+                        previous = summaries[episode_number]
+                        replay = {
+                            "requested_seed": requested_seeds[index],
+                            "seed": seeds[index],
+                            "instruction": frames[index][0]["task"],
+                            "policy_noise_seed": noise_seed,
+                            "success": bool(success[index]),
+                            "frames": len(frames[index]),
+                            "executed_chunk_lengths": executed_chunk_lengths[index],
+                        }
+                        if any(
+                            previous.get(key) != value for key, value in replay.items()
+                        ):
+                            raise ValueError(
+                                f"Partial-batch replay differs: {root}, {replay}"
+                            )
+                        self.log_info(
+                            f"Verified already committed partial-batch episode {episode_number}"
+                        )
+                        continue
+                    if split not in datasets:
+                        if (root / split).exists():
+                            datasets[split] = resume_writer(
+                                root / split, f"robotwin_recap_{rank}_{split}"
+                            )
                     if split not in datasets:
                         image = frames[index][0]["observation.images.cam_high"]
                         features = {
@@ -206,13 +267,23 @@ class RoboTwinCollector(Worker):
                         dataset.add_frame(frame)
                     dataset.save_episode()
                     release_saved_arrow_cache(dataset)
+                    if terminal_observations[index] is None:
+                        raise RuntimeError(
+                            "Collection ended without a terminal observation"
+                        )
+                    terminal_path = (
+                        root / "terminal_observations" / f"{split}_{episode_id:06d}.npz"
+                    )
+                    terminal_path.parent.mkdir(exist_ok=True)
+                    np.savez_compressed(terminal_path, **terminal_observations[index])
                     summary = {
+                        "collection_episode_index": episode_number,
                         "episode_index": episode_id,
                         "split": split,
                         "seed": seeds[index],
                         "requested_seed": requested_seeds[index],
                         "scene_info": env.venv.envs[index].task.get_info(),
-                        "task_name": "beat_block_hammer",
+                        "task_name": task_name,
                         "success": bool(success[index]),
                         "truncated": bool(truncated[index]),
                         "frames": len(frames[index]),
@@ -221,6 +292,10 @@ class RoboTwinCollector(Worker):
                         ),
                         "policy": model.checkpoint_provenance["path"],
                         "policy_noise_seed": noise_seed,
+                        "execution_mode": "native_full_chunk_topp",
+                        "observation_alignment": "pre_action; terminal observation stored separately",
+                        "executed_chunk_lengths": executed_chunk_lengths[index],
+                        "terminal_observation": str(terminal_path.relative_to(root)),
                     }
                     summaries.append(summary)
                     with (root / "episodes.jsonl").open("a") as stream:
@@ -250,7 +325,8 @@ class RoboTwinCollector(Worker):
                         "Collection stopped with complete episodes: system available RAM below 100 GiB"
                     )
 
-            (root / "DONE.json").write_text(
+            marker = "DONE.json" if len(summaries) == quota else "SEGMENT_DONE.json"
+            (root / marker).write_text(
                 json.dumps(
                     {
                         "episodes": len(summaries),
@@ -259,7 +335,8 @@ class RoboTwinCollector(Worker):
                 )
             )
         finally:
-            env.close()
+            self._retained_env = env
+            self._retained_model = model
             for dataset in datasets.values():
                 if dataset.image_writer is not None:
                     dataset.image_writer.stop()

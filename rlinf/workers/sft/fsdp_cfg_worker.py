@@ -96,7 +96,7 @@ class FSDPCfgWorker(FSDPSftWorker):
     def _load_advantages_lookup(
         data_path: str,
         advantage_tag: str | None = None,
-    ) -> dict[tuple[int, int], bool]:
+    ) -> dict[tuple[int, int], bool | None]:
         """Load advantage lookup from meta/advantages_{tag}.parquet or meta/advantages.parquet.
 
         Args:
@@ -104,7 +104,7 @@ class FSDPCfgWorker(FSDPSftWorker):
             advantage_tag: Advantage tag name. If None, loads meta/advantages.parquet.
 
         Returns:
-            Dict mapping (episode_index, frame_index) -> bool.
+            Frame keys mapped to labels, or None for explicitly excluded samples.
         """
         import pandas as pd
 
@@ -121,15 +121,29 @@ class FSDPCfgWorker(FSDPSftWorker):
 
         adv_df = pd.read_parquet(meta_path)
 
-        lookup = dict(
-            zip(
-                zip(
-                    adv_df["episode_index"].values.astype(int).tolist(),
-                    adv_df["frame_index"].values.astype(int).tolist(),
-                ),
-                adv_df["advantage"].values.astype(bool).tolist(),
-            )
-        )
+        if adv_df.duplicated(["episode_index", "frame_index"]).any():
+            raise ValueError(f"Duplicate frame keys in {meta_path}")
+
+        if "policy_eligible" in adv_df:
+            eligible = adv_df["policy_eligible"]
+            if eligible.isna().any() or not pd.api.types.is_bool_dtype(eligible):
+                raise ValueError(f"Expected boolean policy_eligible in {meta_path}")
+        else:
+            eligible = [True] * len(adv_df)
+
+        lookup = {}
+        for episode, frame, label, keep in zip(
+            adv_df["episode_index"],
+            adv_df["frame_index"],
+            adv_df["advantage"],
+            eligible,
+            strict=True,
+        ):
+            if keep and pd.isna(label):
+                raise ValueError(
+                    f"Missing label for eligible frame {(episode, frame)} in {meta_path}"
+                )
+            lookup[int(episode), int(frame)] = bool(label) if keep else None
         return lookup
 
     def build_dataloader(self):

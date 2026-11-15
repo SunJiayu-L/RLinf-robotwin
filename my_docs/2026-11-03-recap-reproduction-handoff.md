@@ -1,5 +1,7 @@
 # RoboTwin `beat_block_hammer` RECAP 复现流程与交接
 
+> 2026-11-05 方法修订：完整流程、公式及逐阶段阈值以 [RECAP：补齐 Indicator 预训练后的完整复现流程](2026-11-05-recap-pretraining-and-full-workflow.md) 为准。下文保留历史实验记录。当前普通 SFT40k 不等同于论文 π_pre；缺少多任务 Indicator 条件预训练，以及从 π_pre 开始的目标任务正条件 SFT。V 在各阶段均用完整 MC Return 监督，变化的是生成 Indicator 的优势估计：预训练 MC residual，后训练 N=50 bootstrap。尚未执行新增阶段，也尚未确认该缺口是未提点的因果原因。
+
 更新：2026-11-03（Asia/Shanghai）。这是当前实验的交接文档，后续可直接修改。远程仓库 `/home/tanhe/sjy/RLinf-robotwin`；本地镜像目录 `C:/Users/sun/Documents/ChatGPT/weight merge/recap_adaptation`。远程数据根目录 `/data2/sjy/recap/beat_block_hammer/`。
 
 ## 1. 目标与复现范围
@@ -47,7 +49,7 @@ critic 是独立的视觉语言价值模型，输出201档价值分布及其均�
 2. 若调整标签但不改连续优势，可用版本化sidecar重标，核对原文件及rollout哈希；无需重复采集或critic推理。若换critic或重新采集，必须重算相关优势并核对数据/模型配套。绝不改原SFT40k权重和norm_stats。
 3. 启动前检查8卡、Ray/进程、锁、盘空间、配置的`resume_dir`、初始权重路径、采样比例和正负标签路由。旧根目录标记为暂停，不能误用其脚本/优化器。
 4. 训练中读 `logs/policy.log` 和 `runs/policy/tensorboard/`，同时看标签比例、正/负条件loss、梯度、显存及完整checkpoint。过去首次500步DCP有 `.metadata`、8个分片及 `full_weights.pt`；仅有目录不算完整保存。
-5. 对最终模型在同一固定96个seed上评测SFT40k与新策略，报告成功数、轨迹时长、失败类型和不确定性。比较增益前要确认正条件CFG参数、指令、norm_stats和模拟器一致。当前这一步尚未执行。
+5. 对最终模型在同一固定96个seed上评测SFT40k与新策略，报告成功数、轨迹时长、失败类型和不确定性。比较增益前要确认正条件CFG参数、指令、norm_stats和模拟器一致。2026-11-05已完成v4的3000步对照：SFT40k为82/96，正条件新策略为79/96。
 6. 如果做论文意义上的第二轮，先用第一轮策略**重新采集新自主轨迹**，并入先前示范与rollout，重新训练critic/估计优势，然后从预训练策略权重重新微调。论文没有规定每几百个优化步采一次。
 
 相关详细记录：`my_docs/2026-10-31-recap4096-experiment.md`、`my_docs/2026-10-31-recap-official-config-review.md`、`my_docs/2026-11-01-recap-sft-positive-restart.md`、`my_docs/2026-11-01-recap-critic20-visualization.md`。这些旧记录保留了各时间点的决策，不要把其中“计划中/当时运行中”误当作当前状态。

@@ -108,6 +108,7 @@ class ValueDataCollator(DataCollatorMixin):
         return_raw_list = []
         return_normalized_list = []
         target_values_list = []
+        episode_success = []
 
         next_images_list = []
         next_states_list = []
@@ -127,6 +128,7 @@ class ValueDataCollator(DataCollatorMixin):
             return_raw_list.append(ex.get("return_raw"))
             return_normalized_list.append(ex.get("return_normalized"))
             target_values_list.append(ex.get("target_values"))
+            episode_success.append(ex.get("episode_success"))
 
             next_images_list.append(ex.get("next_images"))
             next_states_list.append(ex.get("next_states"))
@@ -205,6 +207,9 @@ class ValueDataCollator(DataCollatorMixin):
             batch["target_values"] = torch.tensor(
                 target_values_list, dtype=torch.float32
             )
+
+        if all(outcome is not None for outcome in episode_success):
+            batch["episode_success"] = torch.tensor(episode_success, dtype=torch.bool)
 
         if next_images_list[0] is not None:
             next_images = stack_tensors(next_images_list)

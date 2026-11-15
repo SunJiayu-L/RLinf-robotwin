@@ -20,11 +20,12 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterator, Optional
+from typing import Any, Iterator, Mapping, Optional, Sequence
 
 import numpy as np
 import openpi.models.model as _openpi_model
 import openpi.transforms as _openpi_transforms
+import pyarrow.parquet as pq
 import torch
 from lerobot.common.datasets.lerobot_dataset import (
     LeRobotDataset,
@@ -209,6 +210,8 @@ class ValueDataset(Dataset):
         episode_percentage: Optional[float] = None,
         shuffle_episodes: bool = False,
         episode_seed: int = 42,
+        episode_outcome: Optional[str] = None,
+        episode_frame_limits: Optional[Mapping[int, int]] = None,
         **kwargs,
     ):
         _known_unused = {
@@ -259,7 +262,7 @@ class ValueDataset(Dataset):
                 f"meta/returns{'_' + tag if tag else ''}.parquet"
             )
 
-        self._indices = None
+        selected_episodes = set(self.dataset_meta.episodes)
         if episode_percentage is not None and episode_percentage < 100:
             if episode_percentage <= 0:
                 raise ValueError(
@@ -267,17 +270,60 @@ class ValueDataset(Dataset):
                 )
             total = self.dataset_meta.total_episodes
             num = max(1, int(total * episode_percentage / 100.0))
-            all_eps = list(range(total))
+            all_eps = sorted(self.dataset_meta.episodes)
             if shuffle_episodes:
                 rng = np.random.default_rng(episode_seed)
-                selected = set(rng.choice(all_eps, size=num, replace=False).tolist())
+                selected_episodes = set(
+                    rng.choice(all_eps, size=num, replace=False).tolist()
+                )
             else:
-                selected = set(all_eps[:num])
+                selected_episodes = set(all_eps[:num])
+
+        if episode_outcome is not None:
+            if episode_outcome not in ("success", "failure"):
+                raise ValueError(
+                    "episode_outcome must be 'success', 'failure', or None"
+                )
+            expected_success = episode_outcome == "success"
+            outcomes = {}
+            for ep in selected_episodes:
+                table = pq.read_table(
+                    local_path / self.dataset_meta.get_data_file_path(ep),
+                    columns=["is_success"],
+                )
+                flag = np.asarray(table["is_success"][-1].as_py())
+                if flag.size != 1:
+                    raise ValueError(
+                        f"Episode {ep} must have a scalar terminal is_success flag"
+                    )
+                outcomes[ep] = bool(flag.item())
+            selected_episodes = {
+                ep
+                for ep, is_success in outcomes.items()
+                if is_success == expected_success
+            }
+            if not selected_episodes:
+                raise ValueError(
+                    f"No {episode_outcome} episodes found in {dataset_path}"
+                )
+
+        self._indices = None
+        self.selected_episode_indices = tuple(sorted(selected_episodes))
+        all_episodes = set(self.dataset_meta.episodes)
+        limits = dict(episode_frame_limits or {})
+        if not limits.keys() <= all_episodes or any(v < 0 for v in limits.values()):
+            raise ValueError("Invalid critic episode frame limits")
+        if selected_episodes != all_episodes or limits:
             idx = self._base.episode_data_index
             self._indices = [
                 i
-                for ep in sorted(selected)
-                for i in range(idx["from"][ep].item(), idx["to"][ep].item())
+                for position, ep in enumerate(sorted(all_episodes))
+                if ep in selected_episodes
+                for i in range(
+                    idx["from"][position].item(),
+                    min(idx["to"][position].item(),
+                        idx["from"][position].item() + limits.get(ep, len(self._base))),
+                )
             ]
 
         self._transform = self._build_transform(
@@ -299,7 +345,7 @@ class ValueDataset(Dataset):
             else None
         )
 
-        n = len(self._indices) if self._indices else len(self._base)
+        n = len(self._indices) if self._indices is not None else len(self._base)
         logger.info(f"ValueDataset: {dataset_path}, {min(n, max_samples or n)} samples")
 
     @staticmethod
@@ -337,11 +383,11 @@ class ValueDataset(Dataset):
         return _openpi_transforms.compose(transforms_list)
 
     def __len__(self) -> int:
-        n = len(self._indices) if self._indices else len(self._base)
+        n = len(self._indices) if self._indices is not None else len(self._base)
         return min(n, self.max_samples) if self.max_samples else n
 
     def __getitem__(self, idx: int) -> dict[str, Any]:
-        real_idx = self._indices[idx] if self._indices else idx
+        real_idx = self._indices[idx] if self._indices is not None else idx
         sample = self._base[real_idx]
 
         ep = int(sample.get("episode_index", -1))
@@ -382,6 +428,8 @@ class ValueDataset(Dataset):
             "images": images,
             "prompt": sample.get("prompt", "perform the task"),
             "target_values": target_value,
+            # The sidecar terminal reward encodes the verified episode outcome.
+            "episode_success": bool(self._sidecar[ep]["reward"][-1] == 0),
             "actions": None,
         }
         if isinstance(masks, dict) and masks:
@@ -400,3 +448,54 @@ class ValueMixtureDataset(ReCapMixtureDataset):
     """Mixture of multiple value datasets with weighted sampling."""
 
     mixture_name = "ValueMixtureDataset"
+
+    def __init__(
+        self,
+        datasets: Sequence[tuple[Dataset, float] | tuple[Dataset, float, str]],
+        mode: str = "train",
+        balance_dataset_weights: bool = True,
+        seed: int = 42,
+        group_weights: Optional[Mapping[str, float]] = None,
+    ) -> None:
+        """Sample configured dataset groups, then frames uniformly per group."""
+        if any(len(item) not in (2, 3) for item in datasets):
+            raise ValueError("Expected (dataset, weight[, sampling_group]) entries")
+        grouped = [len(item) == 3 for item in datasets]
+        if any(grouped) and not all(grouped):
+            raise ValueError("All value datasets must specify a sampling group")
+        if not any(grouped):
+            if group_weights is not None:
+                raise ValueError("group_weights requires a group on every dataset")
+            super().__init__(datasets, mode, balance_dataset_weights, seed)
+            return
+        if not group_weights:
+            raise ValueError("Grouped value sampling requires group_weights")
+        if any(not np.isfinite(w) or w <= 0 for w in group_weights.values()):
+            raise ValueError("Sampling group weights must be finite and positive")
+
+        group_lengths = {}
+        for dataset, weight, group in datasets:
+            if weight != 1.0:
+                raise ValueError(
+                    "Grouped sampling uses group_weights; omit dataset weight"
+                )
+            if group not in group_weights:
+                raise ValueError(f"No configured sampling weight for group {group!r}")
+            group_lengths[group] = group_lengths.get(group, 0) + len(dataset)
+        if set(group_lengths) != set(group_weights) or any(
+            length == 0 for length in group_lengths.values()
+        ):
+            raise ValueError("Every configured sampling group must contain frames")
+        weight_sum = sum(group_weights.values())
+        if not np.isclose(weight_sum, 1.0):
+            raise ValueError(f"Sampling group weights must sum to 1, got {weight_sum}")
+
+        weighted_datasets = [
+            (
+                dataset,
+                group_weights[group] * len(dataset) / group_lengths[group],
+            )
+            for dataset, _, group in datasets
+        ]
+        super().__init__(weighted_datasets, mode, False, seed)
+        self.group_weights = dict(group_weights)

@@ -1,0 +1,167 @@
+data:
+  data_root: null
+  train_data_paths:
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/critic_v2/datasets/sft_train
+    type: sft
+    weight: 0.5
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_00/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_01/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_02/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_03/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_04/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_05/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_06/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_07/train
+    type: rollout
+    weight: 0.0625
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/critic_v2/datasets/sft_val
+    type: sft
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: sft_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_00/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_00_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_01/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_01_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_02/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_02_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_03/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_03_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_04/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_04_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_05/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_05_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_06/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_06_val
+  - dataset_path: /data2/sjy/recap/pick_dual_bottles/rollout2048_v2_chunk/datasets/rollout/rank_07/val
+    type: rollout
+    weight: 1.0
+    task_name: pick_dual_bottles
+    robot_type: robotwin
+    model_type: pi05
+    return_min: -800.0
+    return_max: 0.0
+    name: rank_07_val
+  dataset_type: sft
+  gamma: 1.0
+  failure_reward: -400.0
+  tag: robotwin_time_dual2048_v2_chunk
+  num_workers: 16
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

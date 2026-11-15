@@ -318,16 +318,21 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                 "episode_percentage": entry.get("episode_percentage", None),
                 "shuffle_episodes": entry.get("shuffle_episodes", False),
                 "episode_seed": entry.get("episode_seed", 42),
+                "episode_outcome": entry.get("episode_outcome", None),
+                "episode_frame_limits": entry.get("episode_frame_limits", None),
                 "tag": data_cfg.get("tag", None),
             }
 
             ds = ValueDataset(**entry_kwargs)
-            datasets_with_weights.append((ds, weight))
+            if "sampling_group" in entry:
+                datasets_with_weights.append((ds, weight, entry["sampling_group"]))
+            else:
+                datasets_with_weights.append((ds, weight))
             self.logger.info(
                 f"[ValueSFT] Loaded: {ds_path}  (type={ds_type}, {len(ds)} samples, weight={weight})"
             )
 
-        if len(datasets_with_weights) == 1:
+        if len(datasets_with_weights) == 1 and len(datasets_with_weights[0]) == 2:
             dataset = datasets_with_weights[0][0]
         else:
             dataset = ValueMixtureDataset(
@@ -335,8 +340,43 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                 mode="train",
                 balance_dataset_weights=data_cfg.get("balance_weights", True),
                 seed=data_cfg.get("seed", 42),
+                group_weights=data_cfg.get("sampling_group_weights", None),
             )
         self.logger.info(f"[ValueSFT] Total samples: {len(dataset)}")
+        if (
+            self._rank == 0
+            and isinstance(dataset, ValueMixtureDataset)
+            and data_cfg.get("sampling_group_weights") is not None
+        ):
+            directory = (
+                Path(self.cfg.runner.logger.log_path)
+                / self.cfg.runner.logger.experiment_name
+            )
+            directory.mkdir(parents=True, exist_ok=True)
+            sampling_report = {
+                "group_weights": dict(data_cfg.get("sampling_group_weights", {}) or {}),
+                "virtual_epoch_length": len(dataset),
+                "datasets": [
+                    {
+                        "path": entry["dataset_path"],
+                        "source": entry.get("type"),
+                        "group": entry.get("sampling_group"),
+                        "outcome": entry.get("episode_outcome"),
+                        "frames": len(ds),
+                        "episode_indices": list(ds.selected_episode_indices),
+                        "sampling_probability": float(probability),
+                    }
+                    for entry, ds, probability in zip(
+                        train_entries,
+                        dataset.datasets,
+                        dataset.dataset_sampling_weights,
+                        strict=True,
+                    )
+                ],
+            }
+            (directory / "effective_sampling.json").write_text(
+                json.dumps(sampling_report, indent=2) + "\n"
+            )
 
         sampler = None
         if torch.distributed.is_initialized():
@@ -415,6 +455,8 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                 action_dim=eval_entry.get("action_dim", shared["action_dim"]),
                 default_prompt=eval_entry.get("default_prompt", None),
                 max_samples=eval_max_samples,
+                episode_outcome=eval_entry.get("episode_outcome", None),
+                episode_frame_limits=eval_entry.get("episode_frame_limits", None),
                 tag=data_cfg.get("tag", None),
             )
             eval_sampler = None
@@ -590,13 +632,14 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
 
             self.model.eval()
             all_dataset_metrics: dict[str, dict[str, float]] = {}
-            rollout_predictions, rollout_targets = [], []
+            rollout_predictions, rollout_targets, rollout_success = [], [], []
 
             with torch.no_grad():
                 for ds_name, loader in self.eval_data_loaders:
                     batch_metrics: list[dict[str, float]] = []
                     pred_batches: list[np.ndarray] = []
                     target_batches: list[np.ndarray] = []
+                    outcome_batches: list[np.ndarray] = []
                     for batch in loader:
                         obs, target_values, _ = self._prepare_input(batch)
 
@@ -661,6 +704,8 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                             target_batches.append(
                                 target_values.detach().float().view(-1).cpu().numpy()
                             )
+                            if ds_name.startswith("rank_"):
+                                outcome_batches.append(batch["episode_success"].numpy())
                         metrics["loss"] = loss.detach().item()
                         if target_values is not None:
                             metrics["target_value_mean"] = (
@@ -700,6 +745,9 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                                 if ds_name.startswith("rank_"):
                                     rollout_predictions.append(gathered_pred)
                                     rollout_targets.append(gathered_target)
+                                    rollout_success.append(
+                                        self._gather_eval_array(np.concatenate(outcome_batches))
+                                    )
 
             if not all_dataset_metrics:
                 return {}
@@ -729,11 +777,8 @@ class FSDPValueSftWorker(FSDPModelManager, Worker):
                         for k, v in value_metrics(predictions, targets).items()
                     }
                 )
-                # This protocol has success returns > -0.5 and failure returns <= -0.5.
-                for name, mask in [
-                    ("success", targets > -0.5),
-                    ("failure", targets <= -0.5),
-                ]:
+                successes = np.concatenate(rollout_success)
+                for name, mask in [("success", successes), ("failure", ~successes)]:
                     if mask.any():
                         final_metrics["rollout/" + name + "_mae"] = float(
                             np.abs(predictions[mask] - targets[mask]).mean()
